@@ -40,21 +40,10 @@ class LP_Admin_Settings_Page extends LP_Admin_Base {
 	 */
 	public function add_plugin_admin_menu() {
 		/*
-		 * Add a settings page for this plugin to the Settings menu
-		 *
-		 * @TODO:
-		 *
-		 * - Change 'manage_options' to the capability you see fit
-		 *   For reference: http://codex.wordpress.org/Roles_and_Capabilities
-
-		 add_options_page( __( 'Page Title', LP_TEXTDOMAIN ), LP_NAME, 'manage_options', LP_TEXTDOMAIN, array( $this, 'display_plugin_admin_page' ) );
-		 *
-		 */
-		/*
 		 * Add a settings page for this plugin to the main menu
 		 *
 		 */
-		add_menu_page( __( 'LeasePress Settings', LP_TEXTDOMAIN ), LP_NAME, 'manage_options', LP_TEXTDOMAIN, array( $this, 'display_plugin_admin_page' ), 'dashicons-hammer', 90 );
+		add_menu_page( __( 'LeasePress Settings', LP_TEXTDOMAIN ), LP_NAME, 'manage_options', LP_TEXTDOMAIN, array( $this, 'display_plugin_admin_page' ), 'dashicons-grid-view', 80 );
 	}
 
 	/**

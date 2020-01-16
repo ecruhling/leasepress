@@ -24,7 +24,8 @@ class LP_Base {
 	 * Initialize the class
 	 */
 	public function initialize() {
-		$this->settings = l_get_settings();
+		$this->settings = lp_get_settings();
+
 		return true;
 	}
 

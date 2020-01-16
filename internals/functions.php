@@ -15,6 +15,6 @@
  *
  * @return array
  */
-function l_get_settings() {
-	return apply_filters( 'l_get_settings', get_option( LP_TEXTDOMAIN . '-settings' ) );
+function lp_get_settings() {
+	return apply_filters( 'lp_get_settings', get_option( LP_TEXTDOMAIN . '-settings' ) );
 }

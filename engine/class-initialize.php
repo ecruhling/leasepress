@@ -23,21 +23,21 @@ class LP_Initialize {
 	protected static $instance = null;
 
 	/**
-	 * Instance of this L_Is_Methods.
+	 * Instance of this LP_Is_Methods.
 	 *
 	 * @var object
 	 */
 	protected $is = null;
 
 	/**
-	 * List of class to initialize.
+	 * List of classes to initialize.
 	 *
 	 * @var array
 	 */
 	public $classes = null;
 
 	/**
-	 * The Constructor that load the entry classes
+	 * The Constructor that loads the entry classes
 	 *
 	 * @since 1.0.0
 	 */
@@ -94,9 +94,10 @@ class LP_Initialize {
 	/**
 	 * Return an instance of this class.
 	 *
+	 * @return object A single instance of this class.
+	 * @throws Exception
 	 * @since 1.0.0
 	 *
-	 * @return object A single instance of this class.
 	 */
 	public static function get_instance() {
 		// If the single instance hasn't been set, set it now.
@@ -106,7 +107,7 @@ class LP_Initialize {
 			} catch ( Exception $err ) {
 				do_action( 'leasepress_initialize_failed', $err );
 				if ( WP_DEBUG ) {
-//					throw $err->getMessage();
+					throw new Exception($err->getMessage());
 				}
 			}
 		}

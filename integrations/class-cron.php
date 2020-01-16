@@ -11,7 +11,7 @@
  */
 
 /**
- * This class contain the Widget stuff
+ * This class contain the Cron stuff
  */
 class LP_Cron extends LP_Base {
 

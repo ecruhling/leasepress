@@ -19,9 +19,9 @@ class LP_Admin_Base extends LP_Base {
 	 * Initialize the class
 	 */
 	public function initialize() {
-        if ( is_admin() ) {
-            return parent::initialize();
-        }
+		if ( is_admin() ) {
+			return parent::initialize();
+		}
 
 		return false;
 	}

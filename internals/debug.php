@@ -10,10 +10,10 @@
  * @link      https://resourceatlanta.com
  */
 
-$l_debug = new WPBP_Debug( __( 'Plugin Name', LP_TEXTDOMAIN ) );
+$lp_debug = new WPBP_Debug( __( 'LeasePress', LP_TEXTDOMAIN ) );
 
-function l_log( $text ) {
-	global $l_debug;
-	$l_debug->log( $text );
+function lp_log( $text ) {
+	global $lp_debug;
+	$lp_debug->log( $text );
 }
 

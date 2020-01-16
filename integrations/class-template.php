@@ -27,7 +27,7 @@ class LP_Template extends LP_Base {
 	/**
 	 * Example for override the template system on the frontend
 	 *
-	 * @param string $original_template The original templace HTML.
+	 * @param string $original_template The original template HTML.
 	 *
 	 * @since 1.0.0
 	 *

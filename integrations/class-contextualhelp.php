@@ -73,7 +73,7 @@ class LP_ContextualHelp {
 
 		// Add to a custom plugin settings page
 		WP_Contextual_Help::register_tab(
-             'l_settings', __( 'Boilerplate Settings', LP_TEXTDOMAIN ), array(
+             'lp_settings', __( 'Boilerplate Settings', LP_TEXTDOMAIN ), array(
 			'page'    => 'settings_page_' . LP_TEXTDOMAIN,
 			'wpautop' => true,
 		)

@@ -18,10 +18,10 @@ class LP_Is_Methods {
 	/**
 	 * Whether given user is an administrator.
 	 *
-	 * @param \WP_User $user The given user.
+	 * @param WP_User $user The given user.
 	 * @return bool
 	 */
-	public static function is_user_admin( \WP_User $user = NULL ) {
+	public static function is_user_admin( WP_User $user = NULL ) {
 		if ( is_null( $user ) ) {
 			$user = wp_get_current_user();
 		}

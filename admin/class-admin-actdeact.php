@@ -11,7 +11,7 @@
  */
 
 /**
- * This class contain the activate and deactive method and relates.
+ * This class contain the activate and deactivate method and relations.
  */
 class LP_Admin_ActDeact extends LP_Admin_Base {
 
@@ -55,7 +55,7 @@ class LP_Admin_ActDeact extends LP_Admin_Base {
 	/**
 	 * Fired when the plugin is activated.
 	 *
-	 * @param boolean $network_wide True if active in a multiste, false if classic site.
+	 * @param boolean $network_wide True if active in a multisite, false if classic site.
 	 *
 	 * @since 1.0.0
 	 *
@@ -144,7 +144,7 @@ class LP_Admin_ActDeact extends LP_Admin_Base {
 	 * @return void
 	 */
 	public static function add_capabilities() {
-		// Add the capabilites to all the roles
+		// Add the capabilities to all the roles
 		$caps  = array(
 			'create_plugins',
 			'read_demo',
