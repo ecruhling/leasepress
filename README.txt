@@ -1,12 +1,12 @@
 === LeasePress ===
 Contributors: ecruhling
-Tags: rentcafe, entrata, yardi, site plans, floor plans, rent, lease
+Tags: rentcafe, yardi, site plans, floor plans, rent, lease
 Requires at least: 5
 Tested up to: 5
 Stable tag: 1.0.0
 Requires PHP: 7.1.3 (with php-mbstring enabled)
 
-Ready to graduate from renting to leasing? Supports API data from Entrata & RENTCafe.
+Ready to graduate from renting to leasing? Supports API data from RENTCafe (Yardi).
 
 == Description ==
 
@@ -63,8 +63,8 @@ you put the stable version, in order to eliminate any doubt.
 
 = With which services does LeasePress integrate? =
 
-LeasePress can currently integrate with the RENTCafe (Yardi) and Entrata APIs. You must have an account with one of
-these 2 services in order to use LeasePress. You must enable the API at the service.
+LeasePress can currently integrate with RENTCafe (Yardi). You must have an account with the service in order to use LeasePress.
+You must enable the API at the service.
 
 == Screenshots ==
 

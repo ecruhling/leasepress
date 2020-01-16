@@ -38,11 +38,11 @@ class LP_Admin_ImpExp extends LP_Admin_Base {
 	 * @return void
 	 */
 	public function settings_export() {
-		if ( empty( $_POST[ 'l_action' ] ) || 'export_settings' !== esc_html( $_POST[ 'l_action' ] ) ) {
+		if ( empty( $_POST[ 'lp_action' ] ) || 'export_settings' !== esc_html( $_POST[ 'lp_action' ] ) ) {
 			return;
 		}
 
-		if ( !wp_verify_nonce( esc_html( $_POST[ 'l_export_nonce' ] ), 'l_export_nonce' ) ) {
+		if ( !wp_verify_nonce( esc_html( $_POST[ 'lp_export_nonce' ] ), 'lp_export_nonce' ) ) {
 			return;
 		}
 
@@ -73,11 +73,11 @@ class LP_Admin_ImpExp extends LP_Admin_Base {
 	 * @return void
 	 */
 	public function settings_import() {
-		if ( empty( $_POST[ 'l_action' ] ) || 'import_settings' !== esc_html( $_POST[ 'l_action' ] ) ) {
+		if ( empty( $_POST[ 'lp_action' ] ) || 'import_settings' !== esc_html( $_POST[ 'lp_action' ] ) ) {
 			return;
 		}
 
-		if ( !wp_verify_nonce( esc_html( $_POST[ 'l_import_nonce' ] ), 'l_import_nonce' ) ) {
+		if ( !wp_verify_nonce( esc_html( $_POST[ 'lp_import_nonce' ] ), 'lp_import_nonce' ) ) {
 			return;
 		}
 

@@ -13,16 +13,13 @@
  * @link	  https://resourceatlanta.com
  *
  * Plugin Name:	    LeasePress
- * Description:	    Ready to graduate from renting to leasing? Supports API data from Entrata & RENTCafe.
+ * Description:	    Ready to graduate from renting to leasing? Supports API data from RENTCafe.
  * Version:		    1.0.0
  * Author:			Resource Branding and Design
  * Author URI:		https://resourceatlanta.com
  * Text Domain:	    leasepress
- * License:		    GPL 2.0+
- * License URI:	    http://www.gnu.org/licenses/gpl-2.0.txt
  * Domain Path:	    /languages
- * Requires PHP:	7.0
- * WordPress-Plugin-Boilerplate-Powered: v3.1.3
+ * Requires PHP:	7.1.3
  */
 // If this file is called directly, abort.
 if ( !defined( 'ABSPATH' ) ) {
@@ -71,48 +68,6 @@ require_once( LP_PLUGIN_ROOT . 'vendor/autoload.php' );
 
 require_once( LP_PLUGIN_ROOT . 'internals/functions.php' );
 require_once( LP_PLUGIN_ROOT . 'internals/debug.php' );
-
-/**
- * Create a helper function for easy SDK access.
- *
- * @global type $lp_fs
- * @return object
- */
-function lp_fs() {
-	global $lp_fs;
-
-	if ( !isset( $lp_fs ) ) {
-		require_once( LP_PLUGIN_ROOT . 'vendor/freemius/wordpress-sdk/start.php' );
-		$lp_fs = fs_dynamic_init(
-			array(
-				'id'			 => '',
-				'slug'			 => 'leasepress',
-				'public_key'	 => '',
-				'is_live'		 => false,
-				'is_premium'	 => true,
-				'has_addons'	 => false,
-				'has_paid_plans' => true,
-				'menu'			 => array(
-					'slug' => 'leasepress',
-				),
-			)
-		);
-
-
-		if ( $lp_fs->is_premium() ) {
-			$lp_fs->add_filter( 'support_forum_url', 'gt_premium_support_forum_url' );
-
-			function gt_premium_support_forum_url( $wp_org_support_forum_url ) {
-				return 'http://your url';
-			}
-		}
-	}
-
-	return $lp_fs;
-}
-
-// Init Freemius.
-// lp_fs();
 
 if ( ! wp_installing() ) {
 	add_action( 'plugins_loaded', array( 'LP_Initialize', 'get_instance' ) );
