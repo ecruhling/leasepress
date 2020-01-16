@@ -3,7 +3,7 @@
 /**
  * Plugin name
  *
- * @package   Plugin_name
+ * @package   LeasePress
  * @author    Erik Ruhling <ecruhling@gmail.com>
  * @copyright Resource Branding and Design
  * @license   GPL 2.0+
@@ -13,7 +13,7 @@
 /**
  * This class contain the transient example
  */
-class L_Transient extends L_Base {
+class LP_Transient extends LP_Base {
 
 	/**
 	 * Initialize the snippet
@@ -30,7 +30,7 @@ class L_Transient extends L_Base {
 	public function transient_caching_example() {
 		$key = 'placeholder_json_transient';
 
-		// Use wp-cache-remember package to retrive or save in transient
+		// Use wp-cache-remember package to retrieve or save in transient
 		return remember_transient(
              $key, function () use ( $key ) {
 				// If there's no cached version we ask

@@ -13,7 +13,7 @@
 /**
  * Plugin Name Is Methods
  */
-class L_Is_Methods {
+class LP_Is_Methods {
 
 	/**
 	 * Whether given user is an administrator.

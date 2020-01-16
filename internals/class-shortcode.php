@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Plugin_name
+ * LeasePress
  *
- * @package   Plugin_name
+ * @package   LeasePress
  * @author    Erik Ruhling <ecruhling@gmail.com>
  * @copyright Resource Branding and Design
  * @license   GPL 2.0+
@@ -13,7 +13,7 @@
 /**
  * This class contain all the snippet or extra that improve the experience on the frontend
  */
-class L_Shortcode extends L_Base {
+class LP_Shortcode extends LP_Base {
 
 	/**
 	 * Initialize the snippet

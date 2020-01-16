@@ -13,7 +13,7 @@
 /**
  * This class contain the Enqueue stuff for the frontend
  */
-class L_Enqueue extends L_Base {
+class LP_Enqueue extends LP_Base {
 
 	/**
 	 * Initialize the class
@@ -35,7 +35,7 @@ class L_Enqueue extends L_Base {
 	 * @return void
 	 */
 	public static function enqueue_styles() {
-		wp_enqueue_style( L_TEXTDOMAIN . '-plugin-styles', plugins_url( 'assets/css/public.css', L_PLUGIN_ABSOLUTE ), array(), L_VERSION );
+		wp_enqueue_style( LP_TEXTDOMAIN . '-plugin-styles', plugins_url( 'assets/css/public.css', LP_PLUGIN_ABSOLUTE ), array(), LP_VERSION );
 	}
 
 	/**
@@ -46,7 +46,7 @@ class L_Enqueue extends L_Base {
 	 * @return void
 	 */
 	public static function enqueue_scripts() {
-		wp_enqueue_script( L_TEXTDOMAIN . '-plugin-script', plugins_url( 'assets/js/public.js', L_PLUGIN_ABSOLUTE ), array( 'jquery' ), L_VERSION );
+		wp_enqueue_script( LP_TEXTDOMAIN . '-plugin-script', plugins_url( 'assets/js/public.js', LP_PLUGIN_ABSOLUTE ), array( 'jquery' ), LP_VERSION );
 	}
 
 	/**
@@ -58,8 +58,8 @@ class L_Enqueue extends L_Base {
 	 */
 	public static function enqueue_js_vars() {
 		wp_localize_script(
-             L_TEXTDOMAIN . '-plugin-script', 'l_js_vars', array(
-			'alert' => __( 'Hey! You have clicked the button!', L_TEXTDOMAIN ),
+             LP_TEXTDOMAIN . '-plugin-script', 'l_js_vars', array(
+			'alert' => __( 'Hey! You have clicked the button!', LP_TEXTDOMAIN ),
 		)
 		);
 	}

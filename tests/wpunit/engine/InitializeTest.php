@@ -31,7 +31,7 @@ class InitializeTest extends \Codeception\TestCase\WPTestCase {
 	 */
 	public function it_should_be_instantiatable() {
 		$sut = $this->make_instance();
-		$this->assertInstanceOf( 'L_Initialize', $sut );
+		$this->assertInstanceOf( 'LP_Initialize', $sut );
 	}
 
 	/**
@@ -42,17 +42,17 @@ class InitializeTest extends \Codeception\TestCase\WPTestCase {
 		$sut = $this->make_instance();
 
 		$classes   = array();
-		$classes[] = 'L_PostTypes';
-		$classes[] = 'L_CMB';
-		$classes[] = 'L_Cron';
-		$classes[] = 'L_FakePage';
-		$classes[] = 'L_Template';
-		$classes[] = 'L_Widgets';
-		$classes[] = 'L_Rest';
-		$classes[] = 'L_Transient';
-		$classes[] = 'L_Ajax';
-		$classes[] = 'L_Enqueue';
-		$classes[] = 'L_Extras';
+		$classes[] = 'LP_PostTypes';
+		$classes[] = 'LP_CMB';
+		$classes[] = 'LP_Cron';
+		$classes[] = 'LP_FakePage';
+		$classes[] = 'LP_Template';
+		$classes[] = 'LP_Widgets';
+		$classes[] = 'LP_Rest';
+		$classes[] = 'LP_Transient';
+		$classes[] = 'LP_Ajax';
+		$classes[] = 'LP_Enqueue';
+		$classes[] = 'LP_Extras';
 
 		$this->assertEquals( $classes, $sut->classes );
 	}

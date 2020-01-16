@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Plugin_name
+ * LeasePress
  *
- * @package   Plugin_name
+ * @package   LeasePress
  * @author    Erik Ruhling <ecruhling@gmail.com>
  * @copyright Resource Branding and Design
  * @license   GPL 2.0+
@@ -13,7 +13,7 @@
 /**
  * This class contain the Post Types and Taxonomy initialize code
  */
-class L_PostTypes extends L_Base {
+class LP_PostTypes extends LP_Base {
 
 	/**
 	 * Initialize the custom post types
@@ -26,9 +26,9 @@ class L_PostTypes extends L_Base {
 		 */
 		$post_columns = new CPT_columns( 'demo' );
 		$post_columns->add_column( 'cmb2_field', array(
-				'label'    => __( 'CMB2 Field', L_TEXTDOMAIN ),
+				'label'    => __( 'CMB2 Field', LP_TEXTDOMAIN ),
 				'type'     => 'post_meta',
-				'meta_key' => '_demo_' . L_TEXTDOMAIN . '_text',
+				'meta_key' => '_demo_' . LP_TEXTDOMAIN . '_text',
 				'orderby'  => 'meta_value',
 				'sortable' => true,
 				'prefix'   => '<b>',
@@ -47,7 +47,7 @@ class L_PostTypes extends L_Base {
 				'admin_notice' => 'Written something on custom bulk meta',
 				'callback'     => function( $post_ids ) {
 					foreach ( $post_ids as $post_id ) {
-						update_post_meta( $post_id, '_demo_' . L_TEXTDOMAIN . '_text', 'Random stuff' );
+						update_post_meta( $post_id, '_demo_' . LP_TEXTDOMAIN . '_text', 'Random stuff' );
 					}
 
 					return true;
@@ -109,7 +109,7 @@ class L_PostTypes extends L_Base {
 				),
 				'custom_field' => array(
 					'title' => 'By Lib',
-					'meta_key' => '_demo_' . L_TEXTDOMAIN . '_text',
+					'meta_key' => '_demo_' . LP_TEXTDOMAIN . '_text',
 					'cap'      => 'manage_options',
 				),
 				'date' => array(
@@ -125,8 +125,8 @@ class L_PostTypes extends L_Base {
 			)
 		), array(
 			# Override the base names used for labels:
-			'singular' => __( 'Demo', L_TEXTDOMAIN ),
-			'plural'   => __( 'Demos', L_TEXTDOMAIN ),
+			'singular' => __( 'Demo', LP_TEXTDOMAIN ),
+			'plural'   => __( 'Demos', LP_TEXTDOMAIN ),
 		)
 		);
 
@@ -157,8 +157,8 @@ class L_PostTypes extends L_Base {
 			),
 		), array(
 			// Override the base names used for labels:
-			'singular' => __( 'Demo Category', L_TEXTDOMAIN ),
-			'plural'   => __( 'Demo Categories', L_TEXTDOMAIN ),
+			'singular' => __( 'Demo Category', LP_TEXTDOMAIN ),
+			'plural'   => __( 'Demo Categories', LP_TEXTDOMAIN ),
 		)
 		);
 	}

@@ -13,7 +13,7 @@
 /**
  * This class contain the Widget stuff
  */
-class L_Cron extends L_Base {
+class LP_Cron extends LP_Base {
 
 	/**
 	 * Initialize the class

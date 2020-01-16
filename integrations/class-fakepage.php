@@ -13,7 +13,7 @@
 /**
  * This class contain the Fake Page
  */
-class L_FakePage extends L_Base {
+class LP_FakePage extends LP_Base {
 
 	/**
 	 * Initialize the class

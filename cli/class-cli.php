@@ -14,7 +14,7 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
     /**
      * This class contain the WP CLI support
      */
-    class L_WPCli extends L_Base {
+    class LP_WPCli extends LP_Base {
 
         public function initialize() {
             if ( !apply_filters( 'leasepress_l_enqueue_admin_initialize', true ) ) {

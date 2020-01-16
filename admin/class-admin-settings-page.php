@@ -13,7 +13,7 @@
 /**
  * This class contain the Enqueue stuff for the backend
  */
-class L_Admin_Settings_Page extends L_Admin_Base {
+class LP_Admin_Settings_Page extends LP_Admin_Base {
 
 	/**
 	 * Initialize the class
@@ -27,7 +27,7 @@ class L_Admin_Settings_Page extends L_Admin_Base {
 		add_action( 'admin_menu', array( $this, 'add_plugin_admin_menu' ) );
 
 		// Add an action link pointing to the options page.
-		$plugin_basename = plugin_basename( plugin_dir_path( realpath( dirname( __FILE__ ) ) ) . L_TEXTDOMAIN . '.php' );
+		$plugin_basename = plugin_basename( plugin_dir_path( realpath( dirname( __FILE__ ) ) ) . LP_TEXTDOMAIN . '.php' );
 		add_filter( 'plugin_action_links_' . $plugin_basename, array( $this, 'add_action_links' ) );
 	}
 
@@ -47,14 +47,14 @@ class L_Admin_Settings_Page extends L_Admin_Base {
 		 * - Change 'manage_options' to the capability you see fit
 		 *   For reference: http://codex.wordpress.org/Roles_and_Capabilities
 
-		 add_options_page( __( 'Page Title', L_TEXTDOMAIN ), L_NAME, 'manage_options', L_TEXTDOMAIN, array( $this, 'display_plugin_admin_page' ) );
+		 add_options_page( __( 'Page Title', LP_TEXTDOMAIN ), LP_NAME, 'manage_options', LP_TEXTDOMAIN, array( $this, 'display_plugin_admin_page' ) );
 		 *
 		 */
 		/*
 		 * Add a settings page for this plugin to the main menu
 		 *
 		 */
-		add_menu_page( __( 'LeasePress Settings', L_TEXTDOMAIN ), L_NAME, 'manage_options', L_TEXTDOMAIN, array( $this, 'display_plugin_admin_page' ), 'dashicons-hammer', 90 );
+		add_menu_page( __( 'LeasePress Settings', LP_TEXTDOMAIN ), LP_NAME, 'manage_options', LP_TEXTDOMAIN, array( $this, 'display_plugin_admin_page' ), 'dashicons-hammer', 90 );
 	}
 
 	/**
@@ -65,7 +65,7 @@ class L_Admin_Settings_Page extends L_Admin_Base {
 	 * @return void
 	 */
 	public function display_plugin_admin_page() {
-		include_once( L_PLUGIN_ROOT . 'admin/views/admin.php' );
+		include_once( LP_PLUGIN_ROOT . 'admin/views/admin.php' );
 	}
 
 	/**
@@ -80,7 +80,7 @@ class L_Admin_Settings_Page extends L_Admin_Base {
 	public function add_action_links( $links ) {
 		return array_merge(
 			array(
-				'settings' => '<a href="' . admin_url( 'options-general.php?page=' . L_TEXTDOMAIN ) . '">' . __( 'Settings', L_TEXTDOMAIN ) . '</a>',
+				'settings' => '<a href="' . admin_url( 'options-general.php?page=' . LP_TEXTDOMAIN ) . '">' . __( 'Settings', LP_TEXTDOMAIN ) . '</a>',
 			),
             $links
 		);

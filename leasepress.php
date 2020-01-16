@@ -29,24 +29,24 @@ if ( !defined( 'ABSPATH' ) ) {
 	die;
 }
 
-define( 'L_VERSION', '1.0.0' );
-define( 'L_TEXTDOMAIN', 'leasepress' );
-define( 'L_NAME', 'LeasePress' );
-define( 'L_PLUGIN_ROOT', plugin_dir_path( __FILE__ ) );
-define( 'L_PLUGIN_ABSOLUTE', __FILE__ );
+define( 'LP_VERSION', '1.0.0' );
+define( 'LP_TEXTDOMAIN', 'leasepress' );
+define( 'LP_NAME', 'LeasePress' );
+define( 'LP_PLUGIN_ROOT', plugin_dir_path( __FILE__ ) );
+define( 'LP_PLUGIN_ABSOLUTE', __FILE__ );
 
 /**
  * Load the textdomain of the plugin
  *
  * @return void
  */
-function l_load_plugin_textdomain() {
-	$locale = apply_filters( 'plugin_locale', get_locale(), L_TEXTDOMAIN );
-	load_textdomain( L_TEXTDOMAIN, trailingslashit( WP_PLUGIN_DIR ) . L_TEXTDOMAIN . '/languages/' . L_TEXTDOMAIN . '-' . $locale . '.mo' );
+function lp_load_plugin_textdomain() {
+	$locale = apply_filters( 'plugin_locale', get_locale(), LP_TEXTDOMAIN );
+	load_textdomain( LP_TEXTDOMAIN, trailingslashit( WP_PLUGIN_DIR ) . LP_TEXTDOMAIN . '/languages/' . LP_TEXTDOMAIN . '-' . $locale . '.mo' );
 }
 
-add_action( 'plugins_loaded', 'l_load_plugin_textdomain', 1 );
-if ( version_compare( PHP_VERSION, '5.6.0', '<' ) ) {
+add_action( 'plugins_loaded', 'lp_load_plugin_textdomain', 1 );
+if ( version_compare( PHP_VERSION, '7.1.3', '<' ) ) {
 	function l_deactivate() {
 		deactivate_plugins( plugin_basename( __FILE__ ) );
 	}
@@ -55,35 +55,35 @@ if ( version_compare( PHP_VERSION, '5.6.0', '<' ) ) {
 		echo wp_kses_post(
 			sprintf(
 				'<div class="notice notice-error"><p>%s</p></div>',
-				__( '"LeasePress" requires PHP 5.6 or newer.', L_TEXTDOMAIN )
+				__( '"LeasePress" requires PHP 7.1.3 or newer.', LP_TEXTDOMAIN )
 			)
 		);
 	}
 
-	add_action( 'admin_init', 'l_deactivate' );
-	add_action( 'admin_notices', 'l_show_deactivation_notice' );
+	add_action( 'admin_init', 'lp_deactivate' );
+	add_action( 'admin_notices', 'lp_show_deactivation_notice' );
 
 	// Return early to prevent loading the other includes.
 	return;
 }
 
-require_once( L_PLUGIN_ROOT . 'vendor/autoload.php' );
+require_once( LP_PLUGIN_ROOT . 'vendor/autoload.php' );
 
-require_once( L_PLUGIN_ROOT . 'internals/functions.php' );
-require_once( L_PLUGIN_ROOT . 'internals/debug.php' );
+require_once( LP_PLUGIN_ROOT . 'internals/functions.php' );
+require_once( LP_PLUGIN_ROOT . 'internals/debug.php' );
 
 /**
  * Create a helper function for easy SDK access.
  *
- * @global type $l_fs
+ * @global type $lp_fs
  * @return object
  */
-function l_fs() {
-	global $l_fs;
+function lp_fs() {
+	global $lp_fs;
 
-	if ( !isset( $l_fs ) ) {
-		require_once( L_PLUGIN_ROOT . 'vendor/freemius/wordpress-sdk/start.php' );
-		$l_fs = fs_dynamic_init(
+	if ( !isset( $lp_fs ) ) {
+		require_once( LP_PLUGIN_ROOT . 'vendor/freemius/wordpress-sdk/start.php' );
+		$lp_fs = fs_dynamic_init(
 			array(
 				'id'			 => '',
 				'slug'			 => 'leasepress',
@@ -99,8 +99,8 @@ function l_fs() {
 		);
 
 
-		if ( $l_fs->is_premium() ) {
-			$l_fs->add_filter( 'support_forum_url', 'gt_premium_support_forum_url' );
+		if ( $lp_fs->is_premium() ) {
+			$lp_fs->add_filter( 'support_forum_url', 'gt_premium_support_forum_url' );
 
 			function gt_premium_support_forum_url( $wp_org_support_forum_url ) {
 				return 'http://your url';
@@ -108,12 +108,12 @@ function l_fs() {
 		}
 	}
 
-	return $l_fs;
+	return $lp_fs;
 }
 
 // Init Freemius.
-// l_fs();
+// lp_fs();
 
 if ( ! wp_installing() ) {
-	add_action( 'plugins_loaded', array( 'L_Initialize', 'get_instance' ) );
+	add_action( 'plugins_loaded', array( 'LP_Initialize', 'get_instance' ) );
 }

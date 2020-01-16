@@ -13,7 +13,7 @@
 /**
  * This class contain the Rest stuff
  */
-class L_Rest extends L_Base {
+class LP_Rest extends LP_Base {
 
 	/**
 	 * Initialize the class
@@ -43,11 +43,11 @@ class L_Rest extends L_Base {
      * @return void
      */
     public function add_custom_field() {
-        register_rest_field( 'demo', L_TEXTDOMAIN . '_text', array(
+        register_rest_field( 'demo', LP_TEXTDOMAIN . '_text', array(
             'get_callback'    => array( $this, 'get_text_field' ),
             'update_callback' => array( $this, 'update_text_field' ),
             'schema'          => array(
-                'description' => __( 'Text field demo of Post type', L_TEXTDOMAIN ),
+                'description' => __( 'Text field demo of Post type', LP_TEXTDOMAIN ),
                 'type'        => 'string',
             ),
         ));
@@ -89,7 +89,7 @@ class L_Rest extends L_Base {
      */
     public function get_text_field( $post_obj ) {
         $post_id = $post_obj['id'];
-        return get_post_meta( $post_id, L_TEXTDOMAIN . '_text', true );
+        return get_post_meta( $post_id, LP_TEXTDOMAIN . '_text', true );
     }
 
     /**
@@ -109,7 +109,7 @@ class L_Rest extends L_Base {
         if ( false === $post_id ) {
             return new WP_Error(
                 'rest_post_views_failed',
-                __( 'Failed to update post views.', L_TEXTDOMAIN ),
+                __( 'Failed to update post views.', LP_TEXTDOMAIN ),
                 array( 'status' => 500 )
             );
         }

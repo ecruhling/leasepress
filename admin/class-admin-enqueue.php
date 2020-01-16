@@ -13,7 +13,7 @@
 /**
  * This class contain the Enqueue stuff for the backend
  */
-class L_Admin_Enqueue extends L_Admin_Base {
+class LP_Admin_Enqueue extends LP_Admin_Base {
 
 	/**
 	 * Initialize the class
@@ -39,10 +39,10 @@ class L_Admin_Enqueue extends L_Admin_Base {
 	public function enqueue_admin_styles() {
 		$screen = get_current_screen();
 		if ( $screen->id === 'toplevel_page_leasepress' || strpos( $_SERVER[ 'REQUEST_URI' ], 'index.php' ) || strpos( $_SERVER[ 'REQUEST_URI' ], get_bloginfo( 'wpurl' ) . '/wp-admin/' ) ) {
-			wp_enqueue_style( L_TEXTDOMAIN . '-settings-styles', plugins_url( 'assets/css/settings.css', L_PLUGIN_ABSOLUTE ), array( 'dashicons' ), L_VERSION );
+			wp_enqueue_style( LP_TEXTDOMAIN . '-settings-styles', plugins_url( 'assets/css/settings.css', LP_PLUGIN_ABSOLUTE ), array( 'dashicons' ), LP_VERSION );
 		}
 
-		wp_enqueue_style( L_TEXTDOMAIN . '-admin-styles', plugins_url( 'assets/css/admin.css', L_PLUGIN_ABSOLUTE ), array( 'dashicons' ), L_VERSION );
+		wp_enqueue_style( LP_TEXTDOMAIN . '-admin-styles', plugins_url( 'assets/css/admin.css', LP_PLUGIN_ABSOLUTE ), array( 'dashicons' ), LP_VERSION );
 	}
 
 	/**
@@ -55,10 +55,10 @@ class L_Admin_Enqueue extends L_Admin_Base {
 	public function enqueue_admin_scripts() {
 		$screen = get_current_screen();
         if ( $screen->id === 'toplevel_page_leasepress' ) {
-            wp_enqueue_script( L_TEXTDOMAIN . '-settings-script', plugins_url( 'assets/js/settings.js', L_PLUGIN_ABSOLUTE ), array( 'jquery', 'jquery-ui-tabs' ), L_VERSION );
+            wp_enqueue_script( LP_TEXTDOMAIN . '-settings-script', plugins_url( 'assets/js/settings.js', LP_PLUGIN_ABSOLUTE ), array( 'jquery', 'jquery-ui-tabs' ), LP_VERSION );
         }
 
-		wp_enqueue_script( L_TEXTDOMAIN . '-admin-script', plugins_url( 'assets/js/admin.js', L_PLUGIN_ABSOLUTE ), array( 'jquery' ), L_VERSION );
+		wp_enqueue_script( LP_TEXTDOMAIN . '-admin-script', plugins_url( 'assets/js/admin.js', LP_PLUGIN_ABSOLUTE ), array( 'jquery' ), LP_VERSION );
 	}
 
 }

@@ -13,7 +13,7 @@
 /**
  * Provide Import and Export of the settings of the plugin
  */
-class L_Admin_ImpExp extends L_Admin_Base {
+class LP_Admin_ImpExp extends LP_Admin_Base {
 
 	/**
 	 * Initialize the plugin by loading admin scripts & styles and adding a
@@ -50,8 +50,8 @@ class L_Admin_ImpExp extends L_Admin_Base {
 			return;
 		}
 
-		$settings[ 0 ] = get_option( L_TEXTDOMAIN . '-settings' );
-		$settings[ 1 ] = get_option( L_TEXTDOMAIN . '-settings-second' );
+		$settings[ 0 ] = get_option( LP_TEXTDOMAIN . '-settings' );
+		$settings[ 1 ] = get_option( LP_TEXTDOMAIN . '-settings-second' );
 
 		ignore_user_abort( true );
 
@@ -88,22 +88,22 @@ class L_Admin_ImpExp extends L_Admin_Base {
 		$extension = end( explode( '.', $_FILES[ 'import_file' ][ 'name' ] ) );
 
 		if ( $extension !== 'json' ) {
-			wp_die( __( 'Please upload a valid .json file', L_TEXTDOMAIN ) );
+			wp_die( __( 'Please upload a valid .json file', LP_TEXTDOMAIN ) );
 		}
 
 		$import_file = $_FILES[ 'import_file' ][ 'tmp_name' ];
 
 		if ( empty( $import_file ) ) {
-			wp_die( __( 'Please upload a file to import', L_TEXTDOMAIN ) );
+			wp_die( __( 'Please upload a file to import', LP_TEXTDOMAIN ) );
 		}
 
 		// Retrieve the settings from the file and convert the json object to an array.
 		$settings = (array) wp_json_decode( file_get_contents( $import_file ) );
 
-		update_option( L_TEXTDOMAIN . '-settings', get_object_vars( $settings[ 0 ] ) );
-		update_option( L_TEXTDOMAIN . '-settings-second', get_object_vars( $settings[ 1 ] ) );
+		update_option( LP_TEXTDOMAIN . '-settings', get_object_vars( $settings[ 0 ] ) );
+		update_option( LP_TEXTDOMAIN . '-settings-second', get_object_vars( $settings[ 1 ] ) );
 
-		wp_safe_redirect( admin_url( 'options-general.php?page=' . L_TEXTDOMAIN ) );
+		wp_safe_redirect( admin_url( 'options-general.php?page=' . LP_TEXTDOMAIN ) );
 		exit;
 	}
 

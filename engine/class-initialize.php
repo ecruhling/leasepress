@@ -13,7 +13,7 @@
 /**
  * Plugin Name Initializer
  */
-class L_Initialize {
+class LP_Initialize {
 
 	/**
 	 * Instance of this class.
@@ -42,43 +42,43 @@ class L_Initialize {
 	 * @since 1.0.0
 	 */
 	public function __construct() {
-        $this->is        = new L_Is_Methods();
+        $this->is        = new LP_Is_Methods();
         $this->classes   = array();
-        $this->classes[] = 'L_PostTypes';
-        $this->classes[] = 'L_CMB';
-        $this->classes[] = 'L_Cron';
-        $this->classes[] = 'L_FakePage';
-        $this->classes[] = 'L_Template';
+        $this->classes[] = 'LP_PostTypes';
+        $this->classes[] = 'LP_CMB';
+        $this->classes[] = 'LP_Cron';
+        $this->classes[] = 'LP_FakePage';
+        $this->classes[] = 'LP_Template';
 		if ( $this->is->request( 'rest' ) ) {
-			$this->classes[] = 'L_Rest';
+			$this->classes[] = 'LP_Rest';
 		}
-		$this->classes[] = 'L_Transient';
+		$this->classes[] = 'LP_Transient';
 		if ( $this->is->request( 'cli' ) ) {
-			$this->classes[] = 'L_WPCli';
+			$this->classes[] = 'LP_WPCli';
 		}
 		if ( $this->is->request( 'ajax' ) ) {
-			$this->classes[] = 'L_Ajax';
+			$this->classes[] = 'LP_Ajax';
 		}
 
 		if ( $this->is->request( 'admin_backend' ) ) {
 			if ( $this->is->request( 'ajax' ) ) {
-				$this->classes[] = 'L_Ajax_Admin';
+				$this->classes[] = 'LP_Ajax_Admin';
 			}
-			$this->classes[] = 'L_Pointers';
-			$this->classes[] = 'L_ContextualHelp';
-			$this->classes[] = 'L_Admin_ActDeact';
-			$this->classes[] = 'L_Admin_Notices';
-			$this->classes[] = 'L_Admin_Settings_Page';
-			$this->classes[] = 'L_Admin_Enqueue';
-			$this->classes[] = 'L_Admin_ImpExp';
+			$this->classes[] = 'LP_Pointers';
+			$this->classes[] = 'LP_ContextualHelp';
+			$this->classes[] = 'LP_Admin_ActDeact';
+			$this->classes[] = 'LP_Admin_Notices';
+			$this->classes[] = 'LP_Admin_Settings_Page';
+			$this->classes[] = 'LP_Admin_Enqueue';
+			$this->classes[] = 'LP_Admin_ImpExp';
 		}
 
 		if ( $this->is->request( 'frontend' ) ) {
-			$this->classes[] = 'L_Enqueue';
-			$this->classes[] = 'L_Extras';
+			$this->classes[] = 'LP_Enqueue';
+			$this->classes[] = 'LP_Extras';
 		}
 
-		$this->classes = apply_filters( 'l_class_instances', $this->classes );
+		$this->classes = apply_filters( 'lp_class_instances', $this->classes );
 
 		$this->load_classes();
 	}
@@ -106,7 +106,7 @@ class L_Initialize {
 			} catch ( Exception $err ) {
 				do_action( 'leasepress_initialize_failed', $err );
 				if ( WP_DEBUG ) {
-					throw $err->getMessage();
+//					throw $err->getMessage();
 				}
 			}
 		}

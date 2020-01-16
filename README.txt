@@ -1,15 +1,12 @@
-=== Plugin Name ===
-Contributors: (this should be a list of wordpress.org userid's)
-Donate link: http://example.com/
-Tags: comments, spam (maximum 12)
-Requires at least: 4.8
-Tested up to: 4.9
+=== LeasePress ===
+Contributors: ecruhling
+Tags: rentcafe, entrata, yardi, site plans, floor plans, rent, lease
+Requires at least: 5
+Tested up to: 5
 Stable tag: 1.0.0
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Requires PHP: 7.0
+Requires PHP: 7.1.3 (with php-mbstring enabled)
 
-Here is a short description of the plugin.  This should be no more than 150 characters.  No markup here.
+Ready to graduate from renting to leasing? Supports API data from Entrata & RENTCafe.
 
 == Description ==
 
@@ -40,10 +37,6 @@ you put the stable version, in order to eliminate any doubt.
 
 == Installation ==
 
-This section describes how to install the plugin and get it working.
-
-e.g.
-
 = Using The WordPress Dashboard =
 
 1. Navigate to the 'Add New' in the plugins dashboard
@@ -68,13 +61,10 @@ e.g.
 
 == Frequently Asked Questions ==
 
-= A question that someone might have =
+= With which services does LeasePress integrate? =
 
-An answer to that question.
-
-= What about foo bar? =
-
-Answer to foo bar dilemma.
+LeasePress can currently integrate with the RENTCafe (Yardi) and Entrata APIs. You must have an account with one of
+these 2 services in order to use LeasePress. You must enable the API at the service.
 
 == Screenshots ==
 
@@ -87,13 +77,4 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 == Changelog ==
 
 = 1.0.0 =
-* A change since the previous version.
-* Another change.
-
-== Upgrade Notice ==
-
-= 1.0 =
-Upgrade notices describe the reason a user should upgrade.  No more than 300 characters.
-
-= 0.5 =
-This version fixes a security related bug.  Upgrade immediately.
+* Initial release.

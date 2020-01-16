@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Plugin_name
+ * LeasePress
  *
- * @package   Plugin_name
+ * @package   LeasePress
  * @author    Erik Ruhling <ecruhling@gmail.com>
  * @copyright Resource Branding and Design
  * @license   GPL 2.0+
@@ -13,7 +13,7 @@
 /**
  * This class is the base skeleton of the plugin
  */
-class L_Admin_Base extends L_Base {
+class LP_Admin_Base extends LP_Base {
 
 	/**
 	 * Initialize the class

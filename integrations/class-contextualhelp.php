@@ -13,7 +13,7 @@
 /**
  * This class contain the contextual help code.
  */
-class L_ContextualHelp {
+class LP_ContextualHelp {
 
     /**
      * Initialize the Contextual Help
@@ -64,7 +64,7 @@ class L_ContextualHelp {
 		WP_Contextual_Help::init();
 		// Only display on the pages - post.php and post-new.php, but only on the `demo` post_type
 		WP_Contextual_Help::register_tab(
-             'demo-example', __( 'Demo Management', L_TEXTDOMAIN ), array(
+             'demo-example', __( 'Demo Management', LP_TEXTDOMAIN ), array(
 			'page'      => array( 'post.php', 'post-new.php' ),
 			'post_type' => 'demo',
 			'wpautop'   => true,
@@ -73,8 +73,8 @@ class L_ContextualHelp {
 
 		// Add to a custom plugin settings page
 		WP_Contextual_Help::register_tab(
-             'l_settings', __( 'Boilerplate Settings', L_TEXTDOMAIN ), array(
-			'page'    => 'settings_page_' . L_TEXTDOMAIN,
+             'l_settings', __( 'Boilerplate Settings', LP_TEXTDOMAIN ), array(
+			'page'    => 'settings_page_' . LP_TEXTDOMAIN,
 			'wpautop' => true,
 		)
             );

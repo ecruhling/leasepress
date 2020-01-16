@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Plugin_name
+ * LeasePress
  *
- * @package   Plugin_name
+ * @package   LeasePress
  * @author    Erik Ruhling <ecruhling@gmail.com>
  * @copyright Resource Branding and Design
  * @license   GPL 2.0+
@@ -13,7 +13,7 @@
 /**
  * AJAX in the public
  */
-class L_Ajax extends L_Base {
+class LP_Ajax extends LP_Base {
 
 	/**
 	 * Initialize the class

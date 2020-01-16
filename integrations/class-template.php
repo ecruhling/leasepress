@@ -13,7 +13,7 @@
 /**
  * This class contain the Templating stuff for the frontend
  */
-class L_Template extends L_Base {
+class LP_Template extends LP_Base {
 
 	/**
 	 * Initialize the class
@@ -35,7 +35,7 @@ class L_Template extends L_Base {
 	 */
 	public static function load_content_demo( $original_template ) {
 		if ( is_singular( 'demo' ) && in_the_loop() ) {
-			return wpbp_get_template_part( L_TEXTDOMAIN, 'content', 'demo', false );
+			return wpbp_get_template_part( LP_TEXTDOMAIN, 'content', 'demo', false );
 		}
 
 		return $original_template;

@@ -13,7 +13,7 @@
 /**
  * All the WP pointers.
  */
-class L_Pointers extends L_Base {
+class LP_Pointers extends LP_Base {
 
 	/**
 	 * Initialize the Pointers.
@@ -22,8 +22,8 @@ class L_Pointers extends L_Base {
 	 */
 	public function initialize() {
         parent::initialize();
-		new PointerPlus( array( 'prefix' => L_TEXTDOMAIN ) );
-		add_filter( L_TEXTDOMAIN . '-pointerplus_list', array( $this, 'custom_initial_pointers' ), 10, 2 );
+		new PointerPlus( array( 'prefix' => LP_TEXTDOMAIN ) );
+		add_filter( LP_TEXTDOMAIN . '-pointerplus_list', array( $this, 'custom_initial_pointers' ), 10, 2 );
 	}
 
 	/**
@@ -39,8 +39,8 @@ class L_Pointers extends L_Base {
 		return array_merge( $pointers, array(
 			$prefix . '_contextual_tab' => array(
 				'selector'   => '#contextual-help-link',
-				'title'      => __( 'Boilerplate Help', L_TEXTDOMAIN ),
-				'text'       => __( 'A pointer for help tab.<br>Go to Posts, Pages or Users for other pointers.', L_TEXTDOMAIN ),
+				'title'      => __( 'Boilerplate Help', LP_TEXTDOMAIN ),
+				'text'       => __( 'A pointer for help tab.<br>Go to Posts, Pages or Users for other pointers.', LP_TEXTDOMAIN ),
 				'edge'       => 'top',
 				'align'      => 'right',
 				'icon_class' => 'dashicons-welcome-learn-more',
@@ -50,4 +50,4 @@ class L_Pointers extends L_Base {
 
 }
 
-new L_Pointers();
+new LP_Pointers();

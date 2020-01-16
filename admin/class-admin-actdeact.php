@@ -13,7 +13,7 @@
 /**
  * This class contain the activate and deactive method and relates.
  */
-class L_Admin_ActDeact extends L_Admin_Base {
+class LP_Admin_ActDeact extends LP_Admin_Base {
 
 	/**
 	 * Initialize the Act/Deact
@@ -28,8 +28,8 @@ class L_Admin_ActDeact extends L_Admin_Base {
 		// Activate plugin when new blog is added
 		add_action( 'wpmu_new_blog', array( $this, 'activate_new_site' ) );
 
-		register_activation_hook( L_TEXTDOMAIN . '/' . L_TEXTDOMAIN . '.php', array( __CLASS__, 'activate' ) );
-		register_deactivation_hook( L_TEXTDOMAIN . '/' . L_TEXTDOMAIN . '.php', array( __CLASS__, 'deactivate' ) );
+		register_activation_hook( LP_TEXTDOMAIN . '/' . LP_TEXTDOMAIN . '.php', array( __CLASS__, 'activate' ) );
+		register_deactivation_hook( LP_TEXTDOMAIN . '/' . LP_TEXTDOMAIN . '.php', array( __CLASS__, 'deactivate' ) );
 		add_action( 'admin_init', array( $this, 'upgrade_procedure' ) );
 	}
 
@@ -212,9 +212,9 @@ class L_Admin_ActDeact extends L_Admin_Base {
 	public static function upgrade_procedure() {
 		if ( is_admin() ) {
 			$version = get_option( 'leasepress-version' );
-			if ( version_compare( L_VERSION, $version, '>' ) ) {
-				update_option( 'leasepress-version', L_VERSION );
-				delete_option( L_TEXTDOMAIN . '_fake-meta' );
+			if ( version_compare( LP_VERSION, $version, '>' ) ) {
+				update_option( 'leasepress-version', LP_VERSION );
+				delete_option( LP_TEXTDOMAIN . '_fake-meta' );
 			}
 		}
 	}
