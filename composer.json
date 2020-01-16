@@ -1,0 +1,92 @@
+{
+    "name": "ecruhling/leasepress",
+    "description": "Wordpress Plugin Boilerplate with steroids!",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Erik Ruhling",
+            "email": "ecruhling@gmail.com",
+            "homepage": "https://resourceatlanta.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "composer\/installers": "1.x",
+        "wpbp\/pointerplus": "1.0.*",
+        "wpbp\/cronplus": "1.0.*",
+        "wpbp\/fakepage": "1.0.*",
+        "wpbp\/template": "1.0.*",
+        "wpbp\/debug": "1.1.*",
+        "wpbp\/cpt_columns": "1.0.*",
+        "wpbp\/language": "1.0.*",
+        "nathanielks\/wp-admin-notice": "dev-master",
+        "seravo\/wp-custom-bulk-actions": "dev-master",
+        "mte90\/wp-contextual-help": "1.1.*",
+        "julien731\/wp-dismissible-notices-handler": "1.*",
+        "julien731\/wp-review-me": "dev-develop",
+        "johnbillion\/extended-cpts": "4.3.*",
+        "freemius\/wordpress-sdk": "2.2.*",
+        "yoast\/i18n-module": "3.1.0",
+        "cmb2\/cmb2": "2.6.*",
+        "origgami\/cmb2-grid": "dev-master",
+        "stevegrunwell\/wp-cache-remember": "dev-master"
+    },
+    "repositories": [
+        {
+            "url": "git@github.com:nathanielks\/wordpress-admin-notice.git",
+            "type": "git"
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "mte90\/wp-contextual-help",
+                "version": "1.1.0",
+                "source": {
+                    "url": "https:\/\/github.com\/mte90\/wp-contextual-help",
+                    "type": "git",
+                    "reference": "master"
+                }
+            }
+        }
+    ],
+    "require-dev": {
+        "szepeviktor\/phpstan-wordpress": "^0.1.0",
+        "szepeviktor\/phpstan-phpdoc": "^0.1.0",
+        "lucatume\/wp-browser": "2.*",
+        "lucatume\/function-mocker": "~1.0",
+        "phpro\/grumphp": "^0.15",
+        "codeception\/codeception": "2.5.*",
+        "codeception\/codeception-progress-reporter": "dev-master",
+        "phpunit\/phpunit": "6.*",
+        "wearejust\/grumphp-extra-tasks": "^2.2"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "classmap": [
+            "engine\/",
+            "admin\/",
+            "cli\/",
+            "ajax\/",
+            "public\/",
+            "internals\/",
+            "integrations\/",
+            "rest\/"
+        ],
+        "files": [
+            "vendor\/mte90\/wp-contextual-help\/wp-contextual-help.php",
+            "vendor\/wp-custom-bulk-actions\/custom-bulk-actions.php"
+        ]
+    },
+    "extra": {
+        "installer-paths": {
+            "vendor\/{$name}\/": [
+                "cmb2\/cmb2",
+                "origgami\/cmb2-grid",
+                "stevegrunwell\/wp-cache-remember",
+                "seravo\/wp-custom-bulk-actions"
+            ]
+        }
+    },
+    "homepage": "https:\/\/github.com\/WPBP\/WordPress-Plugin-Boilerplate-Powered"
+}
