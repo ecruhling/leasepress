@@ -60,7 +60,9 @@
 		<?php
 //		new LP_Transient;
 //		$test = ( new LP_Transient )->transient_caching_example();
-		( new LP_API_Lookups )->floorplanTypes();
+//		( new LP_API_Lookups )->floorplanTypes();
+
+		( new LP_Transient )->print_transient_output();
 		?>
 	</div>
 </div>

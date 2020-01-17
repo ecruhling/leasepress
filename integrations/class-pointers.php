@@ -39,7 +39,7 @@ class LP_Pointers extends LP_Base {
 		return array_merge( $pointers, array(
 			$prefix . '_contextual_tab' => array(
 				'selector'   => '#contextual-help-link',
-				'title'      => __( 'Boilerplate Help', LP_TEXTDOMAIN ),
+				'title'      => __( 'LeasePress Help', LP_TEXTDOMAIN ),
 				'text'       => __( 'A pointer for help tab.<br>Go to Posts, Pages or Users for other pointers.', LP_TEXTDOMAIN ),
 				'edge'       => 'top',
 				'align'      => 'right',

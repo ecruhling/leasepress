@@ -23,26 +23,28 @@ class LP_Transient extends LP_Base {
 	}
 
 	/**
-	 * This method contain an example of caching a transient with an external request.
+	 * This method contains an example of caching a transient with an external request.
 	 *
 	 * @return object
 	 */
 	public function transient_caching_example() {
-		$key = 'placeholder_json_transient';
+		$key = 'lp_rentcafe_floorplans';
 
 		// Use wp-cache-remember package to retrieve or save in transient
 		return remember_transient(
              $key, function () use ( $key ) {
 				// If there's no cached version we ask
-				$response = wp_remote_get( 'https://jsonplaceholder.typicode.com/todos/' );
-				if ( is_wp_error( $response ) ) {
+				$response = ( new LP_API_Lookups )->floorplanTypes();
+			if ( is_wp_error( $response ) ) {
 					// In case API is down we return the last successful count
 					return;
 				}
 
 				// If everything's okay, parse the body and json_decode it
-				return json_decode( wp_remote_retrieve_body( $response ) );
-			 }, DAY_IN_SECONDS
+//				return json_decode( wp_remote_retrieve_body( $response ) );
+	             // @TODO revert this to undecoded json so that is_wp_error above works correctly
+				return $response;
+			 }, HOUR_IN_SECONDS
             );
 	}
 
@@ -56,7 +58,7 @@ class LP_Transient extends LP_Base {
 		echo '<div class="siteapi-bridge-container">';
 		foreach ( $transient as &$value ) {
 			echo '<div class="siteapi-bridge-single">';
-			// $transient is an object so use -> to call children
+			echo $value->FloorplanName;
 			echo '</div>';
 		}
 

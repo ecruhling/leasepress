@@ -19,7 +19,7 @@ class LP_Admin_Notices extends LP_Admin_Base {
 	 * Initialize the snippet
 	 */
 	public function initialize() {
-		if ( !parent::initialize() ) {
+		if ( ! parent::initialize() ) {
 			return;
 		}
 
@@ -33,7 +33,7 @@ class LP_Admin_Notices extends LP_Admin_Base {
 		/*
 		 * Dismissible notice
 		 */
-//		dnh_register_notice( 'my_demo_notice', 'updated', __( 'This is my dismissible notice', LP_TEXTDOMAIN ) );
+		dnh_register_notice( 'lp_activation_notice', 'updated', __( 'LeasePress activated! Now go to <a href="' . admin_url( 'options-general.php?page=' . LP_TEXTDOMAIN ) . '">' . __( 'Settings', LP_TEXTDOMAIN ) . '</a> to configure.', LP_TEXTDOMAIN ) );
 		/*
 		 * Review Me notice
 		 */

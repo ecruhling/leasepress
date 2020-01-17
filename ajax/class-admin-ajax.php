@@ -19,7 +19,7 @@ class LP_Ajax_Admin extends LP_Admin_Base {
 	 * Initialize the class
 	 */
 	public function initialize() {
-		if ( !apply_filters( 'leasepress_l_ajax_admin_initialize', true ) ) {
+		if ( !apply_filters( 'leasepress_lp_ajax_admin_initialize', true ) ) {
 			return;
 		}
 

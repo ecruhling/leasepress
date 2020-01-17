@@ -196,7 +196,8 @@ class LP_API_Lookups extends LP_Base {
 		$floorplansData = [];
 
 		$floorplansArray = json_decode( $this->get_rentcafe_data( 'floorplan' ) );
-lp_log($floorplansArray);
+//		$floorplansArray = json_decode( $this->get_content( 'api_floorplans.json', 'floorplan', 1 ) );
+//lp_log($floorplansArray);
 		if ( isset( $floorplansArray[0]->Error ) ) { // if an Error in API request
 			return $floorplansData;
 		}

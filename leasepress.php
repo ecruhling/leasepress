@@ -7,22 +7,22 @@
  * also follow WordPress Coding Standards and PHP best practices.
  *
  * @package   LeasePress
- * @author	  Erik Ruhling <ecruhling@gmail.com>
+ * @author      Erik Ruhling <ecruhling@gmail.com>
  * @copyright Resource Branding and Design
  * @license   GPL 2.0+
- * @link	  https://resourceatlanta.com
+ * @link      https://resourceatlanta.com
  *
- * Plugin Name:	    LeasePress
- * Description:	    Ready to graduate from renting to leasing? Supports API data from RENTCafe.
- * Version:		    1.0.0
- * Author:			Resource Branding and Design
- * Author URI:		https://resourceatlanta.com
- * Text Domain:	    leasepress
- * Domain Path:	    /languages
- * Requires PHP:	7.1.3
+ * Plugin Name:        LeasePress
+ * Description:        Ready to graduate from renting to leasing? Supports API data from RENTCafe.
+ * Version:            1.0.0
+ * Author:            Resource Branding and Design
+ * Author URI:        https://resourceatlanta.com
+ * Text Domain:        leasepress
+ * Domain Path:        /languages
+ * Requires PHP:    7.1.3
  */
 // If this file is called directly, abort.
-if ( !defined( 'ABSPATH' ) ) {
+if ( ! defined( 'ABSPATH' ) ) {
 	die;
 }
 
