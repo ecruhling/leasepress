@@ -43,6 +43,7 @@ function lp_load_plugin_textdomain() {
 }
 
 add_action( 'plugins_loaded', 'lp_load_plugin_textdomain', 1 );
+
 if ( version_compare( PHP_VERSION, '7.1.3', '<' ) ) {
 	function l_deactivate() {
 		deactivate_plugins( plugin_basename( __FILE__ ) );

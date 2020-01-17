@@ -73,10 +73,14 @@ class LP_API_Lookups {
 	 */
 	private function get_rentcafe_data( $methodName ) {
 
+		lp_log('getting RENTCafe data');
+
+
 		// set variables
-//		$rentcafe_property_code = cmb2_get_option( LP_TEXTDOMAIN . '-settings', 'lp_rentcafe_property_code' );
-		$rentcafe_api_token   = cmb2_get_option( LP_TEXTDOMAIN . '-settings', 'lp_rentcafe_api_token' );
-		$rentcafe_property_id = cmb2_get_option( LP_TEXTDOMAIN . '-settings', 'lp_rentcafe_property_id' );
+		$settings = lp_get_settings(); // get all LeasePress settings
+//		$rentcafe_property_code = $settings['lp_rentcafe_property_code'];
+		$rentcafe_api_token   = $settings['lp_rentcafe_api_token'];
+		$rentcafe_property_id = $settings['lp_rentcafe_property_id'];
 		$url                  = 'https://api.rentcafe.com/rentcafeapi.aspx?requestType=%s&APIToken=%s&propertyId=%s';
 		$json_feed_url        = sprintf( $url, $methodName, $rentcafe_api_token, $rentcafe_property_id );
 		$args                 = array( 'timeout' => 120 );
