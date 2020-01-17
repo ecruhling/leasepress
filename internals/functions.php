@@ -18,3 +18,33 @@
 function lp_get_settings() {
 	return apply_filters( 'lp_get_settings', get_option( LP_TEXTDOMAIN . '-settings' ) );
 }
+
+/**
+ * Sanitizes an API Token, just to ensure everything is copacetic.
+ *
+ * based on WP's sanitize_title_with_dashes function, with some things removed in order to retain case
+ *
+ * @param string $token The token to be sanitized.
+ *
+ * @return string The sanitized token.
+ * @since 1.0
+ *
+ */
+function lp_sanitize_api_token( $token ) {
+	$token = strip_tags( $token );
+	// Preserve escaped octets.
+	$token = preg_replace( '|%([a-fA-F0-9][a-fA-F0-9])|', '---$1---', $token );
+	// Remove percent signs that are not part of an octet.
+	$token = str_replace( '%', '', $token );
+	// Restore octets.
+	$token = preg_replace( '|---([a-fA-F0-9][a-fA-F0-9])---|', '%$1', $token );
+
+	$token = preg_replace( '/&.+?;/', '', $token ); // kill entities
+	$token = str_replace( '.', '-', $token );
+
+	$token = preg_replace( '/\s+/', '-', $token );
+	$token = preg_replace( '|-+|', '-', $token );
+	$token = trim( $token, '-' );
+
+	return $token;
+}

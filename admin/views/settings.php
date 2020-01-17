@@ -11,8 +11,7 @@ $cmb->add_field( array(
 	'desc'            => __( 'Format is: XXXXXXXX-XXXXXXXXXXXXXX', LP_TEXTDOMAIN ),
 	'id'              => 'lp_rentcafe_api_token',
 	'type'            => 'text',
-	'sanitization_cb' => 'sanitize_title_with_dashes',
-	// need custom sanitization because the API Tokens have non-standard characters. this standard WP sanitization function seems to work well.
+	'sanitization_cb' => 'lp_sanitize_api_token',
 	'default'         => '',
 ) );
 //$cmb->add_field( array(
@@ -36,20 +35,6 @@ $cmb->add_field( array(
 	'type'    => 'text',
 	'default' => '',
 ) );
-//			$cmb->add_field( array(
-//				'name' => __( 'Color Picker', LP_TEXTDOMAIN ),
-//				'desc' => __( 'field description (optional)', LP_TEXTDOMAIN ),
-//				'id' => 'colorpicker',
-//				'type' => 'colorpicker',
-//				'default' => '#bada55',
-//			) );
-//			$cmb->add_field( array(
-//				'name' => __( 'Test Text Medium', LP_TEXTDOMAIN ),
-//				'desc' => __( 'field description (optional)', LP_TEXTDOMAIN ),
-//				'id' => '_textmedium',
-//				'type' => 'text_medium',
-//					// 'repeatable' => true,
-//			) );
 //			$cmb->add_field( array(
 //				'name' => __( 'Website URL', LP_TEXTDOMAIN ),
 //				'desc' => __( 'field description (optional)', LP_TEXTDOMAIN ),
