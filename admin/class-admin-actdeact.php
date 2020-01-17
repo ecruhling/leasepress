@@ -16,7 +16,7 @@
 class LP_Admin_ActDeact extends LP_Admin_Base {
 
 	/**
-	 * Initialize the Act/Deact
+	 * Initialize the Activate/Deactivate
 	 *
 	 * @return void
 	 */

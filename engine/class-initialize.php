@@ -11,7 +11,7 @@
  */
 
 /**
- * Plugin Name Initializer
+ * LeasePress Initializer
  */
 class LP_Initialize {
 

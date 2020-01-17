@@ -11,7 +11,7 @@
  */
 
 /**
- * Plugin Name Is Methods
+ * LeasePress Is Methods
  */
 class LP_Is_Methods {
 
