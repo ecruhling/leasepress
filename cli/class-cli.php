@@ -17,30 +17,32 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
     class LP_WPCli extends LP_Base {
 
         public function initialize() {
-            if ( !apply_filters( 'leasepress_l_enqueue_admin_initialize', true ) ) {
+            if ( !apply_filters( 'leasepress_lp_enqueue_admin_initialize', true ) ) {
                 return;
             }
 
             parent::initialize();
 		}
 
-        /**
-         * Initialize the commands
-         *
-         * @return void
-         */
+	    /**
+	     * Initialize the commands
+	     *
+	     * @return void
+	     * @throws Exception
+	     */
         public function __construct() {
-            WP_CLI::add_command( 'l_commandname', array( $this, 'command_example' ) );
+            WP_CLI::add_command( 'lp_commandname', array( $this, 'command_example' ) );
         }
 
-        /**
-         * Example command
-		 * API reference: https://wp-cli.org/docs/internal-api/
-		 *
-		 * @param array $args The attributes.
-		 *
-		 * @return void
-		 */
+	    /**
+	     * Example command
+	     * API reference: https://wp-cli.org/docs/internal-api/
+	     *
+	     * @param array $args The attributes.
+	     *
+	     * @return void
+	     * @throws WP_CLI\ExitException
+	     */
 		public function command_example( $args ) {
 			// Message prefixed with "Success: ".
 			WP_CLI::success( $args[0] );

@@ -49,6 +49,7 @@ class LP_Initialize {
         $this->classes[] = 'LP_Cron';
         $this->classes[] = 'LP_FakePage';
         $this->classes[] = 'LP_Template';
+		$this->classes[] = 'LP_API_Lookups';
 		if ( $this->is->request( 'rest' ) ) {
 			$this->classes[] = 'LP_Rest';
 		}

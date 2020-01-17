@@ -7,11 +7,13 @@ $cmb = new_cmb2_box( array(
 ) );
 
 $cmb->add_field( array(
-	'name'    => __( 'RENTCafe API Token', LP_TEXTDOMAIN ),
-	'desc'    => __( 'Format is: XXXXXXXX-XXXXXXXXXXXXXX', LP_TEXTDOMAIN ),
-	'id'      => 'lp_rentcafe_api_token',
-	'type'    => 'text',
-	'default' => '',
+	'name'            => __( 'RENTCafe API Token', LP_TEXTDOMAIN ),
+	'desc'            => __( 'Format is: XXXXXXXX-XXXXXXXXXXXXXX', LP_TEXTDOMAIN ),
+	'id'              => 'lp_rentcafe_api_token',
+	'type'            => 'text',
+	'sanitization_cb' => 'sanitize_title_with_dashes',
+	// need custom sanitization because the API Tokens have non-standard characters. this standard WP sanitization function seems to work well.
+	'default'         => '',
 ) );
 //$cmb->add_field( array(
 //	'name'    => __( 'RENTCafe Property Code', LP_TEXTDOMAIN ),

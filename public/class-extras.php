@@ -20,7 +20,7 @@ class LP_Extras extends LP_Base {
 	 */
 	public function initialize() {
 		parent::initialize();
-		add_filter( 'body_class', array( __CLASS__, 'add_l_class' ), 10, 3 );
+		add_filter( 'body_class', array( __CLASS__, 'add_lp_class' ), 10, 3 );
 	}
 
 	/**
@@ -32,7 +32,7 @@ class LP_Extras extends LP_Base {
 	 *
 	 * @return array
 	 */
-	public static function add_l_class( $classes ) {
+	public static function add_lp_class( $classes ) {
 		$classes[] = LP_TEXTDOMAIN;
 		return $classes;
 	}

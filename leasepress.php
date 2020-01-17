@@ -53,7 +53,7 @@ if ( version_compare( PHP_VERSION, '7.1.3', '<' ) ) {
 		echo wp_kses_post(
 			sprintf(
 				'<div class="notice notice-error"><p>%s</p></div>',
-				__( '"LeasePress" requires PHP 7.1.3 or newer.', LP_TEXTDOMAIN )
+				__( 'LeasePress requires PHP 7.1.3 or newer.', LP_TEXTDOMAIN )
 			)
 		);
 	}

@@ -14,7 +14,7 @@
 ?>
 
 <div class="wrap">
-	<h2><?php echo esc_html( get_admin_page_title() ); ?></h2>
+	<h2><?= esc_html( get_admin_page_title() ); ?></h2>
 	<div id="tabs" class="settings-tab">
 		<ul>
 			<li><a href="#tabs-1" title="Settings"><?php _e( 'Settings' ); ?></a></li>
@@ -58,6 +58,9 @@
 			</div>
 		</div>
 		<?php
+//		new LP_Transient;
+//		$test = ( new LP_Transient )->transient_caching_example();
+		( new LP_API_Lookups )->floorplanTypes();
 		?>
 	</div>
 </div>

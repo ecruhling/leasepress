@@ -23,7 +23,7 @@ class ExtrasTest extends \Codeception\TestCase\WPTestCase {
 	}
 
 	private function make_instance() {
-		return new L_Extras();
+		return new LP_Extras();
 	}
 
 	/**
@@ -33,6 +33,6 @@ class ExtrasTest extends \Codeception\TestCase\WPTestCase {
 	public function it_should_add_body_class() {
 		$sut = $this->make_instance();
 		$list = array('test', 'another-class');
-		$this->assertEquals( array_merge($list, array(L_TEXTDOMAIN)), $sut->add_l_class($list) );
+		$this->assertEquals( array_merge($list, array(LP_TEXTDOMAIN)), $sut->add_lp_class($list) );
 	}
 }

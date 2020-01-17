@@ -14,7 +14,7 @@
 /**
  * This class is where all the API lookups happen
  */
-class LP_API_Lookups {
+class LP_API_Lookups extends LP_Base {
 
 	/**
 	 * Checks if file contains valid JSON
@@ -72,9 +72,6 @@ class LP_API_Lookups {
 	 * @return string
 	 */
 	private function get_rentcafe_data( $methodName ) {
-
-		lp_log('getting RENTCafe data');
-
 
 		// set variables
 		$settings = lp_get_settings(); // get all LeasePress settings
@@ -198,8 +195,8 @@ class LP_API_Lookups {
 
 		$floorplansData = [];
 
-		$floorplansArray = json_decode( $this->get_content( 'api_floorplans.json', 'floorplan', 1 ) );
-
+		$floorplansArray = json_decode( $this->get_rentcafe_data( 'floorplan' ) );
+lp_log($floorplansArray);
 		if ( isset( $floorplansArray[0]->Error ) ) { // if an Error in API request
 			return $floorplansData;
 		}
