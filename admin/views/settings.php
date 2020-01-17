@@ -1,39 +1,39 @@
-<div id="tabs-1" class="wrap">
-			<?php
-			$cmb = new_cmb2_box( array(
-				'id' => LP_TEXTDOMAIN . '_options',
-				'hookup' => false,
-				'show_on' => array( 'key' => 'options-page', 'value' => array( LP_TEXTDOMAIN ), ),
-				'show_names' => true,
-					) );
-			$cmb->add_field( array(
-				'name' => __( 'RENTCafe API Token', LP_TEXTDOMAIN ),
-				'desc' => __( 'Format is: XXXXXXXX-XXXXXXXXXXXXXX', LP_TEXTDOMAIN ),
-				'id' => 'lp_rentcafe_api_token',
-				'type' => 'text',
-				'default' => '',
-			) );
-			$cmb->add_field( array(
-				'name' => __( 'RENTCafe Property Code', LP_TEXTDOMAIN ),
-				'desc' => __( 'Format is: pXXXXXXX', LP_TEXTDOMAIN ),
-				'id' => 'lp_rentcafe_property_code',
-				'type' => 'text',
-				'default' => '',
-			) );
-			$cmb->add_field( array(
-				'name' => __( 'RENTCafe Property ID', LP_TEXTDOMAIN ),
-				'desc' => __( 'Format is: XXXXXXX', LP_TEXTDOMAIN ),
-				'id' => 'lp_rentcafe_property_id',
-				'type' => 'text',
-				'default' => '',
-			) );
-			$cmb->add_field( array(
-				'name' => __( 'Template for Floor Plans page', LP_TEXTDOMAIN ),
-				'desc' => __( 'page template that will contain site plans & floor plans', LP_TEXTDOMAIN ),
-				'id' => 'lp_page_template',
-				'type' => 'text',
-				'default' => '',
-			) );
+<?php
+$cmb = new_cmb2_box( array(
+	'id'         => LP_TEXTDOMAIN . '_options',
+	'hookup'     => false,
+	'show_on'    => array( 'key' => 'options-page', 'value' => array( LP_TEXTDOMAIN ), ),
+	'show_names' => true,
+) );
+
+$cmb->add_field( array(
+	'name'    => __( 'RENTCafe API Token', LP_TEXTDOMAIN ),
+	'desc'    => __( 'Format is: XXXXXXXX-XXXXXXXXXXXXXX', LP_TEXTDOMAIN ),
+	'id'      => 'lp_rentcafe_api_token',
+	'type'    => 'text',
+	'default' => '',
+) );
+//$cmb->add_field( array(
+//	'name'    => __( 'RENTCafe Property Code', LP_TEXTDOMAIN ),
+//	'desc'    => __( 'Format is: pXXXXXXX', LP_TEXTDOMAIN ),
+//	'id'      => 'lp_rentcafe_property_code',
+//	'type'    => 'text',
+//	'default' => '',
+//) );
+$cmb->add_field( array(
+	'name'    => __( 'RENTCafe Property ID', LP_TEXTDOMAIN ),
+	'desc'    => __( 'Format is: XXXXXXX', LP_TEXTDOMAIN ),
+	'id'      => 'lp_rentcafe_property_id',
+	'type'    => 'text',
+	'default' => '',
+) );
+$cmb->add_field( array(
+	'name'    => __( 'Template for Floor Plans page', LP_TEXTDOMAIN ),
+	'desc'    => __( 'page template that will contain site plans & floor plans', LP_TEXTDOMAIN ),
+	'id'      => 'lp_page_template',
+	'type'    => 'text',
+	'default' => '',
+) );
 //			$cmb->add_field( array(
 //				'name' => __( 'Color Picker', LP_TEXTDOMAIN ),
 //				'desc' => __( 'field description (optional)', LP_TEXTDOMAIN ),
@@ -221,9 +221,4 @@
 //				'after_row' => '<p>Testing <b>"after_row"</b> parameter</p>',
 //			) );
 
-
-			cmb2_metabox_form( LP_TEXTDOMAIN . '_options', LP_TEXTDOMAIN . '-settings' );
-			?>
-
-			<!-- Provide other markup for your options page here. -->
-		</div>
+cmb2_metabox_form( LP_TEXTDOMAIN . '_options', LP_TEXTDOMAIN . '-settings' );

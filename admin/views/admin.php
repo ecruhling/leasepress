@@ -14,17 +14,17 @@
 ?>
 
 <div class="wrap">
-
 	<h2><?php echo esc_html( get_admin_page_title() ); ?></h2>
-
 	<div id="tabs" class="settings-tab">
 		<ul>
-			<li><a href="#tabs-1"><?php _e( 'Settings' ); ?></a></li>
-			<li><a href="#tabs-2"><?php _e( 'Import/Export', LP_TEXTDOMAIN ); ?></a></li>
+			<li><a href="#tabs-1" title="Settings"><?php _e( 'Settings' ); ?></a></li>
+			<li><a href="#tabs-2" title="Import/Export"><?php _e( 'Import/Export', LP_TEXTDOMAIN ); ?></a></li>
 		</ul>
-		<?php
-		require_once( plugin_dir_path( __FILE__ ) . 'settings.php' );
-		?>
+		<div id="tabs-1" class="wrap">
+			<?php
+			require_once( plugin_dir_path( __FILE__ ) . 'settings.php' );
+			?>
+		</div>
 		<div id="tabs-2" class="metabox-holder">
 			<div class="postbox">
 				<h3 class="hndle"><span><?php _e( 'Export Settings', LP_TEXTDOMAIN ); ?></span></h3>

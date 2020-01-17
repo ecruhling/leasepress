@@ -65,36 +65,34 @@ class LP_API_Lookups {
 	}
 
 	/**
-	 * Get RentCafe data
+	 * Get RENTCafe data
 	 *
-	 * @param string $methodName
+	 * @param string $methodName 'floorplan' or 'apartmentavailability' requestType
 	 *
 	 * @return string
 	 */
-	private function get_rentcafe_data( $methodName ) { // floorplan or apartmentavailability
+	private function get_rentcafe_data( $methodName ) {
 
 		// set variables
-		$rentcafe_api          = get_theme_mod( 'rentcafe_api_setting' );
-		$rentcafe_propertycode = get_theme_mod( 'rentcafe_propertycode_setting' );
-		$rentcafe_propertyid   = get_theme_mod( 'rentcafe_propertyid_setting' );
-		$url                   = 'https://api.rentcafe.com/rentcafeapi.aspx?requestType=%s&APIToken=%s&propertyId=%s';
+//		$rentcafe_property_code = cmb2_get_option( LP_TEXTDOMAIN . '-settings', 'lp_rentcafe_property_code' );
+		$rentcafe_api_token   = cmb2_get_option( LP_TEXTDOMAIN . '-settings', 'lp_rentcafe_api_token' );
+		$rentcafe_property_id = cmb2_get_option( LP_TEXTDOMAIN . '-settings', 'lp_rentcafe_property_id' );
+		$url                  = 'https://api.rentcafe.com/rentcafeapi.aspx?requestType=%s&APIToken=%s&propertyId=%s';
+		$json_feed_url        = sprintf( $url, $methodName, $rentcafe_api_token, $rentcafe_property_id );
+		$args                 = array( 'timeout' => 120 );
 
-		$json_feed_url = sprintf( $url, $methodName, $rentcafe_api, $rentcafe_propertyid );
-		$args          = array( 'timeout' => 120 );
-		$json_feed     = wp_remote_retrieve_body( wp_remote_get( $json_feed_url, $args ) );
-
-		return $json_feed;
+		return wp_remote_retrieve_body( wp_remote_get( $json_feed_url, $args ) );
 
 	}
 
 	/**
 	 * Get Entrata JSON
 	 *
-	 * @param string $methodName
+	 * @param string $methodName 'getUnitsAvailabilityAndPricing' or 'getUnitTypes'
 	 *
 	 * @return bool|string
 	 */
-	private function get_entrata_data( $methodName ) { // getUnitsAvailabilityAndPricing or getUnitTypes
+	private function get_entrata_data( $methodName ) {
 
 		// set variables
 		$authentication = base64_encode( get_theme_mod( 'entrata_username_setting' ) . ':' . get_theme_mod( 'entrata_password_setting' ) );
@@ -274,7 +272,7 @@ class LP_API_Lookups {
 			return $availabilityData;
 		}
 
-		$unit_types = Data_Retrieval::floorplanTypes(); // create a unit_types array in order to get the extra data for the units (name, PDF, SVGs)
+		$unit_types = LP_API_Lookups::floorplanTypes(); // create a unit_types array in order to get the extra data for the units (name, PDF, SVGs)
 
 		// data for unit availabilities
 		foreach ( $availabilityArray as $unit ) :
