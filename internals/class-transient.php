@@ -11,7 +11,7 @@
  */
 
 /**
- * This class contain the transient example
+ * Transient class
  */
 class LP_Transient extends LP_Base {
 
@@ -23,29 +23,25 @@ class LP_Transient extends LP_Base {
 	}
 
 	/**
-	 * This method contains an example of caching a transient with an external request.
+	 * Retrieve or cache data in a WordPress transient
 	 *
-	 * @return object
+	 * @param $method
+	 *
+	 * @return mixed
 	 */
-	public function transient_caching_example() {
-		$key = 'lp_rentcafe_floorplans';
+	public function get_or_cache_transient( $method ) {
+		$key = 'lp_rentcafe_floorplans_api_data';
 
-		// Use wp-cache-remember package to retrieve or save in transient
 		return remember_transient(
-             $key, function () use ( $key ) {
-				// If there's no cached version we ask
-				$response = ( new LP_API_Lookups )->floorplanTypes();
+			$key, function () use ( $method, $key ) {
+			$response = ( new LP_API_Lookups )->get_rentcafe_data( $method );
 			if ( is_wp_error( $response ) ) {
-					// In case API is down we return the last successful count
-					return;
-				}
+				return false;
+			}
 
-				// If everything's okay, parse the body and json_decode it
-//				return json_decode( wp_remote_retrieve_body( $response ) );
-	             // @TODO revert this to undecoded json so that is_wp_error above works correctly
-				return $response;
-			 }, HOUR_IN_SECONDS
-            );
+			return json_decode( wp_remote_retrieve_body( $response ) );
+		}, HOUR_IN_SECONDS
+		);
 	}
 
 	/**
@@ -54,7 +50,9 @@ class LP_Transient extends LP_Base {
 	 * @return void
 	 */
 	public function print_transient_output() {
-		$transient = $this->transient_caching_example();
+		$transient = $this->get_or_cache_transient();
+		lp_log( $transient );
+
 		echo '<div class="siteapi-bridge-container">';
 		foreach ( $transient as &$value ) {
 			echo '<div class="siteapi-bridge-single">';

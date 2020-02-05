@@ -69,20 +69,19 @@ class LP_API_Lookups extends LP_Base {
 	 *
 	 * @param string $methodName 'floorplan' or 'apartmentavailability' requestType
 	 *
-	 * @return string
+	 * @return array
 	 */
-	private function get_rentcafe_data( $methodName ) {
+	public function get_rentcafe_data( $methodName ) {
 
 		// set variables
-		$settings = lp_get_settings(); // get all LeasePress settings
-//		$rentcafe_property_code = $settings['lp_rentcafe_property_code'];
+		$settings             = lp_get_settings(); // get all LeasePress settings
 		$rentcafe_api_token   = $settings['lp_rentcafe_api_token'];
 		$rentcafe_property_id = $settings['lp_rentcafe_property_id'];
 		$url                  = 'https://api.rentcafe.com/rentcafeapi.aspx?requestType=%s&APIToken=%s&propertyId=%s';
 		$json_feed_url        = sprintf( $url, $methodName, $rentcafe_api_token, $rentcafe_property_id );
 		$args                 = array( 'timeout' => 120 );
 
-		return wp_remote_retrieve_body( wp_remote_get( $json_feed_url, $args ) );
+		return wp_remote_get( $json_feed_url, $args );
 
 	}
 
@@ -197,7 +196,6 @@ class LP_API_Lookups extends LP_Base {
 
 		$floorplansArray = json_decode( $this->get_rentcafe_data( 'floorplan' ) );
 //		$floorplansArray = json_decode( $this->get_content( 'api_floorplans.json', 'floorplan', 1 ) );
-//lp_log($floorplansArray);
 		if ( isset( $floorplansArray[0]->Error ) ) { // if an Error in API request
 			return $floorplansData;
 		}
