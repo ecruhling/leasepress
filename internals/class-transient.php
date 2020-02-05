@@ -47,12 +47,12 @@ class LP_Transient extends LP_Base {
 	/**
 	 * Print the transient content
 	 *
+	 * @param $method
+	 *
 	 * @return void
 	 */
-	public function print_transient_output() {
-		$transient = $this->get_or_cache_transient();
-		lp_log( $transient );
-
+	public function print_transient_output( $method ) {
+		$transient = $this->get_or_cache_transient( $method );
 		echo '<div class="siteapi-bridge-container">';
 		foreach ( $transient as &$value ) {
 			echo '<div class="siteapi-bridge-single">';
