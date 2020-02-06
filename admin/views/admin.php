@@ -21,9 +21,14 @@
 			<li><a href="#tabs-2" title="Import/Export"><?php _e( 'Import/Export', LP_TEXTDOMAIN ); ?></a></li>
 		</ul>
 		<div id="tabs-1" class="wrap">
-			<?php
-			require_once( plugin_dir_path( __FILE__ ) . 'settings.php' );
-			?>
+			<div class="settings-tab">
+			<?php require_once( plugin_dir_path( __FILE__ ) . 'settings.php' ); ?>
+			</div>
+			<div class="right-column-settings-page">
+				<?php lp_log(( new LP_Transient )->get_or_cache_transient('floorplan')); ?>
+				<h3>RentCAFE Floorplan Request Data:</h3>
+				<?php ( new LP_Transient() )->print_transient_output('floorplan'); ?>
+			</div>
 		</div>
 		<div id="tabs-2" class="metabox-holder">
 			<div class="postbox">
@@ -57,10 +62,5 @@
 				</div>
 			</div>
 		</div>
-		<?php
-		( new LP_Transient() )->print_transient_output('floorplan');
-
-		lp_log(( new LP_Transient )->get_or_cache_transient('floorplan'));
-		?>
 	</div>
 </div>

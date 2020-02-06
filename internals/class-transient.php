@@ -56,7 +56,7 @@ class LP_Transient extends LP_Base {
 		echo '<div class="siteapi-bridge-container">';
 		foreach ( $transient as &$value ) {
 			echo '<div class="siteapi-bridge-single">';
-			echo $value->FloorplanName;
+			echo '<code>' . $value->FloorplanName . '</code>';
 			echo '</div>';
 		}
 
