@@ -11,7 +11,7 @@
  */
 
 /**
- * AJAX in the admin
+ * AJAX on the backend
  */
 class LP_Ajax_Admin extends LP_Admin_Base {
 

@@ -57,7 +57,7 @@ class LP_Admin_ImpExp extends LP_Admin_Base {
 
 		nocache_headers();
 		header( 'Content-Type: application/json; charset=utf-8' );
-		header( 'Content-Disposition: attachment; filename=pn-settings-export-' . date( 'm-d-Y' ) . '.json' );
+		header( 'Content-Disposition: attachment; filename=leasepress-settings-export-' . date( 'm-d-Y' ) . '.json' );
 		header( 'Expires: 0' );
 
 		echo wp_json_encode( $settings, JSON_PRETTY_PRINT );

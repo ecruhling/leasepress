@@ -11,7 +11,7 @@
  */
 
 /**
- * AJAX in the public
+ * AJAX on the frontend
  */
 class LP_Ajax extends LP_Base {
 

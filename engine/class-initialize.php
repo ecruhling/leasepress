@@ -72,6 +72,7 @@ class LP_Initialize {
 			$this->classes[] = 'LP_Admin_Settings_Page';
 			$this->classes[] = 'LP_Admin_Enqueue';
 			$this->classes[] = 'LP_Admin_ImpExp';
+			$this->classes[] = 'LP_Admin_APILookups';
 		}
 
 		if ( $this->is->request( 'frontend' ) ) {
