@@ -2,7 +2,7 @@
 Contributors: ecruhling
 Tags: rentcafe, yardi, site plans, floor plans, rent, lease
 Requires at least: 5
-Tested up to: 5
+Tested up to: 5.3
 Stable tag: 1.0.0
 Requires PHP: 7.1.3 (with php-mbstring enabled)
 
