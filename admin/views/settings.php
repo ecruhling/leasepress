@@ -212,7 +212,7 @@ cmb2_metabox_form( LP_TEXTDOMAIN . '_options', LP_TEXTDOMAIN . '-settings' );
 
 ?>
 <div class="">
-	<h3 class="hndle"><span><?php _e( 'RentCAFE API Floorplan Method Lookup', LP_TEXTDOMAIN ); ?></span></h3>
+	<h3 class="hndle"><span><?php _e( 'RentCAFE API Floorplan Lookup', LP_TEXTDOMAIN ); ?></span></h3>
 	<div class="inside">
 		<p><?php _e( 'perform a lookup of the RentCAFE API Floorplan method, using the above information.', LP_TEXTDOMAIN ); ?></p>
 		<form method="post">
@@ -225,7 +225,7 @@ cmb2_metabox_form( LP_TEXTDOMAIN . '_options', LP_TEXTDOMAIN . '-settings' );
 	</div>
 </div>
 <div class="">
-	<h3 class="hndle"><span><?php _e( 'RentCAFE API Availabilities Method Lookup', LP_TEXTDOMAIN ); ?></span></h3>
+	<h3 class="hndle"><span><?php _e( 'RentCAFE API Availabilities Lookup', LP_TEXTDOMAIN ); ?></span></h3>
 	<div class="inside">
 		<p><?php _e( 'perform a lookup of the RentCAFE API Availabilities method, using the above information.', LP_TEXTDOMAIN ); ?></p>
 		<form method="post">

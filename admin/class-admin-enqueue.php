@@ -19,8 +19,8 @@ class LP_Admin_Enqueue extends LP_Admin_Base {
 	 * Initialize the class
 	 */
 	public function initialize() {
-		if ( !parent::initialize() ) {
-            return;
+		if ( ! parent::initialize() ) {
+			return;
 		}
 
 		// Load admin style sheet and JavaScript.
@@ -32,13 +32,13 @@ class LP_Admin_Enqueue extends LP_Admin_Base {
 	/**
 	 * Register and enqueue admin-specific style sheet.
 	 *
+	 * @return mixed Return early if no settings page is registered.
 	 * @since 1.0.0
 	 *
-	 * @return mixed Return early if no settings page is registered.
 	 */
 	public function enqueue_admin_styles() {
 		$screen = get_current_screen();
-		if ( $screen->id === 'toplevel_page_leasepress' || strpos( $_SERVER[ 'REQUEST_URI' ], 'index.php' ) || strpos( $_SERVER[ 'REQUEST_URI' ], get_bloginfo( 'wpurl' ) . '/wp-admin/' ) ) {
+		if ( $screen->id === 'toplevel_page_leasepress' ) {
 			wp_enqueue_style( LP_TEXTDOMAIN . '-settings-styles', plugins_url( 'assets/css/settings.css', LP_PLUGIN_ABSOLUTE ), array( 'dashicons' ), LP_VERSION );
 		}
 
@@ -48,15 +48,18 @@ class LP_Admin_Enqueue extends LP_Admin_Base {
 	/**
 	 * Register and enqueue admin-specific JavaScript.
 	 *
+	 * @return mixed Return early if no settings page is registered.
 	 * @since 1.0.0
 	 *
-	 * @return mixed Return early if no settings page is registered.
 	 */
 	public function enqueue_admin_scripts() {
 		$screen = get_current_screen();
-        if ( $screen->id === 'toplevel_page_leasepress' ) {
-            wp_enqueue_script( LP_TEXTDOMAIN . '-settings-script', plugins_url( 'assets/js/settings.js', LP_PLUGIN_ABSOLUTE ), array( 'jquery', 'jquery-ui-tabs' ), LP_VERSION );
-        }
+		if ( $screen->id === 'toplevel_page_leasepress' ) {
+			wp_enqueue_script( LP_TEXTDOMAIN . '-settings-script', plugins_url( 'assets/js/settings.js', LP_PLUGIN_ABSOLUTE ), array(
+				'jquery',
+				'jquery-ui-tabs'
+			), LP_VERSION );
+		}
 
 		wp_enqueue_script( LP_TEXTDOMAIN . '-admin-script', plugins_url( 'assets/js/admin.js', LP_PLUGIN_ABSOLUTE ), array( 'jquery' ), LP_VERSION );
 	}
