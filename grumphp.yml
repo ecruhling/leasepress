@@ -13,13 +13,10 @@ parameters:
             ignore_patterns: ['/vendor/']
         grunt: ~
         phpmd: ~
-        phpdoc:
-            triggered_by: ['php']
-            ignore: ['/vendor/']
         phpstan:
             configuration: ~
             triggered_by: ['php']
-            memory_limit: -1
+            memory_limit: null
         codeception:
             config_file: ~
             fail_fast: false
