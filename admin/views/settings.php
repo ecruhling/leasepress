@@ -216,7 +216,7 @@ cmb2_metabox_form( LP_TEXTDOMAIN . '_options', LP_TEXTDOMAIN . '-settings' );
 	<div class="inside">
 		<p><?php _e( 'perform a lookup of the RentCAFE API Floorplan method, using the above information.', LP_TEXTDOMAIN ); ?></p>
 		<form method="post">
-			<p><input type="hidden" name="lp_action" value="qpi_floorplans_lookup"/></p>
+			<p><input type="hidden" name="lp_action" value="api_floorplans_lookup"/></p>
 			<p>
 				<?php wp_nonce_field( 'lp_api_floorplans_lookup_nonce', 'lp_api_floorplans_lookup_nonce' ); ?>
 				<?php submit_button( __( 'Floorplans API Lookup' ), 'secondary', 'submit', false ); ?>

@@ -8,20 +8,6 @@ parameters:
         composer:
             with_dependencies: false
             strict: false
-        phpcs:
-            standard: ./phpcs.xml
-            ignore_patterns: ['/vendor/']
-        grunt: ~
-        phpmd: ~
-        phpstan:
-            configuration: ~
-            triggered_by: ['php']
-            memory_limit: null
-        codeception:
-            config_file: ~
-            fail_fast: false
-            suite: ~
-            test: ~
         git_blacklist:
             keywords:
                 - 'die('

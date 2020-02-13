@@ -1,8 +1,8 @@
 {
-	"name": "plugin-name",
+	"name": "leasepress",
 	"version": "1.0.0",
 	"description": "",
-	"author": "Your Name <email@example.com>",
+	"author": "Erik Ruhling <erik@resourceatlanta.com>",
 	"devDependencies": {
 		"grunt": "*",
 		"grunt-contrib-watch": "*",

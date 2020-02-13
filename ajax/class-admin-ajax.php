@@ -24,7 +24,7 @@ class LP_Ajax_Admin extends LP_Admin_Base {
 		}
 
 		// For logged user
-		add_action( 'wp_ajax_your_admin_method', array( $this, 'your_admin_method' ) );
+		add_action( 'wp_ajax_get_data', array( $this, 'get_data' ) );
 	}
 
 	/**
@@ -32,7 +32,7 @@ class LP_Ajax_Admin extends LP_Admin_Base {
 	 *
 	 * @return void
 	 */
-	public function your_admin_method() {
+	public function get_data() {
 		$return = array(
 			'message' => 'Saved',
 			'ID'      => 2,

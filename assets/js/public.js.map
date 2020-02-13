@@ -6,8 +6,8 @@
     "public.coffee"
   ],
   "names": [],
-  "mappings": "AAAA,CAAC,QAAA,CAAC,CAAD,CAAA;EACC;EACA,CAAA,CAAE,QAAA,CAAA,CAAA,EAAA;;IAEA,OAAO,CAAC,GAAR,CAAY,UAAU,CAAC,KAAvB;EAFA,CAAF,EAFD;;AAAA,CAAD,CAAA,CAQE,MARF",
+  "mappings": "AAAA,CAAC,QAAA,CAAC,CAAD,CAAA;EACA;EACA,CAAA,CAAE,QAAA,CAAA,CAAA,EAAA;;IAED,OAAO,CAAC,GAAR,CAAY,UAAU,CAAC,KAAvB;EAFC,CAAF,EAFA;;AAAA,CAAD,CAAA,CAQE,MARF",
   "sourcesContent": [
-    "(($) ->\n  'use strict'\n  $ ->\n    # Write in console log the PHP value passed in enqueue_js_vars in public/class-plugin-name.php\n    console.log pn_js_vars.alert\n    # Place your public-facing JavaScript here\n    return\n  return\n) jQuery\n"
+    "(($) ->\n\t'use strict'\n\t$ ->\n\t\t# Write in console log the PHP value passed in enqueue_js_vars in public/class-plugin-name.php\n\t\tconsole.log pn_js_vars.alert\n\t\t# Place your public-facing JavaScript here\n\t\treturn\n\treturn\n) jQuery\n"
   ]
 }
