@@ -25,8 +25,8 @@
 			<?php require_once( plugin_dir_path( __FILE__ ) . 'settings.php' ); ?>
 			</div>
 			<div class="right-column-settings-page">
-				<?php lp_log(( new LP_Transient )->get_or_cache_transient('floorplan')); ?>
 				<h3>RentCAFE Floorplan Request Data:</h3>
+				<?php lp_log(( new LP_Transient )->get_or_cache_transient('floorplan')); ?>
 				<?php ( new LP_Transient() )->print_transient_output('floorplan'); ?>
 			</div>
 		</div>

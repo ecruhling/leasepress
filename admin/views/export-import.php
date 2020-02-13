@@ -6,7 +6,7 @@
 			<p><input type="hidden" name="lp_action" value="export_settings"/></p>
 			<p>
 				<?php wp_nonce_field( 'lp_export_nonce', 'lp_export_nonce' ); ?>
-				<?php submit_button( __( 'Export' ), 'secondary', 'submit', false ); ?>
+				<?php submit_button( __( 'Export' ), 'secondary', 'lp_export_submit', false ); ?>
 			</p>
 		</form>
 	</div>
@@ -22,7 +22,7 @@
 			<p>
 				<input type="hidden" name="lp_action" value="import_settings"/>
 				<?php wp_nonce_field( 'lp_import_nonce', 'lp_import_nonce' ); ?>
-				<?php submit_button( __( 'Import' ), 'secondary', 'submit', false ); ?>
+				<?php submit_button( __( 'Import' ), 'secondary', 'lp_import_submit', false ); ?>
 			</p>
 		</form>
 	</div>

@@ -219,7 +219,7 @@ cmb2_metabox_form( LP_TEXTDOMAIN . '_options', LP_TEXTDOMAIN . '-settings' );
 			<p><input type="hidden" name="lp_action" value="api_floorplans_lookup"/></p>
 			<p>
 				<?php wp_nonce_field( 'lp_api_floorplans_lookup_nonce', 'lp_api_floorplans_lookup_nonce' ); ?>
-				<?php submit_button( __( 'Floorplans API Lookup' ), 'secondary', 'submit', false ); ?>
+				<?php submit_button( __( 'Floorplans API Lookup' ), 'secondary', 'lp_api_floorplans_lookup_submit', false ); ?>
 			</p>
 		</form>
 	</div>
@@ -232,7 +232,7 @@ cmb2_metabox_form( LP_TEXTDOMAIN . '_options', LP_TEXTDOMAIN . '-settings' );
 			<p><input type="hidden" name="lp_action" value="api_availabilities_lookup"/></p>
 			<p>
 				<?php wp_nonce_field( 'lp_api_availabilities_lookup_nonce', 'lp_api_availabilities_lookup_nonce' ); ?>
-				<?php submit_button( __( 'Availabilities API Lookup' ), 'secondary', 'submit', false ); ?>
+				<?php submit_button( __( 'Availabilities API Lookup' ), 'secondary', 'lp_api_availabilities_lookup_submit', false ); ?>
 			</p>
 		</form>
 	</div>
