@@ -22,16 +22,15 @@
           var response;
           if (data.length) {
             response = JSON.parse(data);
-            $('#rentcafe-request-data').append(response.data.body);
+            return $('#rentcafe-request-data').append(response.data.body);
           } else {
-            $('#rentcafe-request-data').append('no data');
+            return $('#rentcafe-request-data').append('no data');
           }
-          console.log(data, textStatus, jqXHR);
-          return console.log(JSON.parse(data));
         }
       });
     });
   });
+//					console.log(data, textStatus, jqXHR)
 })(jQuery);
 
 //# sourceMappingURL=settings.js.map

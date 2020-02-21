@@ -30,7 +30,7 @@ class LP_Transient extends LP_Base {
 	 * @return mixed
 	 */
 	public function get_or_cache_transient( $method ) {
-		$key = 'lp_rentcafe_floorplans_api_data';
+		$key = 'lp_rentcafe_' . $method . '_api_data';
 
 		return remember_transient(
 			$key, function () use ( $method, $key ) {

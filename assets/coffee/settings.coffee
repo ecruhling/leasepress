@@ -22,8 +22,7 @@
 						$('#rentcafe-request-data').append(response.data.body)
 					else
 						$('#rentcafe-request-data').append('no data');
-					console.log(data, textStatus, jqXHR)
-					console.log(JSON.parse(data))
+#					console.log(data, textStatus, jqXHR)
 			return
 	return
 ) jQuery

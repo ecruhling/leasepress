@@ -24,10 +24,10 @@
 			<div class="settings-tab">
 				<?php require_once( plugin_dir_path( __FILE__ ) . 'settings.php' ); ?>
 			</div>
-			<div class="right-column-settings-page">
+			<div class="right-column-settings-page" style="overflow: hidden;">
 				<h3>RentCAFE Request Data:</h3>
 				<code id="rentcafe-request-data">
-					<!--				--><?php //lp_log(( new LP_Transient )->get_or_cache_transient('floorplan')); ?>
+<!--									--><?php //lp_log(( new LP_Transient )->get_or_cache_transient('apartmentavailability')); ?>
 					<!--				--><?php //( new LP_Transient() )->print_transient_output('floorplan'); ?>
 				</code>
 			</div>

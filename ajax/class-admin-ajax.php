@@ -23,12 +23,12 @@ class LP_Ajax_Admin extends LP_Admin_Base {
 			return;
 		}
 
-		// For logged user
+		// For logged in user
 		add_action( 'wp_ajax_get_data', array( $this, 'get_data' ) );
 	}
 
 	/**
-	 * The method to run on ajax
+	 * The method to run on AJAX
 	 *
 	 * @return void
 	 */
