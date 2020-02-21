@@ -22,12 +22,14 @@
 		</ul>
 		<div id="tabs-1" class="wrap">
 			<div class="settings-tab">
-			<?php require_once( plugin_dir_path( __FILE__ ) . 'settings.php' ); ?>
+				<?php require_once( plugin_dir_path( __FILE__ ) . 'settings.php' ); ?>
 			</div>
 			<div class="right-column-settings-page">
-				<h3>RentCAFE Floorplan Request Data:</h3>
-				<?php lp_log(( new LP_Transient )->get_or_cache_transient('floorplan')); ?>
-				<?php ( new LP_Transient() )->print_transient_output('floorplan'); ?>
+				<h3>RentCAFE Request Data:</h3>
+				<code id="rentcafe-request-data">
+					<!--				--><?php //lp_log(( new LP_Transient )->get_or_cache_transient('floorplan')); ?>
+					<!--				--><?php //( new LP_Transient() )->print_transient_output('floorplan'); ?>
+				</code>
 			</div>
 		</div>
 		<div id="tabs-2" class="metabox-holder">

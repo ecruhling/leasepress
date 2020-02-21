@@ -11,7 +11,6 @@
         url: ajaxurl,
         type: 'POST',
         dataType: 'html',
-        async: true,
         data: {
           method: $method,
           action: 'get_data'
@@ -20,7 +19,15 @@
           return console.log(jqXHR, textStatus, errorThrown);
         },
         success: function(data, textStatus, jqXHR) {
-          return console.log(data, textStatus, jqXHR);
+          var response;
+          if (data.length) {
+            response = JSON.parse(data);
+            $('#rentcafe-request-data').append(response.data.body);
+          } else {
+            $('#rentcafe-request-data').append('no data');
+          }
+          console.log(data, textStatus, jqXHR);
+          return console.log(JSON.parse(data));
         }
       });
     });

@@ -37,11 +37,6 @@ class LP_Ajax_Admin extends LP_Admin_Base {
 
 		$return = ( new LP_API_Lookups )->get_rentcafe_data( $method );
 
-//		$return = array(
-//			'message' => 'Saved',
-//			'ID'      => 2,
-//		);
-
 		wp_send_json_success( $return );
 		// wp_send_json_error( $return );
 	}
