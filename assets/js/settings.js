@@ -1,11 +1,15 @@
 (function($) {
   'use strict';
   $(function() {
+    var $loader, $rentcafeDataContainer;
     $('#tabs').tabs();
     // Place your administration-specific JavaScript here
+    $rentcafeDataContainer = $('#rentcafe-request-data');
+    $loader = $('#loader');
     return $('.api_lookup_button').on('click', function(event) {
       var $method;
       event.preventDefault();
+      $rentcafeDataContainer.empty();
       $method = $(this).data('method');
       $.ajax({
         url: ajaxurl,
@@ -15,16 +19,20 @@
           method: $method,
           action: 'get_data'
         },
+        beforeSend: function() {
+          return $loader.fadeIn();
+        },
         error: function(jqXHR, textStatus, errorThrown) {
           return console.log(jqXHR, textStatus, errorThrown);
         },
         success: function(data, textStatus, jqXHR) {
           var response;
+          $loader.fadeOut();
           if (data.length) {
             response = JSON.parse(data);
-            return $('#rentcafe-request-data').append(response.data.body);
+            return $rentcafeDataContainer.append(response.data.body);
           } else {
-            return $('#rentcafe-request-data').append('no data');
+            return $rentcafeDataContainer.append('no data');
           }
         }
       });

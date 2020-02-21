@@ -55,4 +55,12 @@
 .right-column-settings-page {
   max-width: 270px;
   float: right;
+  position: relative;
+}
+
+#loader {
+  display: none;
+  position: absolute;
+  top: 26px;
+  left: -13px;
 }
