@@ -3,12 +3,17 @@
   $(function() {
     $('#tabs').tabs();
     // Place your administration-specific JavaScript here
-    return $('#lp_api_floorplans_lookup_submit').on('click', function(event) {
+    return $('.api_lookup_button').on('click', function(event) {
+      var $method;
       event.preventDefault();
-      console.log('works');
+      $method = $(this).data('method');
       $.ajax({
         url: ajaxurl,
+        type: 'POST',
+        dataType: 'html',
+        async: true,
         data: {
+          method: $method,
           action: 'get_data'
         },
         error: function(jqXHR, textStatus, errorThrown) {

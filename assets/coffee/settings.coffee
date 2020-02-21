@@ -3,12 +3,16 @@
 	$ ->
 		$('#tabs').tabs()
 		# Place your administration-specific JavaScript here
-		$('#lp_api_floorplans_lookup_submit').on 'click', (event) ->
+		$('.api_lookup_button').on 'click', (event) ->
 			(event).preventDefault()
-			console.log 'works'
+			$method = $(this).data('method')
 			$.ajax
 				url: ajaxurl
+				type: 'POST'
+				dataType: 'html'
+				async: true
 				data: {
+					method: $method
 					action: 'get_data',
 				},
 				error: (jqXHR, textStatus, errorThrown) ->
