@@ -74,13 +74,20 @@ class LP_API_Lookups extends LP_Base {
 	public function get_rentcafe_data( $methodName ) {
 
 		// set variables
-		$rentcafe_api_token   = lp_get_settings()['lp_rentcafe_api_token'];
-		$rentcafe_property_id = lp_get_settings()['lp_rentcafe_property_id'];
-		$url                  = 'https://api.rentcafe.com/rentcafeapi.aspx?requestType=%s&APIToken=%s&propertyId=%s';
-		$json_data_url        = sprintf( $url, $methodName, $rentcafe_api_token, $rentcafe_property_id );
-		$args                 = array( 'timeout' => 120 );
+		$settings               = lp_get_settings();
+		$rentcafe_api_token     = array_key_exists( 'lp_rentcafe_api_token', $settings ) ? $settings['lp_rentcafe_api_token'] : null;
+		$rentcafe_property_id   = array_key_exists( 'lp_rentcafe_property_id', $settings ) ? $settings['lp_rentcafe_property_id'] : null;
+		$rentcafe_property_code = array_key_exists( 'lp_rentcafe_property_code', $settings ) ? $settings['lp_rentcafe_property_code'] : null;
+		if ( $rentcafe_property_id ) {
+			$url           = 'https://api.rentcafe.com/rentcafeapi.aspx?requestType=%s&APIToken=%s&propertyId=%s';
+			$json_data_url = sprintf( $url, $methodName, $rentcafe_api_token, $rentcafe_property_id );
+		} else {
+			$url           = 'https://api.rentcafe.com/rentcafeapi.aspx?requestType=%s&APIToken=%s&propertyCode=%s';
+			$json_data_url = sprintf( $url, $methodName, $rentcafe_api_token, $rentcafe_property_code );
+		}
+		$args = array( 'timeout' => 120 );
 
-		return [$json_data_url, wp_remote_get( $json_data_url, $args )]; // return the lookup URL & the data as an array
+		return [ $json_data_url, wp_remote_get( $json_data_url, $args ) ];
 
 	}
 

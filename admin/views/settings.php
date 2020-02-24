@@ -14,16 +14,16 @@ $cmb->add_field( array(
 	'sanitization_cb' => 'lp_sanitize_api_token',
 	'default'         => '',
 ) );
-//$cmb->add_field( array(
-//	'name'    => __( 'RENTCafe Property Code', LP_TEXTDOMAIN ),
-//	'desc'    => __( 'Format is: pXXXXXXX', LP_TEXTDOMAIN ),
-//	'id'      => 'lp_rentcafe_property_code',
-//	'type'    => 'text',
-//	'default' => '',
-//) );
+$cmb->add_field( array(
+	'name'    => __( 'RENTCafe Property Code', LP_TEXTDOMAIN ),
+	'desc'    => __( 'Format is: pXXXXXXX (Either the Property Code OR<br>the Property ID MUST be supplied)', LP_TEXTDOMAIN ),
+	'id'      => 'lp_rentcafe_property_code',
+	'type'    => 'text',
+	'default' => '',
+) );
 $cmb->add_field( array(
 	'name'    => __( 'RENTCafe Property ID', LP_TEXTDOMAIN ),
-	'desc'    => __( 'Format is: XXXXXXX', LP_TEXTDOMAIN ),
+	'desc'    => __( 'Format is: XXXXXXX (Either the Property Code OR<br>the Property ID MUST be supplied)', LP_TEXTDOMAIN ),
 	'id'      => 'lp_rentcafe_property_id',
 	'type'    => 'text',
 	'default' => '',
@@ -214,7 +214,7 @@ cmb2_metabox_form( LP_TEXTDOMAIN . '_options', LP_TEXTDOMAIN . '-settings' );
 <div class="">
 	<h3 class="hndle"><span><?php _e( 'RentCAFE API Floorplan Lookup', LP_TEXTDOMAIN ); ?></span></h3>
 	<div class="inside">
-		<p><?php _e( 'perform a lookup of the RentCAFE API Floorplan method, using the above information.', LP_TEXTDOMAIN ); ?></p>
+		<p><?php _e( 'perform a real-time lookup of the RentCAFE API Floorplan method, using the above information.', LP_TEXTDOMAIN ); ?></p>
 		<form method="post">
 			<p><input type="hidden" name="lp_action" value="api_floorplans_lookup"/></p>
 			<p>
@@ -227,7 +227,7 @@ cmb2_metabox_form( LP_TEXTDOMAIN . '_options', LP_TEXTDOMAIN . '-settings' );
 <div class="">
 	<h3 class="hndle"><span><?php _e( 'RentCAFE API Availabilities Lookup', LP_TEXTDOMAIN ); ?></span></h3>
 	<div class="inside">
-		<p><?php _e( 'perform a lookup of the RentCAFE API Availabilities method, using the above information.', LP_TEXTDOMAIN ); ?></p>
+		<p><?php _e( 'perform a real-time lookup of the RentCAFE API Availabilities method, using the above information.', LP_TEXTDOMAIN ); ?></p>
 		<form method="post">
 			<p><input type="hidden" name="lp_action" value="api_availabilities_lookup"/></p>
 			<p>
