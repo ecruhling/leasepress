@@ -30,8 +30,9 @@
           $loader.fadeOut();
           if (data.length) {
             response = JSON.parse(data);
-            //						console.log(jqXHR)
-            return $rentcafeDataContainer.append(response.data.body);
+            //						console.log(response)
+            $rentcafeDataContainer.append('<p><strong>RENTCafe URL Lookup:</strong> ' + response.data[0] + '</p>');
+            return $rentcafeDataContainer.append('<p><strong>Data:</strong> ' + response.data[1].body);
           } else {
             return $rentcafeDataContainer.append('no data');
           }

@@ -77,10 +77,10 @@ class LP_API_Lookups extends LP_Base {
 		$rentcafe_api_token   = lp_get_settings()['lp_rentcafe_api_token'];
 		$rentcafe_property_id = lp_get_settings()['lp_rentcafe_property_id'];
 		$url                  = 'https://api.rentcafe.com/rentcafeapi.aspx?requestType=%s&APIToken=%s&propertyId=%s';
-		$json_feed_url        = sprintf( $url, $methodName, $rentcafe_api_token, $rentcafe_property_id );
+		$json_data_url        = sprintf( $url, $methodName, $rentcafe_api_token, $rentcafe_property_id );
 		$args                 = array( 'timeout' => 120 );
 
-		return wp_remote_get( $json_feed_url, $args );
+		return [$json_data_url, wp_remote_get( $json_data_url, $args )]; // return the lookup URL & the data as an array
 
 	}
 
