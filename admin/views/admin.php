@@ -41,10 +41,10 @@
 		    repeatCount="indefinite"/>
     </path>
 </svg>
-				<code id="rentcafe-request-data">
+				<div id="rentcafe-request-data">
 					<!--									--><?php //lp_log(( new LP_Transient )->get_or_cache_transient('apartmentavailability')); ?>
 					<!--				--><?php //( new LP_Transient() )->print_transient_output('floorplan'); ?>
-				</code>
+				</div>
 			</div>
 		</div>
 		<div id="tabs-2" class="metabox-holder">

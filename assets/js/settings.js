@@ -17,7 +17,7 @@
         dataType: 'html',
         data: {
           method: $method,
-          action: 'get_data'
+          action: 'get_rentcafe_data_ajax'
         },
         beforeSend: function() {
           return $loader.fadeIn();
@@ -30,6 +30,7 @@
           $loader.fadeOut();
           if (data.length) {
             response = JSON.parse(data);
+            //						console.log(jqXHR)
             return $rentcafeDataContainer.append(response.data.body);
           } else {
             return $rentcafeDataContainer.append('no data');

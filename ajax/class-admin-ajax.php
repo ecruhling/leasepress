@@ -24,7 +24,7 @@ class LP_Ajax_Admin extends LP_Admin_Base {
 		}
 
 		// For logged in user
-		add_action( 'wp_ajax_get_data', array( $this, 'get_data' ) );
+		add_action( 'wp_ajax_get_rentcafe_data_ajax', array( $this, 'get_rentcafe_data_ajax' ) );
 	}
 
 	/**
@@ -32,7 +32,7 @@ class LP_Ajax_Admin extends LP_Admin_Base {
 	 *
 	 * @return void
 	 */
-	public function get_data() {
+	public function get_rentcafe_data_ajax() {
 		$method = ( isset( $_POST['method'] ) ) ? $_POST['method'] : 0;
 
 		$return = ( new LP_API_Lookups )->get_rentcafe_data( $method );

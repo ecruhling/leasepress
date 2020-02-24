@@ -1,10 +1,7 @@
 <?php
 
 /**
- * The WordPress Plugin Boilerplate.
- *
- * A foundation off of which to build well-documented WordPress plugins that
- * also follow WordPress Coding Standards and PHP best practices.
+ * LeasePress
  *
  * @package   LeasePress
  * @author      Erik Ruhling <ecruhling@gmail.com>
@@ -19,7 +16,7 @@
  * Author URI:        https://resourceatlanta.com
  * Text Domain:        leasepress
  * Domain Path:        /languages
- * Requires PHP:    7.1.3
+ * Requires PHP:       7.1.3
  */
 // If this file is called directly, abort.
 if ( ! defined( 'ABSPATH' ) ) {

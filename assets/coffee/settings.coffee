@@ -15,7 +15,7 @@
 				dataType: 'html'
 				data: {
 					method: $method
-					action: 'get_data',
+					action: 'get_rentcafe_data_ajax',
 				},
 				beforeSend: () ->
 					$loader.fadeIn()
@@ -25,6 +25,7 @@
 					$loader.fadeOut()
 					if (data.length)
 						response = JSON.parse(data)
+#						console.log(jqXHR)
 						$rentcafeDataContainer.append(response.data.body)
 					else
 						$rentcafeDataContainer.append('no data');

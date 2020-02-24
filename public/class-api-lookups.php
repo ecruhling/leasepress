@@ -74,9 +74,8 @@ class LP_API_Lookups extends LP_Base {
 	public function get_rentcafe_data( $methodName ) {
 
 		// set variables
-		$settings             = lp_get_settings(); // get all LeasePress settings
-		$rentcafe_api_token   = $settings['lp_rentcafe_api_token'];
-		$rentcafe_property_id = $settings['lp_rentcafe_property_id'];
+		$rentcafe_api_token   = lp_get_settings()['lp_rentcafe_api_token'];
+		$rentcafe_property_id = lp_get_settings()['lp_rentcafe_property_id'];
 		$url                  = 'https://api.rentcafe.com/rentcafeapi.aspx?requestType=%s&APIToken=%s&propertyId=%s';
 		$json_feed_url        = sprintf( $url, $methodName, $rentcafe_api_token, $rentcafe_property_id );
 		$args                 = array( 'timeout' => 120 );
