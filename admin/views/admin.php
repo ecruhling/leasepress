@@ -23,12 +23,14 @@
 		<div id="tabs-1" class="wrap">
 			<div class="settings-tab">
 				<?php require_once( plugin_dir_path( __FILE__ ) . 'settings.php' ); ?>
+<!--				--><?php //lp_log( \LP_Transient::get_or_cache_transient( 'apartmentavailability' ) ); ?>
+				<?php \LP_Transient::print_transient_output( 'floorplan' ); ?>
 			</div>
 			<div class="right-column-settings-page" style="overflow: hidden;">
 				<h3>RENTCafe Request Data:</h3>
-					<svg version="1.1" id="loader" width="60px" height="60px" xmlns="http://www.w3.org/2000/svg"
-					     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-					     viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
+				<svg version="1.1" id="loader" width="60px" height="60px" xmlns="http://www.w3.org/2000/svg"
+				     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+				     viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
     <path fill="#007cba"
           d="M73,50c0-12.7-10.3-23-23-23S27,37.3,27,50 M30.9,50c0-10.5,8.5-19.1,19.1-19.1S69.1,39.5,69.1,50">
 	    <animateTransform
@@ -42,8 +44,6 @@
     </path>
 </svg>
 				<div id="rentcafe-request-data">
-					<!--									--><?php //lp_log(( new LP_Transient )->get_or_cache_transient('apartmentavailability')); ?>
-					<!--				--><?php //( new LP_Transient() )->print_transient_output('floorplan'); ?>
 				</div>
 			</div>
 		</div>

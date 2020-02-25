@@ -29,18 +29,18 @@ class LP_Transient extends LP_Base {
 	 *
 	 * @return mixed
 	 */
-	public function get_or_cache_transient( $method ) {
+	public static function get_or_cache_transient( $method ) {
 		$key = 'lp_rentcafe_' . $method . '_api_data';
 
 		return remember_transient(
 			$key, function () use ( $method, $key ) {
-			$response = ( new LP_API_Lookups )->get_rentcafe_data( $method );
+			$response = \LP_API_Lookups::get_rentcafe_data( $method )[1];
 			if ( is_wp_error( $response ) ) {
 				return false;
 			}
 
 			return json_decode( wp_remote_retrieve_body( $response ) );
-		}, HOUR_IN_SECONDS
+		}, MINUTE_IN_SECONDS
 		);
 	}
 
@@ -51,9 +51,10 @@ class LP_Transient extends LP_Base {
 	 *
 	 * @return void
 	 */
-	public function print_transient_output( $method ) {
-		$transient = $this->get_or_cache_transient( $method );
+	public static function print_transient_output( $method ) {
+		$transient = self::get_or_cache_transient( $method );
 		echo '<div class="siteapi-bridge-container">';
+
 		foreach ( $transient as &$value ) {
 			echo '<div class="siteapi-bridge-single">';
 			echo '<code>' . $value->FloorplanName . '</code>';
