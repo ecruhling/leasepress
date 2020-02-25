@@ -40,7 +40,7 @@ class LP_Transient extends LP_Base {
 			}
 
 			return json_decode( wp_remote_retrieve_body( $response ) );
-		}, MINUTE_IN_SECONDS
+		}, HOUR_IN_SECONDS
 		);
 	}
 
