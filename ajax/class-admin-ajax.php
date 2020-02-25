@@ -35,11 +35,10 @@ class LP_Ajax_Admin extends LP_Admin_Base {
 	public function get_rentcafe_data_ajax() {
 		$method = ( isset( $_POST['method'] ) ) ? $_POST['method'] : 0;
 
-		$return = ( new LP_API_Lookups )->get_rentcafe_data( $method );
+		$return = \LP_API_Lookups::get_rentcafe_data( $method );
 
 		wp_send_json_success( $return );
 		// wp_send_json_error( $return );
 	}
 
 }
-

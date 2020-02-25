@@ -71,7 +71,7 @@ class LP_API_Lookups extends LP_Base {
 	 *
 	 * @return array
 	 */
-	public function get_rentcafe_data( $methodName ) {
+	public static function get_rentcafe_data( $methodName ) {
 
 		// set variables
 		$settings               = lp_get_settings();
