@@ -25,12 +25,23 @@
 					$loader.fadeOut()
 					if (data.length)
 						response = JSON.parse(data)
-#						console.log(response)
 						$rentcafeDataContainer.append('<p><strong>RENTCafe URL Lookup:</strong> ' + response.data[0] + '</p>')
 						$rentcafeDataContainer.append('<p><strong>Data:</strong> ' + response.data[1].body)
 					else
 						$rentcafeDataContainer.append('no data');
-	#					console.log(data, textStatus, jqXHR)
+		$('.api_clear_cache').on 'click', (event) ->
+			(event).preventDefault()
+			$.ajax
+				url: ajaxurl
+				type: 'POST'
+				dataType: 'html'
+				data: {
+					action: 'delete_rentcafe_transient',
+				},
+				error: (jqXHR, textStatus, errorThrown) ->
+					console.log(jqXHR, textStatus, errorThrown)
+				success: (data, textStatus, jqXHR) ->
+					console.log(data, textStatus, jqXHR)
 			return
 	return
 ) jQuery

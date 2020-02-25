@@ -24,7 +24,7 @@
 			<div class="settings-tab">
 				<?php require_once( plugin_dir_path( __FILE__ ) . 'settings.php' ); ?>
 <!--				--><?php //lp_log( \LP_Transient::get_or_cache_transient( 'apartmentavailability' ) ); ?>
-				<?php \LP_Transient::print_transient_output( 'floorplan' ); ?>
+<!--				--><?php //\LP_Transient::print_transient_output( 'floorplan' ); ?>
 			</div>
 			<div class="right-column-settings-page" style="overflow: hidden;">
 				<h3>RENTCafe Request Data:</h3>
