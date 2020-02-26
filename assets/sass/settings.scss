@@ -58,9 +58,18 @@
   position: relative;
 }
 
-#loader {
+p.clear-cached-data {
+  position: relative;
+}
+
+.loader {
   display: none;
   position: absolute;
   top: 26px;
   left: -13px;
+}
+
+#cache-loader {
+  top: -15px;
+  left: 14px;
 }

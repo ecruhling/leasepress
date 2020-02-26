@@ -48,14 +48,16 @@ class LP_Ajax_Admin extends LP_Admin_Base {
 	 * @return mixed
 	 */
 	public function delete_rentcafe_transient() {
-		$keys = [ 'lp_rentcafe_floorplan_api_data', 'lp_rentcafe_apartmentavailability_api_data' ];
 
-		foreach ( $keys as $key ) {
-			\LP_Transient::get_or_cache_transient( $key );
+		// forget both transients
+		forget_transient(
+			'lp_rentcafe_floorplan_api_data', null );
+		forget_transient(
+			'lp_rentcafe_apartmentavailability_api_data', null );
 
-			return forget_transient(
-				$key, null );
-		}
+		// regenerate both transients
+		\LP_Transient::get_or_cache_transient( 'floorplan' );
+		\LP_Transient::get_or_cache_transient( 'apartmentavailability' );
 
 		return null;
 	}

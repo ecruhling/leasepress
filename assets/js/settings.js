@@ -1,11 +1,12 @@
 (function($) {
   'use strict';
   $(function() {
-    var $loader, $rentcafeDataContainer;
+    var $cacheLoader, $dataLoader, $rentcafeDataContainer;
     $('#tabs').tabs();
     // Place your administration-specific JavaScript here
     $rentcafeDataContainer = $('#rentcafe-request-data');
-    $loader = $('#loader');
+    $dataLoader = $('#data-loader');
+    $cacheLoader = $('#cache-loader');
     $('.api_lookup_button').on('click', function(event) {
       var $method;
       event.preventDefault();
@@ -20,14 +21,14 @@
           action: 'get_rentcafe_data_ajax'
         },
         beforeSend: function() {
-          return $loader.fadeIn();
+          return $dataLoader.fadeIn();
         },
         error: function(jqXHR, textStatus, errorThrown) {
           return console.log(jqXHR, textStatus, errorThrown);
         },
         success: function(data, textStatus, jqXHR) {
           var response;
-          $loader.fadeOut();
+          $dataLoader.fadeOut();
           if (data.length) {
             response = JSON.parse(data);
             $rentcafeDataContainer.append('<p><strong>RENTCafe URL Lookup:</strong> ' + response.data[0] + '</p>');
@@ -47,15 +48,24 @@
         data: {
           action: 'delete_rentcafe_transient'
         },
-        error: function(jqXHR, textStatus, errorThrown) {
-          return console.log(jqXHR, textStatus, errorThrown);
+        beforeSend: function() {
+          $('.api_clear_cache').addClass('disabled');
+          return $cacheLoader.fadeIn();
         },
+        error: function(jqXHR, textStatus, errorThrown) {},
+        //					console.log(jqXHR, textStatus, errorThrown)
         success: function(data, textStatus, jqXHR) {
-          return console.log(data, textStatus, jqXHR);
+          $('.api_clear_cache').removeClass('disabled');
+          $cacheLoader.fadeOut();
+          $('p.clear-cached-data').append('<strong class="cache-cleared-message">&nbsp;Cache Cleared and Regenerated!</strong>');
+          return $('.cache-cleared-message').delay(3000).fadeOut('normal', function() {
+            return $(this).remove();
+          });
         }
       });
     });
   });
+//					console.log(data, textStatus, jqXHR)
 })(jQuery);
 
 //# sourceMappingURL=settings.js.map

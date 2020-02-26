@@ -214,12 +214,27 @@ cmb2_metabox_form( LP_TEXTDOMAIN . '_options', LP_TEXTDOMAIN . '-settings' );
 <div class="">
 	<h3 class="hndle"><span><?php _e( 'Clear All Cached Data', LP_TEXTDOMAIN ); ?></span></h3>
 	<div class="inside">
-		<p><?php _e( 'clear all cached RENTCafe data and performs a new lookup.', LP_TEXTDOMAIN ); ?></p>
+		<p><?php _e( 'clear all cached RENTCafe data and performs a new lookup. Results are cached.', LP_TEXTDOMAIN ); ?></p>
 		<form method="post">
 			<p><input type="hidden" name="lp_action" value="api_clear_cache"/></p>
-			<p>
+			<p class="clear-cached-data">
 				<?php wp_nonce_field( 'lp_api_clear_cache_nonce', 'lp_api_clear_cache_nonce' ); ?>
 				<?php submit_button( __( 'Clear Cache' ), 'secondary api_clear_cache', 'lp_api_clear_cache_submit', false ); ?>
+				<svg version="1.1" id="cache-loader" class="loader" width="60px" height="60px" xmlns="http://www.w3.org/2000/svg"
+				     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+				     viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
+    <path fill="#007cba"
+          d="M73,50c0-12.7-10.3-23-23-23S27,37.3,27,50 M30.9,50c0-10.5,8.5-19.1,19.1-19.1S69.1,39.5,69.1,50">
+	    <animateTransform
+		    attributeName="transform"
+		    attributeType="XML"
+		    type="rotate"
+		    dur="1s"
+		    from="0 50 50"
+		    to="360 50 50"
+		    repeatCount="indefinite"/>
+    </path>
+</svg>
 			</p>
 		</form>
 	</div>
@@ -227,7 +242,8 @@ cmb2_metabox_form( LP_TEXTDOMAIN . '_options', LP_TEXTDOMAIN . '-settings' );
 <div class="">
 	<h3 class="hndle"><span><?php _e( 'RentCAFE API Floorplan Lookup', LP_TEXTDOMAIN ); ?></span></h3>
 	<div class="inside">
-		<p><?php _e( 'perform a real-time lookup of the RentCAFE API Floorplan method, using the above information.', LP_TEXTDOMAIN ); ?></p>
+		<p><?php _e( 'perform a real-time lookup of the RentCAFE API Floorplan method, using the above information. Result is not cached.<br>
+Use this to confirm that RENTCafe is returning valid data.', LP_TEXTDOMAIN ); ?></p>
 		<form method="post">
 			<p><input type="hidden" name="lp_action" value="api_floorplans_lookup"/></p>
 			<p>
@@ -240,7 +256,8 @@ cmb2_metabox_form( LP_TEXTDOMAIN . '_options', LP_TEXTDOMAIN . '-settings' );
 <div class="">
 	<h3 class="hndle"><span><?php _e( 'RentCAFE API Availabilities Lookup', LP_TEXTDOMAIN ); ?></span></h3>
 	<div class="inside">
-		<p><?php _e( 'perform a real-time lookup of the RentCAFE API Availabilities method, using the above information.', LP_TEXTDOMAIN ); ?></p>
+		<p><?php _e( 'perform a real-time lookup of the RentCAFE API Availabilities method, using the above information. Result is not cached.<br>
+Use this to confirm that RENTCafe is returning valid data.', LP_TEXTDOMAIN ); ?></p>
 		<form method="post">
 			<p><input type="hidden" name="lp_action" value="api_availabilities_lookup"/></p>
 			<p>
