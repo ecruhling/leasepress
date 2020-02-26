@@ -10,12 +10,14 @@
 			(event).preventDefault()
 			$rentcafeDataContainer.empty()
 			$method = $(this).data('method')
+			$type = $(this).data('type')
 			$.ajax
 				url: ajaxurl
 				type: 'POST'
 				dataType: 'html'
 				data: {
 					method: $method
+					type: $type
 					action: 'get_rentcafe_data_ajax',
 				},
 				beforeSend: () ->
@@ -26,7 +28,7 @@
 					$dataLoader.fadeOut()
 					if (data.length)
 						response = JSON.parse(data)
-						$rentcafeDataContainer.append('<p><strong>RENTCafe URL Lookup:</strong> ' + response.data[0] + '</p>')
+						$rentcafeDataContainer.append('<p><strong>RENTCafe URL Lookup:</strong> <a href="' + response.data[0] + '" target="_blank" rel="noopener">' + response.data[0] + '</a></p>')
 						$rentcafeDataContainer.append('<p><strong>Data:</strong> ' + response.data[1].body)
 					else
 						$rentcafeDataContainer.append('no data');
@@ -47,7 +49,7 @@
 				success: (data, textStatus, jqXHR) ->
 					$('.api_clear_cache').removeClass('disabled')
 					$cacheLoader.fadeOut()
-					$('p.clear-cached-data').append('<strong class="cache-cleared-message">&nbsp;Cache Cleared and Regenerated!</strong>')
+					$('p.clear-cached-data').append('<strong class="cache-cleared-message">&nbsp;Cache Cleared and Resaved!</strong>')
 					$('.cache-cleared-message').delay(3000).fadeOut('normal', () -> $(this).remove())
 			#					console.log(data, textStatus, jqXHR)
 			return

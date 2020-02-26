@@ -8,16 +8,18 @@
     $dataLoader = $('#data-loader');
     $cacheLoader = $('#cache-loader');
     $('.api_lookup_button').on('click', function(event) {
-      var $method;
+      var $method, $type;
       event.preventDefault();
       $rentcafeDataContainer.empty();
       $method = $(this).data('method');
+      $type = $(this).data('type');
       return $.ajax({
         url: ajaxurl,
         type: 'POST',
         dataType: 'html',
         data: {
           method: $method,
+          type: $type,
           action: 'get_rentcafe_data_ajax'
         },
         beforeSend: function() {
@@ -31,7 +33,7 @@
           $dataLoader.fadeOut();
           if (data.length) {
             response = JSON.parse(data);
-            $rentcafeDataContainer.append('<p><strong>RENTCafe URL Lookup:</strong> ' + response.data[0] + '</p>');
+            $rentcafeDataContainer.append('<p><strong>RENTCafe URL Lookup:</strong> <a href="' + response.data[0] + '" target="_blank" rel="noopener">' + response.data[0] + '</a></p>');
             return $rentcafeDataContainer.append('<p><strong>Data:</strong> ' + response.data[1].body);
           } else {
             return $rentcafeDataContainer.append('no data');
@@ -57,7 +59,7 @@
         success: function(data, textStatus, jqXHR) {
           $('.api_clear_cache').removeClass('disabled');
           $cacheLoader.fadeOut();
-          $('p.clear-cached-data').append('<strong class="cache-cleared-message">&nbsp;Cache Cleared and Regenerated!</strong>');
+          $('p.clear-cached-data').append('<strong class="cache-cleared-message">&nbsp;Cache Cleared and Resaved!</strong>');
           return $('.cache-cleared-message').delay(3000).fadeOut('normal', function() {
             return $(this).remove();
           });

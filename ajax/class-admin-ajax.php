@@ -29,21 +29,21 @@ class LP_Ajax_Admin extends LP_Admin_Base {
 	}
 
 	/**
-	 * The method to run on AJAX
+	 * get RENTCafe data AJAX
 	 *
 	 * @return void
 	 */
 	public function get_rentcafe_data_ajax() {
 		$method = ( isset( $_POST['method'] ) ) ? $_POST['method'] : 0;
+		$type   = ( isset( $_POST['type'] ) ) ? $_POST['type'] : null;
 
-		$return = \LP_API_Lookups::get_rentcafe_data( $method );
+		$return = \LP_API_Lookups::get_rentcafe_data( $method, $type );
 
 		wp_send_json_success( $return );
-		// wp_send_json_error( $return );
 	}
 
 	/**
-	 * Delete cached data in a WordPress transient
+	 * Delete cached RENTCafe data in a WordPress transient
 	 *
 	 * @return mixed
 	 */

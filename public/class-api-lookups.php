@@ -68,10 +68,11 @@ class LP_API_Lookups extends LP_Base {
 	 * Get RENTCafe data
 	 *
 	 * @param string $methodName 'floorplan' or 'apartmentavailability' requestType
+	 * @param null $type    applicantLogin, residentLogin, availability, and propertyDetailPage
 	 *
 	 * @return array
 	 */
-	public static function get_rentcafe_data( $methodName ) {
+	public static function get_rentcafe_data( $methodName, $type = null ) {
 
 		// set variables
 		$settings               = lp_get_settings();
@@ -85,6 +86,10 @@ class LP_API_Lookups extends LP_Base {
 			$url           = 'https://api.rentcafe.com/rentcafeapi.aspx?requestType=%s&APIToken=%s&propertyCode=%s';
 			$json_data_url = sprintf( $url, $methodName, $rentcafe_api_token, $rentcafe_property_code );
 		}
+		if ($type) {
+			$json_data_url = $json_data_url . '&type=' . $type;
+		}
+
 		$args = array( 'timeout' => 120 );
 
 		return [ $json_data_url, wp_remote_get( $json_data_url, $args ) ];

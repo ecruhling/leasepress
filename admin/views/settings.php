@@ -214,7 +214,7 @@ cmb2_metabox_form( LP_TEXTDOMAIN . '_options', LP_TEXTDOMAIN . '-settings' );
 <div class="">
 	<h3 class="hndle"><span><?php _e( 'Clear All Cached Data', LP_TEXTDOMAIN ); ?></span></h3>
 	<div class="inside">
-		<p><?php _e( 'clear all cached RENTCafe data and performs a new lookup. Results are cached.', LP_TEXTDOMAIN ); ?></p>
+		<p><?php _e( 'clear all cached RENTCafe data (floorplan & apartmentavailability requestType) and performs a new lookup. Results are cached.', LP_TEXTDOMAIN ); ?></p>
 		<form method="post">
 			<p><input type="hidden" name="lp_action" value="api_clear_cache"/></p>
 			<p class="clear-cached-data">
@@ -263,6 +263,34 @@ Use this to confirm that RENTCafe is returning valid data.', LP_TEXTDOMAIN ); ?>
 			<p>
 				<?php wp_nonce_field( 'lp_api_availabilities_lookup_nonce', 'lp_api_availabilities_lookup_nonce' ); ?>
 				<?php submit_button( __( 'Availabilities API Lookup' ), 'secondary api_lookup_button', 'lp_api_availabilities_lookup_submit', false, array( 'data-method' => 'apartmentavailability' ) ); ?>
+			</p>
+		</form>
+	</div>
+</div>
+<div class="">
+	<h3 class="hndle"><span><?php _e( 'RentCAFE API getRentCafeUrl residentLogin Lookup', LP_TEXTDOMAIN ); ?></span></h3>
+	<div class="inside">
+		<p><?php _e( 'perform a real-time lookup of the RentCAFE API getRentCafeUrl method, residentLogin type, using the above information. Result is not cached.<br>
+Use this to confirm that RENTCafe is returning valid data.', LP_TEXTDOMAIN ); ?></p>
+		<form method="post">
+			<p><input type="hidden" name="lp_action" value="api_getRENTCafeURL_residentLogin_lookup"/></p>
+			<p>
+				<?php wp_nonce_field( 'lp_api_getRENTCafeURL_residentLogin_lookup_nonce', 'lp_api_getRENTCafeURL_residentLogin_lookup_nonce' ); ?>
+				<?php submit_button( __( 'getRENTCafeURL residentLogin API Lookup' ), 'secondary api_lookup_button', 'lp_api_getRENTCafeURL_residentLogin_lookup_submit', false, array( 'data-method' => 'getRENTCafeURL', 'data-type' => 'residentLogin' ) ); ?>
+			</p>
+		</form>
+	</div>
+</div>
+<div class="">
+	<h3 class="hndle"><span><?php _e( 'RentCAFE API getRentCafeUrl applicantLogin Lookup', LP_TEXTDOMAIN ); ?></span></h3>
+	<div class="inside">
+		<p><?php _e( 'perform a real-time lookup of the RentCAFE API getRentCafeUrl method, applicantLogin type, using the above information. Result is not cached.<br>
+Use this to confirm that RENTCafe is returning valid data.', LP_TEXTDOMAIN ); ?></p>
+		<form method="post">
+			<p><input type="hidden" name="lp_action" value="api_getRENTCafeURL_applicantLogin_lookup"/></p>
+			<p>
+				<?php wp_nonce_field( 'lp_api_getRENTCafeURL_applicantLogin_lookup_nonce', 'lp_api_getRENTCafeURL_applicantLogin_lookup_nonce' ); ?>
+				<?php submit_button( __( 'getRENTCafeURL applicantLogin API Lookup' ), 'secondary api_lookup_button', 'lp_api_getRENTCafeURL_applicantLogin_lookup_submit', false, array( 'data-method' => 'getRENTCafeURL', 'data-type' => 'applicantLogin' ) ); ?>
 			</p>
 		</form>
 	</div>
