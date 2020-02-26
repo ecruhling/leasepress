@@ -33,7 +33,7 @@ $cmb->add_field( array(
 	'desc'             => __( 'The page template that will contain site plans & floor plans.<br>The scripts will only run on a page with this template.', LP_TEXTDOMAIN ),
 	'id'               => 'lp_page_template',
 	'type'             => 'select',
-	'show_option_none' => true,
+	'show_option_none' => 'Do Not Run',
 	'default'          => '',
 	'options'          => array_flip(get_page_templates()),
 ) );

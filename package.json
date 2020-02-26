@@ -5,8 +5,11 @@
 	"author": "Erik Ruhling <erik@resourceatlanta.com>",
 	"devDependencies": {
 		"grunt": "*",
-		"grunt-contrib-watch": "*",
+		"grunt-contrib-coffee": "2.x",
 		"grunt-contrib-compass": "*",
-		"grunt-contrib-coffee": "2.x"
+		"grunt-contrib-watch": "*"
+	},
+	"dependencies": {
+		"svg-injector": "^1.1.3"
 	}
 }
