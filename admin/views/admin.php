@@ -26,7 +26,7 @@
 <!--				--><?php //lp_log( \LP_Transient::get_or_cache_transient( 'apartmentavailability' ) ); ?>
 <!--				--><?php //\LP_Transient::print_transient_output( 'floorplan' ); ?>
 			</div>
-			<div class="right-column-settings-page" style="overflow: hidden;">
+			<div id="right-column" class="right-column-settings-page" style="overflow: hidden;">
 				<h3>RENTCafe Request Data:</h3>
 				<svg version="1.1" id="data-loader" class="loader" width="60px" height="60px" xmlns="http://www.w3.org/2000/svg"
 				     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"

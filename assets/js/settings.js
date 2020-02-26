@@ -1,10 +1,11 @@
 (function($) {
   'use strict';
   $(function() {
-    var $cacheLoader, $dataLoader, $rentcafeDataContainer;
+    var $cacheLoader, $dataLoader, $rentcafeDataContainer, $rightColumn;
     $('#tabs').tabs();
     // Place your administration-specific JavaScript here
     $rentcafeDataContainer = $('#rentcafe-request-data');
+    $rightColumn = $('#right-column');
     $dataLoader = $('#data-loader');
     $cacheLoader = $('#cache-loader');
     $('.api_lookup_button').on('click', function(event) {
@@ -23,6 +24,9 @@
           action: 'get_rentcafe_data_ajax'
         },
         beforeSend: function() {
+          $('html, body').animate({
+            scrollTop: $rightColumn.offset().top - 30
+          }, 500);
           return $dataLoader.fadeIn();
         },
         error: function(jqXHR, textStatus, errorThrown) {
@@ -55,7 +59,6 @@
           return $cacheLoader.fadeIn();
         },
         error: function(jqXHR, textStatus, errorThrown) {},
-        //					console.log(jqXHR, textStatus, errorThrown)
         success: function(data, textStatus, jqXHR) {
           $('.api_clear_cache').removeClass('disabled');
           $cacheLoader.fadeOut();
@@ -67,7 +70,6 @@
       });
     });
   });
-//					console.log(data, textStatus, jqXHR)
 })(jQuery);
 
 //# sourceMappingURL=settings.js.map

@@ -4,6 +4,7 @@
 		$('#tabs').tabs()
 		# Place your administration-specific JavaScript here
 		$rentcafeDataContainer = $('#rentcafe-request-data')
+		$rightColumn = $('#right-column')
 		$dataLoader = $('#data-loader')
 		$cacheLoader = $('#cache-loader')
 		$('.api_lookup_button').on 'click', (event) ->
@@ -21,6 +22,7 @@
 					action: 'get_rentcafe_data_ajax',
 				},
 				beforeSend: () ->
+					$('html, body').animate({ scrollTop: $rightColumn.offset().top - 30 }, 500)
 					$dataLoader.fadeIn()
 				error: (jqXHR, textStatus, errorThrown) ->
 					console.log(jqXHR, textStatus, errorThrown)
@@ -45,13 +47,11 @@
 					$('.api_clear_cache').addClass('disabled')
 					$cacheLoader.fadeIn()
 				error: (jqXHR, textStatus, errorThrown) ->
-#					console.log(jqXHR, textStatus, errorThrown)
 				success: (data, textStatus, jqXHR) ->
 					$('.api_clear_cache').removeClass('disabled')
 					$cacheLoader.fadeOut()
 					$('p.clear-cached-data').append('<strong class="cache-cleared-message">&nbsp;Cache Cleared and Resaved!</strong>')
 					$('.cache-cleared-message').delay(3000).fadeOut('normal', () -> $(this).remove())
-			#					console.log(data, textStatus, jqXHR)
 			return
 	return
 ) jQuery
