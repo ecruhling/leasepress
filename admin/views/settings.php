@@ -39,7 +39,7 @@ $cmb->add_field( array(
 ) );
 $cmb->add_field( array(
 	'name'    => __( 'Length of time to cache data', LP_TEXTDOMAIN ),
-	'desc'    => __( 'RENTCafe data is cached in a transient.<br>Set the length of time to cache this data. Default is One Hour.', LP_TEXTDOMAIN ),
+	'desc'    => __( 'RENTCafe data is cached in a transient.<br>Set the length of time to cache this data. Default is One Hour.<br> After changing this setting Clear Cache for best results.', LP_TEXTDOMAIN ),
 	'id'      => 'lp_cache_time',
 	'type'    => 'select',
 	'default' => HOUR_IN_SECONDS,
