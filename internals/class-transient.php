@@ -30,7 +30,8 @@ class LP_Transient extends LP_Base {
 	 * @return mixed
 	 */
 	public static function get_or_cache_transient( $method ) {
-		$key = 'lp_rentcafe_' . $method . '_api_data';
+		$key    = 'lp_rentcafe_' . $method . '_api_data';
+		$expire = lp_get_settings()['lp_cache_time'] ? lp_get_settings()['lp_cache_time'] : HOUR_IN_SECONDS;
 
 		return remember_transient(
 			$key, function () use ( $method, $key ) {
@@ -40,8 +41,7 @@ class LP_Transient extends LP_Base {
 			}
 
 			return json_decode( wp_remote_retrieve_body( $response ) );
-		}, HOUR_IN_SECONDS
-		);
+		}, $expire );
 	}
 
 	/**

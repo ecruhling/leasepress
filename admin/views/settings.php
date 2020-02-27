@@ -35,7 +35,21 @@ $cmb->add_field( array(
 	'type'             => 'select',
 	'show_option_none' => 'Do Not Run',
 	'default'          => '',
-	'options'          => array_flip(get_page_templates()),
+	'options'          => array_flip( get_page_templates() ),
+) );
+$cmb->add_field( array(
+	'name'    => __( 'Length of time to cache data', LP_TEXTDOMAIN ),
+	'desc'    => __( 'RENTCafe data is cached in a transient.<br>Set the length of time to cache this data. Default is One Hour.', LP_TEXTDOMAIN ),
+	'id'      => 'lp_cache_time',
+	'type'    => 'select',
+	'default' => HOUR_IN_SECONDS,
+	'options' => array(
+		HOUR_IN_SECONDS / 4 => __( 'Quarter Hour', LP_TEXTDOMAIN ),
+		HOUR_IN_SECONDS / 2 => __( 'Half Hour', LP_TEXTDOMAIN ),
+		HOUR_IN_SECONDS     => __( 'One Hour', LP_TEXTDOMAIN ),
+		HOUR_IN_SECONDS * 2 => __( 'Two Hours', LP_TEXTDOMAIN ),
+		HOUR_IN_SECONDS * 3 => __( 'Three Hours', LP_TEXTDOMAIN ),
+	),
 ) );
 
 cmb2_metabox_form( LP_TEXTDOMAIN . '_options', LP_TEXTDOMAIN . '-settings' );
