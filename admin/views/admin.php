@@ -17,8 +17,9 @@
 	<h2><?= esc_html( get_admin_page_title() ); ?></h2>
 	<div id="tabs" class="settings-tab">
 		<ul>
-			<li><a href="#tabs-1" title="Settings"><?php _e( 'Settings' ); ?></a></li>
-			<li><a href="#tabs-2" title="Import/Export"><?php _e( 'Import/Export', LP_TEXTDOMAIN ); ?></a></li>
+			<li><a href="#tabs-1" title="Settings"><?php _e( 'Settings', LP_TEXTDOMAIN ); ?></a></li>
+			<li><a href="#tabs-2" title="More Settings"><?php _e( 'More Settings', LP_TEXTDOMAIN ); ?></a></li>
+			<li><a href="#tabs-3" title="Import/Export"><?php _e( 'Import/Export', LP_TEXTDOMAIN ); ?></a></li>
 		</ul>
 		<div id="tabs-1" class="wrap">
 			<div class="settings-tab">
@@ -48,6 +49,10 @@
 			</div>
 		</div>
 		<div id="tabs-2" class="metabox-holder">
+			<div class="more-settings-tab">
+			</div>
+		</div>
+		<div id="tabs-3" class="metabox-holder">
 			<?php require_once( plugin_dir_path( __FILE__ ) . 'export-import.php' ); ?>
 		</div>
 	</div>
