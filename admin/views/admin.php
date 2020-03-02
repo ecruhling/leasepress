@@ -50,6 +50,7 @@
 		</div>
 		<div id="tabs-2" class="metabox-holder">
 			<div class="more-settings-tab">
+				<?php require_once( plugin_dir_path( __FILE__ ) . 'more-settings.php' ); ?>
 			</div>
 		</div>
 		<div id="tabs-3" class="metabox-holder">
