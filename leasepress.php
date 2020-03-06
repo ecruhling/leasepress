@@ -1,5 +1,4 @@
 <?php
-
 /**
  * LeasePress
  *
@@ -18,15 +17,30 @@
  * Domain Path:        /languages
  * Requires PHP:       7.1.3
  */
-// If this file is called directly, abort.
+
 if ( ! defined( 'ABSPATH' ) ) {
 	die;
 }
 
+/**
+ * Plugin Version
+ */
 define( 'LP_VERSION', '1.0.0' );
+/**
+ * Plugin textdomain
+ */
 define( 'LP_TEXTDOMAIN', 'leasepress' );
+/**
+ * Plugin Name
+ */
 define( 'LP_NAME', 'LeasePress' );
+/**
+ * Plugin root directory
+ */
 define( 'LP_PLUGIN_ROOT', plugin_dir_path( __FILE__ ) );
+/**
+ * Plugin absolute directory path
+ */
 define( 'LP_PLUGIN_ABSOLUTE', __FILE__ );
 
 /**
@@ -42,15 +56,21 @@ function lp_load_plugin_textdomain() {
 add_action( 'plugins_loaded', 'lp_load_plugin_textdomain', 1 );
 
 if ( version_compare( PHP_VERSION, '7.1.3', '<' ) ) {
+	/**
+	 * Deactivate if PHP less than 7.1.3
+	 */
 	function l_deactivate() {
 		deactivate_plugins( plugin_basename( __FILE__ ) );
 	}
 
+	/**
+	 * Show deactivation notice
+	 */
 	function l_show_deactivation_notice() {
 		echo wp_kses_post(
 			sprintf(
 				'<div class="notice notice-error"><p>%s</p></div>',
-				__( 'LeasePress requires PHP 7.1.3 or newer.', LP_TEXTDOMAIN )
+				__( 'LeasePress requires PHP 7.1.3 or newer.', 'leasepress' )
 			)
 		);
 	}
@@ -62,10 +82,10 @@ if ( version_compare( PHP_VERSION, '7.1.3', '<' ) ) {
 	return;
 }
 
-require_once( LP_PLUGIN_ROOT . 'vendor/autoload.php' );
+require_once "LP_PLUGIN_ROOT . 'vendor/autoload.php'";
 
-require_once( LP_PLUGIN_ROOT . 'internals/functions.php' );
-require_once( LP_PLUGIN_ROOT . 'internals/debug.php' );
+require_once "LP_PLUGIN_ROOT . 'internals/functions.php'";
+require_once "LP_PLUGIN_ROOT . 'internals/debug.php'";
 
 if ( ! wp_installing() ) {
 	add_action( 'plugins_loaded', array( 'LP_Initialize', 'get_instance' ) );
