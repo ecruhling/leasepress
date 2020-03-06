@@ -1,5 +1,4 @@
 <?php
-
 /**
  * LeasePress
  *
@@ -23,13 +22,13 @@ class LP_Ajax_Admin extends LP_Admin_Base {
 			return;
 		}
 
-		// For logged in user
+		// For logged in user.
 		add_action( 'wp_ajax_delete_rentcafe_transient', array( $this, 'delete_rentcafe_transient' ) );
 		add_action( 'wp_ajax_get_rentcafe_data_ajax', array( $this, 'get_rentcafe_data_ajax' ) );
 	}
 
 	/**
-	 * get RENTCafe data AJAX
+	 * Get RENTCafe data AJAX
 	 *
 	 * @return void
 	 */
@@ -49,13 +48,11 @@ class LP_Ajax_Admin extends LP_Admin_Base {
 	 */
 	public function delete_rentcafe_transient() {
 
-		// forget both transients
-		forget_transient(
-			'lp_rentcafe_floorplan_api_data', null );
-		forget_transient(
-			'lp_rentcafe_apartmentavailability_api_data', null );
+		// forget both transients.
+		forget_transient( 'lp_rentcafe_floorplan_api_data', null );
+		forget_transient( 'lp_rentcafe_apartmentavailability_api_data', null );
 
-		// regenerate both transients
+		// regenerate both transients.
 		\LP_Transient::get_or_cache_transient( 'floorplan' );
 		\LP_Transient::get_or_cache_transient( 'apartmentavailability' );
 

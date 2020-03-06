@@ -1,5 +1,4 @@
 <?php
-
 /**
  * LeasePress
  *
@@ -21,11 +20,11 @@ class LP_Admin_ActDeact extends LP_Admin_Base {
 	 * @return void
 	 */
 	public function initialize() {
-		if ( !parent::initialize() ) {
-            return;
+		if ( ! parent::initialize() ) {
+			return;
 		}
 
-		// Activate plugin when new blog is added
+		// Activate plugin when new blog is added.
 		add_action( 'wpmu_new_blog', array( $this, 'activate_new_site' ) );
 
 		register_activation_hook( LP_TEXTDOMAIN . '/' . LP_TEXTDOMAIN . '.php', array( __CLASS__, 'activate' ) );
@@ -38,9 +37,8 @@ class LP_Admin_ActDeact extends LP_Admin_Base {
 	 *
 	 * @param integer $blog_id ID of the new blog.
 	 *
-	 * @since 1.0.0
-	 *
 	 * @return void
+	 * @since 1.0.0
 	 */
 	public function activate_new_site( $blog_id ) {
 		if ( 1 !== did_action( 'wpmu_new_blog' ) ) {
@@ -57,14 +55,13 @@ class LP_Admin_ActDeact extends LP_Admin_Base {
 	 *
 	 * @param boolean $network_wide True if active in a multisite, false if classic site.
 	 *
-	 * @since 1.0.0
-	 *
 	 * @return void
+	 * @since 1.0.0
 	 */
 	public static function activate( $network_wide ) {
 		if ( function_exists( 'is_multisite' ) && is_multisite() ) {
 			if ( $network_wide ) {
-				// Get all blog ids
+				// Get all blog ids.
 				$blogs = get_sites();
 				foreach ( $blogs as $blog ) {
 					switch_to_blog( $blog->blog_id );
@@ -87,14 +84,13 @@ class LP_Admin_ActDeact extends LP_Admin_Base {
 	 *                              WPMU is disabled or plugin is
 	 *                              deactivated on an individual blog.
 	 *
-	 * @since 1.0.0
-	 *
 	 * @return void
+	 * @since 1.0.0
 	 */
 	public static function deactivate( $network_wide ) {
 		if ( function_exists( 'is_multisite' ) && is_multisite() ) {
 			if ( $network_wide ) {
-				// Get all blog ids
+				// Get all blog ids.
 				$blogs = get_sites();
 				foreach ( $blogs as $blog ) {
 					switch_to_blog( $blog->blog_id );
@@ -112,9 +108,8 @@ class LP_Admin_ActDeact extends LP_Admin_Base {
 	/**
 	 * Fired for each blog when the plugin is activated.
 	 *
-	 * @since 1.0.0
-	 *
 	 * @return void
+	 * @since 1.0.0
 	 */
 	private static function single_activate() {
 		// @TODO: Define activation functionality here
@@ -128,9 +123,8 @@ class LP_Admin_ActDeact extends LP_Admin_Base {
 	/**
 	 * Fired for each blog when the plugin is deactivated.
 	 *
-	 * @since 1.0.0
-	 *
 	 * @return void
+	 * @since 1.0.0
 	 */
 	private static function single_deactivate() {
 		// @TODO: Define deactivation functionality here
@@ -144,7 +138,7 @@ class LP_Admin_ActDeact extends LP_Admin_Base {
 	 * @return void
 	 */
 	public static function add_capabilities() {
-		// Add the capabilities to all the roles
+		// Add the capabilities to all the roles.
 		$caps  = array(
 			'create_plugins',
 			'read_demo',
@@ -175,7 +169,7 @@ class LP_Admin_ActDeact extends LP_Admin_Base {
 			}
 		}
 
-		// Remove capabilities to specific roles
+		// Remove capabilities to specific roles.
 		$bad_caps = array(
 			'create_demoes',
 			'read_private_demoes',
