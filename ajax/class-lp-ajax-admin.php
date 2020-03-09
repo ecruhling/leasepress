@@ -1,6 +1,6 @@
 <?php
 /**
- * LeasePress
+ * LeasePress Admin AJAX
  *
  * @package   LeasePress
  * @author    Erik Ruhling <ecruhling@gmail.com>

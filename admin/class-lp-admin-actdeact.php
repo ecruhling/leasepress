@@ -116,7 +116,7 @@ class LP_Admin_ActDeact extends LP_Admin_Base {
 		// add_role( 'advanced', __( 'Advanced' ) ); //Add a custom roles
 		self::add_capabilities();
 		self::upgrade_procedure();
-		// Clear the permalinks
+		// Clear the permalinks.
 		flush_rewrite_rules();
 	}
 
@@ -128,7 +128,7 @@ class LP_Admin_ActDeact extends LP_Admin_Base {
 	 */
 	private static function single_deactivate() {
 		// @TODO: Define deactivation functionality here
-		// Clear the permalinks
+		// Clear the permalinks.
 		flush_rewrite_rules();
 	}
 

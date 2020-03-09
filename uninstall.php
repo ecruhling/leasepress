@@ -1,5 +1,4 @@
 <?php
-
 /**
  * LeasePress
  *
@@ -21,27 +20,28 @@
  * @license   GPL 2.0+
  * @link      https://resourceatlanta.com
  */
+
 // If uninstall not called from WordPress, then exit.
-if ( !defined( 'WP_UNINSTALL_PLUGIN' ) ) {
+if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit;
 }
 
 /**
  * Loop for uninstall
  *
- * @global type $wpdb
- *
  * @return void
+ * @global $wpdb
  */
 function l_uninstall_multisite() {
 	if ( is_multisite() ) {
 		$blogs = get_sites();
-		if ( !empty( $blogs ) ) {
+		if ( ! empty( $blogs ) ) {
 			foreach ( $blogs as $blog ) {
 				switch_to_blog( $blog->blog_id );
 				l_uninstall();
 				restore_current_blog();
 			}
+
 			return;
 		}
 	}
@@ -49,11 +49,10 @@ function l_uninstall_multisite() {
 }
 
 /**
- * What happen on uninstall?
- *
- * @global WP_Roles $wp_roles
+ * What happens on uninstall?
  *
  * @return void
+ * @global WP_Roles $wp_roles
  */
 function l_uninstall() {
 	global $wp_roles;
@@ -87,9 +86,9 @@ function l_uninstall() {
 	  $GLOBALS['wpdb']->query("OPTIMIZE TABLE `" .$GLOBALS['wpdb']->prefix."options`");
 	 */
 
-	// Remove the capabilities of the plugin
-	if ( !isset( $wp_roles ) ) {
-		$wp_roles = new WP_Roles;
+	// Remove the capabilities of the plugin.
+	if ( ! isset( $wp_roles ) ) {
+		$wp_roles = new WP_Roles();
 	}
 
 	$caps = array(

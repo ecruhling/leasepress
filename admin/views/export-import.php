@@ -1,3 +1,16 @@
+<?php
+/**
+ * Export / Import tab for the administration dashboard.
+ *
+ * @package   LeasePress
+ * @author    Erik Ruhling <ecruhling@gmail.com>
+ * @copyright Resource Branding and Design
+ * @license   GPL 2.0+
+ * @link      https://resourceatlanta.com
+ */
+
+?>
+
 <div class="postbox">
 	<h3 class="hndle"><span><?php esc_html_e( 'Export LeasePress Settings', 'leasepress' ); ?></span></h3>
 	<div class="inside">

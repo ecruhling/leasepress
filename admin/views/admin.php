@@ -14,9 +14,6 @@
 
 ?>
 
-<?php //lp_log( \LP_Transient::get_or_cache_transient( 'apartmentavailability' ) ); ?>
-<?php //\LP_Transient::print_transient_output( 'floorplan' ); ?>
-
 <div class="wrap">
 	<h2><?php echo esc_html( get_admin_page_title() ); ?></h2>
 	<div id="tabs" class="settings-tab">

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * LeasePress
  *
@@ -42,13 +41,13 @@ class LP_Initialize {
 	 * @since 1.0.0
 	 */
 	public function __construct() {
-        $this->is        = new LP_Is_Methods();
-        $this->classes   = array();
-        $this->classes[] = 'LP_PostTypes';
-        $this->classes[] = 'LP_CMB';
-        $this->classes[] = 'LP_Cron';
-        $this->classes[] = 'LP_FakePage';
-        $this->classes[] = 'LP_Template';
+		$this->is        = new LP_Is_Methods();
+		$this->classes   = array();
+		$this->classes[] = 'LP_PostTypes';
+		$this->classes[] = 'LP_CMB';
+		$this->classes[] = 'LP_Cron';
+		$this->classes[] = 'LP_FakePage';
+		$this->classes[] = 'LP_Template';
 		$this->classes[] = 'LP_API_Lookups';
 		if ( $this->is->request( 'rest' ) ) {
 			$this->classes[] = 'LP_Rest';
@@ -85,10 +84,13 @@ class LP_Initialize {
 		$this->load_classes();
 	}
 
+	/**
+	 * Load Classes
+	 */
 	private function load_classes() {
 		foreach ( $this->classes as &$class ) {
 			$class = apply_filters( strtolower( $class ) . '_instance', $class );
-			$temp  = new $class;
+			$temp  = new $class();
 			$temp->initialize();
 		}
 	}
@@ -97,19 +99,18 @@ class LP_Initialize {
 	 * Return an instance of this class.
 	 *
 	 * @return object A single instance of this class.
-	 * @throws Exception
+	 * @throws Exception Throw an exception if an error.
 	 * @since 1.0.0
-	 *
 	 */
 	public static function get_instance() {
 		// If the single instance hasn't been set, set it now.
 		if ( null === self::$instance ) {
 			try {
-				self::$instance = new self;
+				self::$instance = new self();
 			} catch ( Exception $err ) {
 				do_action( 'leasepress_initialize_failed', $err );
 				if ( WP_DEBUG ) {
-					throw new Exception($err->getMessage());
+					throw new Exception( $err->getMessage() );
 				}
 			}
 		}
