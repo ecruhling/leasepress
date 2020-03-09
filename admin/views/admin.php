@@ -16,7 +16,7 @@
 
 <div class="wrap">
 	<h2><?php echo esc_html( get_admin_page_title() ); ?></h2>
-	<div id="tabs" class="settings-tab">
+	<div id="tabs">
 		<ul>
 			<li><a href="#tabs-1" title="Settings"><?php esc_html_e( 'Settings', 'leasepress' ); ?></a></li>
 			<li><a href="#tabs-2" title="More Settings"><?php esc_html_e( 'More Settings', 'leasepress' ); ?></a></li>

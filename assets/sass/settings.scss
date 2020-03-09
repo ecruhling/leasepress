@@ -49,13 +49,18 @@
 }
 
 .settings-tab {
-  float: left;
+  @media screen and (min-width: 783px) {
+	float: left;
+	margin-right: 320px;
+  }
 }
 
 .right-column-settings-page {
-  max-width: 270px;
-  float: right;
-  position: relative;
+  @media screen and (min-width: 783px) {
+	max-width: 270px;
+	float: right;
+	margin-left: -320px;
+  }
 }
 
 p.clear-cached-data {
