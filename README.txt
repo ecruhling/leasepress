@@ -4,7 +4,7 @@ Tags: rentcafe, yardi, site plans, floor plans, rent, lease
 Requires at least: 5.3
 Tested up to: 5.3
 Stable tag: 1.0.0
-Requires PHP: 7.1.3 (with php-mbstring enabled)
+Requires PHP: 7.1.3
 
 Ready to graduate from renting to leasing? Supports API data from RENTCafe (Yardi).
 
@@ -36,6 +36,8 @@ that lacks those changes -- as long as the trunk's `readme.txt` points to the co
 you put the stable version, in order to eliminate any doubt.
 
 == Installation ==
+
+Make sure the mbstring PHP extension is enabled.
 
 = Using The WordPress Dashboard =
 
