@@ -47,7 +47,7 @@ class LP_Cron extends LP_Base {
 	 * @return void
 	 */
 	public function hourly_cron( $id ) {
-		echo esc_html( $id );
+		echo esc_html( (string) $id );
 	}
 
 }

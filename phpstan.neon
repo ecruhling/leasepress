@@ -4,35 +4,27 @@ includes:
     # https://github.com/phpstan/phpstan/blob/master/conf/bleedingEdge.neon
     - vendor/phpstan/phpstan/conf/bleedingEdge.neon
     - vendor/szepeviktor/phpstan-wordpress/extension.neon
-    - vendor/szepeviktor/phpstan-phpdoc/extension.neon
 parameters:
     level: max
-    paths:
-        - %currentWorkingDirectory%
-    excludes_analyse:
-        - %currentWorkingDirectory%/vendor
-        - %currentWorkingDirectory%/tests
+    checkMissingIterableValueType: false
     autoload_files:
-        # Procedural code
-        - %currentWorkingDirectory%/plugin-name.php
+        - %currentWorkingDirectory%/tests/phpstan/bootstrap.php
+        - %currentWorkingDirectory%/internals/functions.php
+        - %currentWorkingDirectory%/internals/debug.php
+        - %currentWorkingDirectory%/vendor/cmb2-grid/Grid/Cmb2Grid.php
+    paths:
+        - %currentWorkingDirectory%/
+    excludes_analyse:
+        # TODO Restructure main plugin file
+        - %currentWorkingDirectory%/leasepress.php
+        - %currentWorkingDirectory%/uninstall.php
+        - %currentWorkingDirectory%/vendor/
+        - %currentWorkingDirectory%/tests/
     ignoreErrors:
-        # Uses func_get_args()
-        - '#^Function apply_filters invoked with [34567] parameters, 2 required\.$#'
-        - '#^Function do_action invoked with [3456] parameters, 1-2 required\.$#'
-        - '#^Function current_user_can invoked with 2 parameters, 1 required\.$#'
-        - '#^Function add_query_arg invoked with [123] parameters?, 0 required\.$#'
+        # TODO No typehints
+        - '# has no return typehint specified\.$#'
         # Less import errors
-        - '/^Parameter #1 \$text of function esc_html expects string, int given\.$/'
         - '/^Parameter #1 \$file of function plugin_dir_path expects string, string\|false given\.$/'
         - '/^Parameter #1 \$array_arg of function end is passed by reference, so it expects variables only\.$/'
         - '#Argument of an invalid type array\|int supplied for foreach, only iterables are supported\.#'
-        - '#Argument of an invalid type object supplied for foreach, only iterables are supported\.#'
-        - '#Access to an undefined property object::\$is_search\.#'
         - '#Access to an undefined property object::\$pending\.#'
-        - '#Access to an undefined property object::\$ID\.#'
-        - '#Call to an undefined method object::set\(\)\.#'
-        - '#Call to an undefined method object::get\(\)\.#'
-        # https://core.trac.wordpress.org/ticket/43304
-        - '/^Parameter #2 \$deprecated of function load_plugin_textdomain expects string, false given\.$/'
-        # WP-CLI accepts a class as callable
-        - '/^Parameter #2 \$callable of static method WP_CLI::add_command\(\) expects callable\(\): mixed, \S+ given\.$/'

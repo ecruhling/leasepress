@@ -98,7 +98,7 @@ class LP_Admin_ImpExp extends LP_Admin_Base {
 		}
 
 		// Retrieve the settings from the file and convert the json object to an array.
-		$settings = (array) wp_json_decode( file_get_contents( $import_file ) );
+		$settings = (array) json_decode( file_get_contents( $import_file ) );
 
 		update_option( LP_TEXTDOMAIN . '-settings', get_object_vars( $settings[ 0 ] ) );
 		update_option( LP_TEXTDOMAIN . '-settings-second', get_object_vars( $settings[ 1 ] ) );
