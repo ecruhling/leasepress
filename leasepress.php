@@ -8,6 +8,7 @@
  * @license     GPL 2.0+
  * @link        https://resourceatlanta.com
  *
+ * @wordpress-plugin
  * Plugin Name:       LeasePress
  * Description:       Ready to graduate from renting to leasing? Supports API data from RENTCafe.
  * Version:           1.0.0
