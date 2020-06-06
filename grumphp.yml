@@ -10,8 +10,8 @@ parameters:
             strict: false
         git_blacklist:
             keywords:
-                - 'die('
-                - 'print_r('
-                - 'var_dump('
+                - '\bdie('
+                - '\bprint_r('
+                - '\bvar_dump('
             triggered_by: ['php']
 

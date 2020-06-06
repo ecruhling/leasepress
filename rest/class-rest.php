@@ -97,11 +97,11 @@ class LP_Rest extends LP_Base {
      *
      * @since 1.0.0
      *
-     * @param string $value Value.
-     * @param object $post  Post object.
-     * @param string $key   Key.
+     * @param string   $value Value.
+     * @param \WP_Post $post  Post object.
+     * @param string   $key   Key.
      *
-     * @return boolean|WP_Error
+     * @return boolean|\WP_Error
      */
     public function update_text_field( $value, $post, $key ) {
         $post_id = update_post_meta( $post->ID, $key, $value );

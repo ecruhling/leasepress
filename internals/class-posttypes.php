@@ -63,11 +63,11 @@ class LP_PostTypes extends LP_Base {
 	/**
 	 * Add support for custom CPT on the search box
 	 *
-	 * @param object $query Wp_Query.
+	 * @param \WP_Query $query WP_Query.
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return object
+	 * @return \WP_Query
 	 */
 	public function filter_search( $query ) {
 		if ( $query->is_search && !is_admin() ) {

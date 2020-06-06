@@ -19,7 +19,7 @@ class LP_API_Lookups extends LP_Base {
 	/**
 	 * Checks if file contains valid JSON
 	 *
-	 * @param $json
+	 * @param string $json
 	 *
 	 * @return bool
 	 */
@@ -51,10 +51,10 @@ class LP_API_Lookups extends LP_Base {
 
 			$content = $this->get_rentcafe_data( $methodName );
 
-			if ( $this->is_JSON( $content ) ) {
-				file_put_contents( $file, $content ); // write contents if file expired
+			if ( $this->is_JSON( $content[1] ) ) {
+				file_put_contents( $file, $content[1] ); // write contents if file expired
 
-				return $content;
+				return $content[1];
 
 			} else {
 				// not valid JSON - use old file
@@ -68,7 +68,7 @@ class LP_API_Lookups extends LP_Base {
 	 * Get RENTCafe data
 	 *
 	 * @param string $methodName 'floorplan' or 'apartmentavailability' requestType
-	 * @param null $type    applicantLogin, residentLogin, availability, and propertyDetailPage
+	 * @param string|null $type applicantLogin, residentLogin, availability, and propertyDetailPage
 	 *
 	 * @return array
 	 */
@@ -160,7 +160,7 @@ class LP_API_Lookups extends LP_Base {
 	/**
 	 * Get The SVGs and PDFs for the plans
 	 *
-	 * @param $searchFor
+	 * @param string $searchFor
 	 *
 	 * @return array
 	 */
@@ -205,7 +205,7 @@ class LP_API_Lookups extends LP_Base {
 
 		$floorplansData = [];
 
-		$floorplansArray = json_decode( $this->get_rentcafe_data( 'floorplan' ) );
+		$floorplansArray = json_decode( $this->get_rentcafe_data( 'floorplan' )[1] );
 //		$floorplansArray = json_decode( $this->get_content( 'api_floorplans.json', 'floorplan', 1 ) );
 		if ( isset( $floorplansArray[0]->Error ) ) { // if an Error in API request
 			return $floorplansData;

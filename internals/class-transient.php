@@ -25,7 +25,7 @@ class LP_Transient extends LP_Base {
 	/**
 	 * Retrieve or cache data in a WordPress transient
 	 *
-	 * @param $method
+	 * @param string $method
 	 *
 	 * @return mixed
 	 */
@@ -34,7 +34,7 @@ class LP_Transient extends LP_Base {
 		$expire = lp_get_settings()['lp_cache_time'] ? lp_get_settings()['lp_cache_time'] : HOUR_IN_SECONDS;
 
 		return remember_transient(
-			$key, function () use ( $method, $key ) {
+			$key, function () use ( $method ) {
 			$response = \LP_API_Lookups::get_rentcafe_data( $method )[1];
 			if ( is_wp_error( $response ) ) {
 				return false;
@@ -47,7 +47,7 @@ class LP_Transient extends LP_Base {
 	/**
 	 * Print the transient content
 	 *
-	 * @param $method
+	 * @param string $method
 	 *
 	 * @return void
 	 */
