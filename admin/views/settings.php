@@ -114,7 +114,9 @@ cmb2_metabox_form( 'leasepress_options', 'leasepress-settings' );
 	<h3 class="hndle"><span><?php esc_html_e( 'RentCAFE API Floorplan Lookup', 'leasepress' ); ?></span></h3>
 	<div class="inside">
 		<p>
-			<?php esc_html_e( 'perform a real-time lookup of the RentCAFE API Floorplan method, using the above information. Result is not cached.<br>Use this to confirm that RENTCafe is returning valid data.', 'leasepress' ); ?>
+			<?php esc_html_e( 'perform a real-time lookup of the RentCAFE API Floorplan method, using the above information. Result is not cached.', 'leasepress' ); ?>
+			<br>
+			<?php esc_html_e( 'Use this to confirm that RENTCafe is returning valid data.', 'leasepress' ); ?>
 		</p>
 		<form method="post">
 			<p><input type="hidden" name="lp_action" value="api_floorplans_lookup"/></p>
@@ -129,7 +131,9 @@ cmb2_metabox_form( 'leasepress_options', 'leasepress-settings' );
 	<h3 class="hndle"><span><?php esc_html_e( 'RentCAFE API Availabilities Lookup', 'leasepress' ); ?></span></h3>
 	<div class="inside">
 		<p>
-			<?php esc_html_e( 'perform a real-time lookup of the RentCAFE API Availabilities method, using the above information. Result is not cached.<br>Use this to confirm that RENTCafe is returning valid data.', 'leasepress' ); ?>
+			<?php esc_html_e( 'perform a real-time lookup of the RentCAFE API Availabilities method, using the above information. Result is not cached.', 'leasepress' ); ?>
+			<br>
+			<?php esc_html_e( 'Use this to confirm that RENTCafe is returning valid data.', 'leasepress' ); ?>
 		</p>
 		<form method="post">
 			<p><input type="hidden" name="lp_action" value="api_availabilities_lookup"/></p>
@@ -146,7 +150,10 @@ cmb2_metabox_form( 'leasepress_options', 'leasepress-settings' );
 	</h3>
 	<div class="inside">
 		<p>
-			<?php esc_html_e( 'perform a real-time lookup of the RentCAFE API getRentCafeUrl method, residentLogin type, using the above information. Result is not cached.<br>Use this to confirm that RENTCafe is returning valid data.', 'leasepress' ); ?></p>
+			<?php esc_html_e( 'perform a real-time lookup of the RentCAFE API getRentCafeUrl method, residentLogin type, using the above information. Result is not cached.', 'leasepress' ); ?>
+			<br>
+			<?php esc_html_e( 'Use this to confirm that RENTCafe is returning valid data.', 'leasepress' ); ?>
+		</p>
 		<form method="post">
 			<p><input type="hidden" name="lp_action" value="api_getRENTCafeURL_residentLogin_lookup"/></p>
 			<p>
@@ -172,7 +179,7 @@ cmb2_metabox_form( 'leasepress_options', 'leasepress-settings' );
 		<span><?php esc_html_e( 'RentCAFE API getRentCafeUrl applicantLogin Lookup', 'leasepress' ); ?></span>
 	</h3>
 	<div class="inside">
-		<p><?php esc_html_e( 'perform a real-time lookup of the RentCAFE API getRentCafeUrl method, applicantLogin type, using the above information. Result is not cached.<br>Use this to confirm that RENTCafe is returning valid data.', 'leasepress' ); ?></p>
+		<p><?php esc_html_e( 'perform a real-time lookup of the RentCAFE API getRentCafeUrl method, applicantLogin type, using the above information. Result is not cached. Use this to confirm that RENTCafe is returning valid data.', 'leasepress' ); ?></p>
 		<form method="post">
 			<p><input type="hidden" name="lp_action" value="api_getRENTCafeURL_applicantLogin_lookup"/></p>
 			<p>
