@@ -25,7 +25,7 @@ class LP_Transient extends LP_Base {
 	/**
 	 * Retrieve or cache data in a WordPress transient
 	 *
-	 * @param $method
+	 * @param string $method
 	 *
 	 * @return mixed
 	 */

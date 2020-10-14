@@ -31,12 +31,12 @@ class LP_Cron extends LP_Base {
 		);
 
 		$cronplus = new CronPlus( $args );
-        // Schedule the event
+		// Schedule the event.
 		$cronplus->schedule_event();
-        // Remove the event by the schedule
-        //$cronplus->clear_schedule_by_hook();
-        // Jump the scheduled event
-        //$cronplus->unschedule_specific_event();
+		// Remove the event by the schedule.
+		// $cronplus->clear_schedule_by_hook();
+		// Jump the scheduled event.
+		//$cronplus->unschedule_specific_event();
 	}
 
 	/**
@@ -47,7 +47,7 @@ class LP_Cron extends LP_Base {
 	 * @return void
 	 */
 	public function hourly_cron( $id ) {
-		echo esc_html( $id );
+		echo esc_html( (string) $id );
 	}
 
 }
