@@ -1,1 +1,9 @@
-<?php // Silence is golden.
+<?php
+/**
+ *
+ *  Empty file
+ *
+ * @package    LeasePress
+ */
+
+// Silence is golden.

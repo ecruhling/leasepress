@@ -1,5 +1,4 @@
 <?php
-
 /**
  * LeasePress
  *
@@ -19,7 +18,7 @@ class LP_Admin_Settings_Page extends LP_Admin_Base {
 	 * Initialize the class
 	 */
 	public function initialize() {
-		if ( !parent::initialize() ) {
+		if ( ! parent::initialize() ) {
 			return;
 		}
 
@@ -54,24 +53,23 @@ class LP_Admin_Settings_Page extends LP_Admin_Base {
 	 * @return void
 	 */
 	public function display_plugin_admin_page() {
-		include_once( LP_PLUGIN_ROOT . 'admin/views/admin.php' );
+		include_once LP_PLUGIN_ROOT . 'admin/views/admin.php';
 	}
 
 	/**
 	 * Add settings action link to the plugins page.
 	 *
-	 * @since 1.0.0
-	 *
 	 * @param array $links Array of links.
 	 *
 	 * @return array
+	 * @since 1.0.0
 	 */
-	public function add_action_links( $links ) {
+	public function add_action_links( array $links ) {
 		return array_merge(
 			array(
-				'settings' => '<a href="' . admin_url( 'options-general.php?page=' . 'leasepress' ) . '">' . __( 'Settings', 'leasepress' ) . '</a>',
+				'settings' => '<a title="LeasePress Settings" href="' . admin_url( 'options-general.php?page=leasepress' ) . '">' . __( 'Settings', 'leasepress' ) . '</a>',
 			),
-            $links
+			$links
 		);
 	}
 

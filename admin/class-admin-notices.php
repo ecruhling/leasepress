@@ -1,5 +1,4 @@
 <?php
-
 /**
  * LeasePress
  *
@@ -30,10 +29,17 @@ class LP_Admin_Notices extends LP_Admin_Base {
 		 */
 //		new WP_Admin_Notice( __( 'Updated Messages', 'leasepress' ), 'updated' );
 //		new WP_Admin_Notice( __( 'Error Messages', 'leasepress' ), 'error' );
+
 		/*
 		 * Dismissible notice
 		 */
-		dnh_register_notice( 'lp_activation_notice', 'updated', __( 'LeasePress activated! Now go to <a href="' . admin_url( 'options-general.php?page=' . 'leasepress' ) . '">' . __( 'Settings', 'leasepress' ) . '</a> to configure.', 'leasepress' ) );
+		dnh_register_notice(
+			'lp_activation_notice',
+			'updated',
+			'LeasePress activated! Now go to <a href="' . admin_url( 'options-general.php?page=leasepress' ) . '">' . __( 'Settings', 'leasepress' ) . '</a> to configure.',
+			'leasepress',
+		);
+
 		/*
 		 * Review Me notice
 		 */

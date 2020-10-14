@@ -27,7 +27,6 @@ class LP_Rest extends LP_Base {
 	 *
 	 * @return void
 	 * @since 1.0.0
-	 *
 	 */
 	public function add_custom_stuff() {
 		$this->add_custom_field();
@@ -39,17 +38,20 @@ class LP_Rest extends LP_Base {
 	 *
 	 * @return void
 	 * @since 1.0.0
-	 *
 	 */
 	public function add_custom_field() {
-		register_rest_field( 'demo', 'leasepress_text', array(
-			'get_callback'    => array( $this, 'get_text_field' ),
-			'update_callback' => array( $this, 'update_text_field' ),
-			'schema'          => array(
-				'description' => __( 'Text field demo of Post type', 'leasepress' ),
-				'type'        => 'string',
-			),
-		) );
+		register_rest_field(
+			'demo',
+			'leasepress_text',
+			array(
+				'get_callback'    => array( $this, 'get_text_field' ),
+				'update_callback' => array( $this, 'update_text_field' ),
+				'schema'          => array(
+					'description' => __( 'Text field demo of Post type', 'leasepress' ),
+					'type'        => 'string',
+				),
+			)
+		);
 	}
 
 	/**
@@ -57,24 +59,27 @@ class LP_Rest extends LP_Base {
 	 *
 	 * @return void
 	 * @since 1.0.0
-	 *
 	 */
 	public function add_custom_ruote() {
 		// Only an example with 2 parameters.
-		register_rest_route( 'wp/v2', '/calc', array(
-			'methods'  => WP_REST_Server::READABLE,
-			'callback' => array( $this, 'sum' ),
-			'args'     => array(
-				'first'  => array(
-					'default'           => 10,
-					'sanitize_callback' => 'absint',
+		register_rest_route(
+			'wp/v2',
+			'/calc',
+			array(
+				'methods'  => WP_REST_Server::READABLE,
+				'callback' => array( $this, 'sum' ),
+				'args'     => array(
+					'first'  => array(
+						'default'           => 10,
+						'sanitize_callback' => 'absint',
+					),
+					'second' => array(
+						'default'           => 1,
+						'sanitize_callback' => 'absint',
+					),
 				),
-				'second' => array(
-					'default'           => 1,
-					'sanitize_callback' => 'absint',
-				),
-			),
-		) );
+			)
+		);
 	}
 
 	/**
@@ -84,7 +89,6 @@ class LP_Rest extends LP_Base {
 	 *
 	 * @return string
 	 * @since 1.0.0
-	 *
 	 */
 	public function get_text_field( $post_obj ) {
 		$post_id = $post_obj['id'];
@@ -102,7 +106,7 @@ class LP_Rest extends LP_Base {
 	 * @return boolean|WP_Error
 	 * @since 1.0.0
 	 */
-	public function update_text_field( $value, $post, $key ) {
+	public function update_text_field( string $value, WP_Post $post, string $key ) {
 		$post_id = update_post_meta( $post->ID, $key, $value );
 
 		if ( false === $post_id ) {
@@ -124,7 +128,7 @@ class LP_Rest extends LP_Base {
 	 * @return array
 	 * @since 1.0.0
 	 */
-	public function sum( $data ) {
+	public function sum( array $data ) {
 		return array( 'result' => $data['first'] + $data['second'] );
 	}
 

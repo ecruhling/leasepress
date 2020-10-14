@@ -1,4 +1,9 @@
 <?php
+/**
+ * PHPStan
+ *
+ * @package    LeasePress
+ */
 
 define( 'LP_VERSION', '0.0.0' );
 define( 'LP_NAME', 'LeasePress' );

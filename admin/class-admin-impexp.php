@@ -1,5 +1,4 @@
 <?php
-
 /**
  * LeasePress
  *
@@ -38,11 +37,14 @@ class LP_Admin_ImpExp extends LP_Admin_Base {
 	 * @return void
 	 */
 	public function settings_export() {
-		if ( empty( $_POST['lp_action'] ) || 'export_settings' !== esc_html( $_POST['lp_action'] ) ) {
+		$lp_action       = isset( $_POST['lp_action'] ) ? sanitize_text_field( wp_unslash( $_POST['lp_action'] ) ) : null;
+		$lp_export_nonce = isset( $_POST['lp_export_nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['lp_export_nonce'] ) ) : null;
+
+		if ( empty( $lp_action ) || 'export_settings' !== $lp_action ) {
 			return;
 		}
 
-		if ( !wp_verify_nonce( esc_html( $_POST['lp_export_nonce'] ), 'lp_export_nonce' ) ) {
+		if ( ! wp_verify_nonce( $lp_export_nonce, 'lp_export_nonce' ) ) {
 			return;
 		}
 
@@ -73,11 +75,16 @@ class LP_Admin_ImpExp extends LP_Admin_Base {
 	 * @return void
 	 */
 	public function settings_import() {
-		if ( empty( $_POST['lp_action'] ) || 'import_settings' !== esc_html( $_POST['lp_action'] ) ) {
+		$lp_action        = isset( $_POST['lp_action'] ) ? sanitize_text_field( wp_unslash( $_POST['lp_action'] ) ) : null;
+		$lp_import_nonce  = isset( $_POST['lp_import_nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['lp_import_nonce'] ) ) : null;
+		$import_file_name = isset( $_FILES['import_file']['name'] ) ? sanitize_text_field( wp_unslash( $_FILES['import_file']['name'] ) ) : null;
+		$import_file      = isset( $_FILES['import_file']['tmp_name'] ) ? sanitize_text_field( wp_unslash( $_FILES['import_file']['tmp_name'] ) ) : null;
+
+		if ( empty( $lp_action ) || 'import_settings' !== $lp_action ) {
 			return;
 		}
 
-		if ( !wp_verify_nonce( esc_html( $_POST['lp_import_nonce'] ), 'lp_import_nonce' ) ) {
+		if ( ! wp_verify_nonce( $lp_import_nonce, 'lp_import_nonce' ) ) {
 			return;
 		}
 
@@ -85,16 +92,15 @@ class LP_Admin_ImpExp extends LP_Admin_Base {
 			return;
 		}
 
-		$extension = end( explode( '.', $_FILES['import_file']['name'] ) );
+		$array     = explode( '.', $import_file_name );
+		$extension = end( $array );
 
 		if ( 'json' !== $extension ) {
-			wp_die( __( 'Please upload a valid .json file', 'leasepress' ) );
+			wp_die( esc_html__( 'Please upload a valid .json file', 'leasepress' ) );
 		}
 
-		$import_file = $_FILES['import_file']['tmp_name'];
-
 		if ( empty( $import_file ) ) {
-			wp_die( __( 'Please upload a file to import', 'leasepress' ) );
+			wp_die( esc_html__( 'Please upload a file to import', 'leasepress' ) );
 		}
 
 		// Retrieve the settings from the file and convert the json object to an array.
@@ -103,7 +109,7 @@ class LP_Admin_ImpExp extends LP_Admin_Base {
 		update_option( 'leasepress-settings', get_object_vars( $settings[0] ) );
 		update_option( 'leasepress-settings-second', get_object_vars( $settings[1] ) );
 
-		wp_safe_redirect( admin_url( 'options-general.php?page=' . 'leasepress' ) );
+		wp_safe_redirect( admin_url( 'options-general.php?page=leasepress' ) );
 		exit;
 	}
 

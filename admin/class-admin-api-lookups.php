@@ -1,5 +1,4 @@
 <?php
-
 /**
  * LeasePress
  *
@@ -10,6 +9,9 @@
  * @link      https://resourceatlanta.com
  */
 
+/**
+ * This class is for all the API Lookups
+ */
 class LP_Admin_APILookups extends LP_Admin_Base {
 
 }

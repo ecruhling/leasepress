@@ -35,7 +35,7 @@ define( 'LP_PLUGIN_ABSOLUTE', __FILE__ );
  */
 function lp_load_plugin_textdomain() {
 	$locale = apply_filters( 'plugin_locale', get_locale(), 'leasepress' );
-	load_textdomain( 'leasepress', trailingslashit( WP_PLUGIN_DIR ) . 'leasepress/languages/' . 'leasepress-' . $locale . '.mo' );
+	load_textdomain( 'leasepress', trailingslashit( WP_PLUGIN_DIR ) . 'leasepress/languages/leasepress-' . $locale . '.mo' );
 }
 
 add_action( 'plugins_loaded', 'lp_load_plugin_textdomain', 1 );
