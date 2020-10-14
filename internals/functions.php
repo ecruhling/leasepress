@@ -16,7 +16,7 @@
  * @return array
  */
 function lp_get_settings() {
-	return apply_filters( 'lp_get_settings', get_option( LP_TEXTDOMAIN . '-settings' ) );
+	return apply_filters( 'lp_get_settings', get_option( 'leasepress-settings' ) );
 }
 
 /**

@@ -27,8 +27,8 @@ class LP_Admin_ActDeact extends LP_Admin_Base {
 		// Activate plugin when new blog is added.
 		add_action( 'wpmu_new_blog', array( $this, 'activate_new_site' ) );
 
-		register_activation_hook( LP_TEXTDOMAIN . '/' . LP_TEXTDOMAIN . '.php', array( __CLASS__, 'activate' ) );
-		register_deactivation_hook( LP_TEXTDOMAIN . '/' . LP_TEXTDOMAIN . '.php', array( __CLASS__, 'deactivate' ) );
+		register_activation_hook( 'leasepress/' . 'leasepress.php', array( __CLASS__, 'activate' ) );
+		register_deactivation_hook( 'leasepress/' . 'leasepress.php', array( __CLASS__, 'deactivate' ) );
 		add_action( 'admin_init', array( $this, 'upgrade_procedure' ) );
 	}
 
@@ -208,7 +208,7 @@ class LP_Admin_ActDeact extends LP_Admin_Base {
 			$version = get_option( 'leasepress-version' );
 			if ( version_compare( LP_VERSION, $version, '>' ) ) {
 				update_option( 'leasepress-version', LP_VERSION );
-				delete_option( LP_TEXTDOMAIN . '_fake-meta' );
+				delete_option( 'leasepress_fake-meta' );
 			}
 		}
 	}

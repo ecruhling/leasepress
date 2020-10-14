@@ -1,7 +1,6 @@
 <?php
 
 define( 'LP_VERSION', '0.0.0' );
-define( 'LP_TEXTDOMAIN', 'leasepress' );
 define( 'LP_NAME', 'LeasePress' );
 define( 'LP_PLUGIN_ROOT', './' );
 define( 'LP_PLUGIN_ABSOLUTE', 'leasepress.php' );

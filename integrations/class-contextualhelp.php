@@ -64,7 +64,7 @@ class LP_ContextualHelp {
 		WP_Contextual_Help::init();
 		// Only display on the pages - post.php and post-new.php, but only on the `demo` post_type
 		WP_Contextual_Help::register_tab(
-             'demo-example', __( 'Demo Management', LP_TEXTDOMAIN ), array(
+             'demo-example', __( 'Demo Management', 'leasepress' ), array(
 			'page'      => array( 'post.php', 'post-new.php' ),
 			'post_type' => 'demo',
 			'wpautop'   => true,
@@ -73,8 +73,8 @@ class LP_ContextualHelp {
 
 		// Add to a custom plugin settings page
 		WP_Contextual_Help::register_tab(
-             'lp_settings', __( 'Boilerplate Settings', LP_TEXTDOMAIN ), array(
-			'page'    => 'settings_page_' . LP_TEXTDOMAIN,
+             'lp_settings', __( 'Boilerplate Settings', 'leasepress' ), array(
+			'page'    => 'settings_page_' . 'leasepress',
 			'wpautop' => true,
 		)
             );

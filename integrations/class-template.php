@@ -35,7 +35,7 @@ class LP_Template extends LP_Base {
 	 */
 	public static function load_content_demo( $original_template ) {
 		if ( is_singular( 'demo' ) && in_the_loop() ) {
-			return wpbp_get_template_part( LP_TEXTDOMAIN, 'content', 'demo', false );
+			return wpbp_get_template_part( 'leasepress', 'content', 'demo', false );
 		}
 
 		return $original_template;

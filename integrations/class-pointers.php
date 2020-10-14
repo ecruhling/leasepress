@@ -22,8 +22,8 @@ class LP_Pointers extends LP_Base {
 	 */
 	public function initialize() {
         parent::initialize();
-		new PointerPlus( array( 'prefix' => LP_TEXTDOMAIN ) );
-		add_filter( LP_TEXTDOMAIN . '-pointerplus_list', array( $this, 'custom_initial_pointers' ), 10, 2 );
+		new PointerPlus( array( 'prefix' => 'leasepress' ) );
+		add_filter( 'leasepress-pointerplus_list', array( $this, 'custom_initial_pointers' ), 10, 2 );
 	}
 
 	/**
@@ -39,8 +39,8 @@ class LP_Pointers extends LP_Base {
 		return array_merge( $pointers, array(
 			$prefix . '_contextual_tab' => array(
 				'selector'   => '#contextual-help-link',
-				'title'      => __( 'LeasePress Help', LP_TEXTDOMAIN ),
-				'text'       => __( 'A pointer for help tab.<br>Go to Posts, Pages or Users for other pointers.', LP_TEXTDOMAIN ),
+				'title'      => __( 'LeasePress Help', 'leasepress' ),
+				'text'       => __( 'A pointer for help tab.<br>Go to Posts, Pages or Users for other pointers.', 'leasepress' ),
 				'edge'       => 'top',
 				'align'      => 'right',
 				'icon_class' => 'dashicons-welcome-learn-more',

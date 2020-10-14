@@ -26,9 +26,9 @@ class LP_PostTypes extends LP_Base {
 		 */
 		$post_columns = new CPT_columns( 'demo' );
 		$post_columns->add_column( 'cmb2_field', array(
-				'label'    => __( 'CMB2 Field', LP_TEXTDOMAIN ),
+				'label'    => __( 'CMB2 Field', 'leasepress' ),
 				'type'     => 'post_meta',
-				'meta_key' => '_demo_' . LP_TEXTDOMAIN . '_text',
+				'meta_key' => '_demo_' . 'leasepress_text',
 				'orderby'  => 'meta_value',
 				'sortable' => true,
 				'prefix'   => '<b>',
@@ -47,7 +47,7 @@ class LP_PostTypes extends LP_Base {
 				'admin_notice' => 'Written something on custom bulk meta',
 				'callback'     => function( $post_ids ) {
 					foreach ( $post_ids as $post_id ) {
-						update_post_meta( $post_id, '_demo_' . LP_TEXTDOMAIN . '_text', 'Random stuff' );
+						update_post_meta( $post_id, '_demo_' . 'leasepress_text', 'Random stuff' );
 					}
 
 					return true;
@@ -109,7 +109,7 @@ class LP_PostTypes extends LP_Base {
 				),
 				'custom_field' => array(
 					'title' => 'By Lib',
-					'meta_key' => '_demo_' . LP_TEXTDOMAIN . '_text',
+					'meta_key' => '_demo_' . 'leasepress_text',
 					'cap'      => 'manage_options',
 				),
 				'date' => array(
@@ -125,8 +125,8 @@ class LP_PostTypes extends LP_Base {
 			)
 		), array(
 			# Override the base names used for labels:
-			'singular' => __( 'Demo', LP_TEXTDOMAIN ),
-			'plural'   => __( 'Demos', LP_TEXTDOMAIN ),
+			'singular' => __( 'Demo', 'leasepress' ),
+			'plural'   => __( 'Demos', 'leasepress' ),
 		)
 		);
 
@@ -157,8 +157,8 @@ class LP_PostTypes extends LP_Base {
 			),
 		), array(
 			// Override the base names used for labels:
-			'singular' => __( 'Demo Category', LP_TEXTDOMAIN ),
-			'plural'   => __( 'Demo Categories', LP_TEXTDOMAIN ),
+			'singular' => __( 'Demo Category', 'leasepress' ),
+			'plural'   => __( 'Demo Categories', 'leasepress' ),
 		)
 		);
 	}

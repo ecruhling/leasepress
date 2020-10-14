@@ -42,11 +42,11 @@ class LP_Rest extends LP_Base {
 	 *
 	 */
 	public function add_custom_field() {
-		register_rest_field( 'demo', LP_TEXTDOMAIN . '_text', array(
+		register_rest_field( 'demo', 'leasepress_text', array(
 			'get_callback'    => array( $this, 'get_text_field' ),
 			'update_callback' => array( $this, 'update_text_field' ),
 			'schema'          => array(
-				'description' => __( 'Text field demo of Post type', LP_TEXTDOMAIN ),
+				'description' => __( 'Text field demo of Post type', 'leasepress' ),
 				'type'        => 'string',
 			),
 		) );
@@ -89,7 +89,7 @@ class LP_Rest extends LP_Base {
 	public function get_text_field( $post_obj ) {
 		$post_id = $post_obj['id'];
 
-		return get_post_meta( $post_id, LP_TEXTDOMAIN . '_text', true );
+		return get_post_meta( $post_id, 'leasepress_text', true );
 	}
 
 	/**
@@ -108,7 +108,7 @@ class LP_Rest extends LP_Base {
 		if ( false === $post_id ) {
 			return new WP_Error(
 				'rest_post_views_failed',
-				__( 'Failed to update post views.', LP_TEXTDOMAIN ),
+				__( 'Failed to update post views.', 'leasepress' ),
 				array( 'status' => 500 )
 			);
 		}

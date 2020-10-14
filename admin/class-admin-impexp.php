@@ -50,8 +50,8 @@ class LP_Admin_ImpExp extends LP_Admin_Base {
 			return;
 		}
 
-		$settings[0] = get_option( LP_TEXTDOMAIN . '-settings' );
-		$settings[1] = get_option( LP_TEXTDOMAIN . '-settings-second' );
+		$settings[0] = get_option( 'leasepress-settings' );
+		$settings[1] = get_option( 'leasepress-settings-second' );
 
 		ignore_user_abort( true );
 
@@ -88,22 +88,22 @@ class LP_Admin_ImpExp extends LP_Admin_Base {
 		$extension = end( explode( '.', $_FILES['import_file']['name'] ) );
 
 		if ( 'json' !== $extension ) {
-			wp_die( __( 'Please upload a valid .json file', LP_TEXTDOMAIN ) );
+			wp_die( __( 'Please upload a valid .json file', 'leasepress' ) );
 		}
 
 		$import_file = $_FILES['import_file']['tmp_name'];
 
 		if ( empty( $import_file ) ) {
-			wp_die( __( 'Please upload a file to import', LP_TEXTDOMAIN ) );
+			wp_die( __( 'Please upload a file to import', 'leasepress' ) );
 		}
 
 		// Retrieve the settings from the file and convert the json object to an array.
 		$settings = (array) json_decode( wp_remote_get( $import_file ) );
 
-		update_option( LP_TEXTDOMAIN . '-settings', get_object_vars( $settings[0] ) );
-		update_option( LP_TEXTDOMAIN . '-settings-second', get_object_vars( $settings[1] ) );
+		update_option( 'leasepress-settings', get_object_vars( $settings[0] ) );
+		update_option( 'leasepress-settings-second', get_object_vars( $settings[1] ) );
 
-		wp_safe_redirect( admin_url( 'options-general.php?page=' . LP_TEXTDOMAIN ) );
+		wp_safe_redirect( admin_url( 'options-general.php?page=' . 'leasepress' ) );
 		exit;
 	}
 

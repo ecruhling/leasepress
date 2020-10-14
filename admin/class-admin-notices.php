@@ -28,12 +28,12 @@ class LP_Admin_Notices extends LP_Admin_Base {
 		 *
 		 * First parameter the HTML, the second is the css class
 		 */
-//		new WP_Admin_Notice( __( 'Updated Messages', LP_TEXTDOMAIN ), 'updated' );
-//		new WP_Admin_Notice( __( 'Error Messages', LP_TEXTDOMAIN ), 'error' );
+//		new WP_Admin_Notice( __( 'Updated Messages', 'leasepress' ), 'updated' );
+//		new WP_Admin_Notice( __( 'Error Messages', 'leasepress' ), 'error' );
 		/*
 		 * Dismissible notice
 		 */
-		dnh_register_notice( 'lp_activation_notice', 'updated', __( 'LeasePress activated! Now go to <a href="' . admin_url( 'options-general.php?page=' . LP_TEXTDOMAIN ) . '">' . __( 'Settings', LP_TEXTDOMAIN ) . '</a> to configure.', LP_TEXTDOMAIN ) );
+		dnh_register_notice( 'lp_activation_notice', 'updated', __( 'LeasePress activated! Now go to <a href="' . admin_url( 'options-general.php?page=' . 'leasepress' ) . '">' . __( 'Settings', 'leasepress' ) . '</a> to configure.', 'leasepress' ) );
 		/*
 		 * Review Me notice
 		 */
@@ -41,15 +41,15 @@ class LP_Admin_Notices extends LP_Admin_Base {
 //			array(
 //				'days_after' => 15,
 //				'type'       => 'plugin',
-//				'slug'       => LP_TEXTDOMAIN,
+//				'slug'       => 'leasepress',
 //				'rating'     => 5,
-//				'message'    => __( 'Review me!', LP_TEXTDOMAIN ),
-//				'link_label' => __( 'Click here to review', LP_TEXTDOMAIN ),
+//				'message'    => __( 'Review me!', 'leasepress' ),
+//				'link_label' => __( 'Click here to review', 'leasepress' ),
 //			)
 //		);
 //		new Yoast_I18n_WordPressOrg_V3(
 //			array(
-//				'textdomain'  => LP_TEXTDOMAIN,
+//				'textdomain'  => 'leasepress',
 //				'leasepress' => LP_NAME,
 //				'hook'        => 'admin_notices',
 //			)

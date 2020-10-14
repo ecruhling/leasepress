@@ -35,7 +35,7 @@ class LP_Enqueue extends LP_Base {
 	 * @return void
 	 */
 	public static function enqueue_styles() {
-		wp_enqueue_style( LP_TEXTDOMAIN . '-plugin-styles', plugins_url( 'assets/css/public.css', LP_PLUGIN_ABSOLUTE ), array(), LP_VERSION );
+		wp_enqueue_style( 'leasepress-plugin-styles', plugins_url( 'assets/css/public.css', LP_PLUGIN_ABSOLUTE ), array(), LP_VERSION );
 	}
 
 	/**
@@ -46,7 +46,7 @@ class LP_Enqueue extends LP_Base {
 	 * @return void
 	 */
 	public static function enqueue_scripts() {
-		wp_enqueue_script( LP_TEXTDOMAIN . '-plugin-script', plugins_url( 'assets/js/public.js', LP_PLUGIN_ABSOLUTE ), array( 'jquery' ), LP_VERSION );
+		wp_enqueue_script( 'leasepress-plugin-script', plugins_url( 'assets/js/public.js', LP_PLUGIN_ABSOLUTE ), array( 'jquery' ), LP_VERSION );
 	}
 
 	/**
@@ -58,8 +58,8 @@ class LP_Enqueue extends LP_Base {
 	 */
 	public static function enqueue_js_vars() {
 		wp_localize_script(
-             LP_TEXTDOMAIN . '-plugin-script', 'l_js_vars', array(
-			'alert' => __( 'Hey! You have clicked the button!', LP_TEXTDOMAIN ),
+             'leasepress-plugin-script', 'l_js_vars', array(
+			'alert' => __( 'Hey! You have clicked the button!', 'leasepress' ),
 		)
 		);
 	}

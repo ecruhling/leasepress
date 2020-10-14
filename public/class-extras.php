@@ -33,7 +33,7 @@ class LP_Extras extends LP_Base {
 	 * @return array
 	 */
 	public static function add_lp_class( $classes ) {
-		$classes[] = LP_TEXTDOMAIN;
+		$classes[] = 'leasepress';
 		return $classes;
 	}
 

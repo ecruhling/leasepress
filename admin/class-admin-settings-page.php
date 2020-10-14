@@ -27,7 +27,7 @@ class LP_Admin_Settings_Page extends LP_Admin_Base {
 		add_action( 'admin_menu', array( $this, 'add_plugin_admin_menu' ) );
 
 		// Add an action link pointing to the options page.
-		$plugin_basename = plugin_basename( plugin_dir_path( realpath( dirname( __FILE__ ) ) ) . LP_TEXTDOMAIN . '.php' );
+		$plugin_basename = plugin_basename( plugin_dir_path( realpath( dirname( __FILE__ ) ) ) . 'leasepress.php' );
 		add_filter( 'plugin_action_links_' . $plugin_basename, array( $this, 'add_action_links' ) );
 	}
 
@@ -43,7 +43,7 @@ class LP_Admin_Settings_Page extends LP_Admin_Base {
 		 * Add a settings page for this plugin to the main menu
 		 *
 		 */
-		add_menu_page( __( 'LeasePress Settings', LP_TEXTDOMAIN ), LP_NAME, 'manage_options', LP_TEXTDOMAIN, array( $this, 'display_plugin_admin_page' ), 'dashicons-grid-view', 80 );
+		add_menu_page( __( 'LeasePress Settings', 'leasepress' ), LP_NAME, 'manage_options', 'leasepress', array( $this, 'display_plugin_admin_page' ), 'dashicons-grid-view', 80 );
 	}
 
 	/**
@@ -69,7 +69,7 @@ class LP_Admin_Settings_Page extends LP_Admin_Base {
 	public function add_action_links( $links ) {
 		return array_merge(
 			array(
-				'settings' => '<a href="' . admin_url( 'options-general.php?page=' . LP_TEXTDOMAIN ) . '">' . __( 'Settings', LP_TEXTDOMAIN ) . '</a>',
+				'settings' => '<a href="' . admin_url( 'options-general.php?page=' . 'leasepress' ) . '">' . __( 'Settings', 'leasepress' ) . '</a>',
 			),
             $links
 		);

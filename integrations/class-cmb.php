@@ -39,7 +39,7 @@ class LP_CMB extends LP_Base {
 		$prefix   = '_demo_';
 		$cmb_demo = new_cmb2_box( array(
 			'id'            => $prefix . 'metabox',
-			'title'         => __( 'Demo Metabox', LP_TEXTDOMAIN ),
+			'title'         => __( 'Demo Metabox', 'leasepress' ),
 			'object_types'  => array( 'demo' ),
 			'context'       => 'normal',
 			'priority'      => 'high',
@@ -48,28 +48,28 @@ class LP_CMB extends LP_Base {
 		$cmb2Grid = new \Cmb2Grid\Grid\Cmb2Grid( $cmb_demo );
 		$row = $cmb2Grid->addRow();
 		$field1 = $cmb_demo->add_field( array(
-			'name' => __( 'Text', LP_TEXTDOMAIN ),
-			'desc' => __( 'field description (optional)', LP_TEXTDOMAIN ),
-			'id'   => $prefix . LP_TEXTDOMAIN . '_text',
+			'name' => __( 'Text', 'leasepress' ),
+			'desc' => __( 'field description (optional)', 'leasepress' ),
+			'id'   => $prefix . 'leasepress_text',
 			'type' => 'text',
 				) );
 		$field2 = $cmb_demo->add_field( array(
-			'name' => __( 'Text 2', LP_TEXTDOMAIN ),
-			'desc' => __( 'field description (optional)', LP_TEXTDOMAIN ),
-			'id'   => $prefix . LP_TEXTDOMAIN . '_text2',
+			'name' => __( 'Text 2', 'leasepress' ),
+			'desc' => __( 'field description (optional)', 'leasepress' ),
+			'id'   => $prefix . 'leasepress_text2',
 			'type' => 'text',
 				) );
 
 		$field3 = $cmb_demo->add_field( array(
-			'name' => __( 'Text Small', LP_TEXTDOMAIN ),
-			'desc' => __( 'field description (optional)', LP_TEXTDOMAIN ),
-			'id'   => $prefix . LP_TEXTDOMAIN . '_textsmall',
+			'name' => __( 'Text Small', 'leasepress' ),
+			'desc' => __( 'field description (optional)', 'leasepress' ),
+			'id'   => $prefix . 'leasepress_textsmall',
 			'type' => 'text_small',
 				) );
 		$field4 = $cmb_demo->add_field( array(
-			'name' => __( 'Text Small 2', LP_TEXTDOMAIN ),
-			'desc' => __( 'field description (optional)', LP_TEXTDOMAIN ),
-			'id'   => $prefix . LP_TEXTDOMAIN . '_textsmall2',
+			'name' => __( 'Text Small 2', 'leasepress' ),
+			'desc' => __( 'field description (optional)', 'leasepress' ),
+			'id'   => $prefix . 'leasepress_textsmall2',
 			'type' => 'text_small',
 		) );
 		$row->addColumns( array( $field1, $field2 ) );
