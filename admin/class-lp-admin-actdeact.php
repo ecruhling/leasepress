@@ -40,7 +40,7 @@ class LP_Admin_ActDeact extends LP_Admin_Base {
 	 * @return void
 	 * @since 1.0.0
 	 */
-	public function activate_new_site( $blog_id ) {
+	public function activate_new_site( int $blog_id ) {
 		if ( 1 !== did_action( 'wpmu_new_blog' ) ) {
 			return;
 		}
@@ -58,7 +58,7 @@ class LP_Admin_ActDeact extends LP_Admin_Base {
 	 * @return void
 	 * @since 1.0.0
 	 */
-	public static function activate( $network_wide ) {
+	public static function activate( bool $network_wide ) {
 		if ( function_exists( 'is_multisite' ) && is_multisite() ) {
 			if ( $network_wide ) {
 				// Get all blog ids.
@@ -87,7 +87,7 @@ class LP_Admin_ActDeact extends LP_Admin_Base {
 	 * @return void
 	 * @since 1.0.0
 	 */
-	public static function deactivate( $network_wide ) {
+	public static function deactivate( bool $network_wide ) {
 		if ( function_exists( 'is_multisite' ) && is_multisite() ) {
 			if ( $network_wide ) {
 				// Get all blog ids.
