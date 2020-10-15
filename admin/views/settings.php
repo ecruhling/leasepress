@@ -121,7 +121,7 @@ cmb2_metabox_form( 'leasepress_options', 'leasepress-settings' );
 		<form method="post">
 			<p><input type="hidden" name="lp_action" value="api_floorplans_lookup"/></p>
 			<p>
-				<?php wp_nonce_field( 'lp_api_floorplans_lookup_nonce', 'lp_api_floorplans_lookup_nonce' ); ?>
+				<?php wp_nonce_field( 'lp_api_floorplan_lookup_nonce', 'lp_api_floorplan_lookup_nonce' ); ?>
 				<?php submit_button( __( 'Floorplans API Lookup' ), 'secondary api_lookup_button', 'lp_api_floorplans_lookup_submit', false, array( 'data-method' => 'floorplan' ) ); ?>
 			</p>
 		</form>
@@ -138,7 +138,7 @@ cmb2_metabox_form( 'leasepress_options', 'leasepress-settings' );
 		<form method="post">
 			<p><input type="hidden" name="lp_action" value="api_availabilities_lookup"/></p>
 			<p>
-				<?php wp_nonce_field( 'lp_api_availabilities_lookup_nonce', 'lp_api_availabilities_lookup_nonce' ); ?>
+				<?php wp_nonce_field( 'lp_api_apartmentavailability_lookup_nonce', 'lp_api_apartmentavailability_lookup_nonce' ); ?>
 				<?php submit_button( __( 'Availabilities API Lookup' ), 'secondary api_lookup_button', 'lp_api_availabilities_lookup_submit', false, array( 'data-method' => 'apartmentavailability' ) ); ?>
 			</p>
 		</form>
