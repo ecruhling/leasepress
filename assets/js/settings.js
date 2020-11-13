@@ -9,11 +9,16 @@
     $dataLoader = $('#data-loader');
     $cacheLoader = $('#cache-loader');
     $('.api_lookup_button').on('click', function(event) {
-      var $method, $type;
+      var $method, $nonce, $type;
       event.preventDefault();
       $rentcafeDataContainer.empty();
       $method = $(this).data('method');
       $type = $(this).data('type');
+      if ($type) {
+        $nonce = $('#lp_api_' + $method + '_' + $type + '_lookup_nonce').attr('value');
+      } else {
+        $nonce = $('#lp_api_' + $method + '_lookup_nonce').attr('value');
+      }
       return $.ajax({
         url: ajaxurl,
         type: 'POST',
@@ -21,7 +26,8 @@
         data: {
           method: $method,
           type: $type,
-          action: 'get_rentcafe_data_ajax'
+          action: 'get_rentcafe_data_ajax',
+          nonce: $nonce
         },
         beforeSend: function() {
           $('html, body').animate({

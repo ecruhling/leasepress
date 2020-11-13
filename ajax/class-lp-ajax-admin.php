@@ -35,20 +35,18 @@ class LP_Ajax_Admin extends LP_Admin_Base {
 	public function get_rentcafe_data_ajax() {
 		$method = ( isset( $_POST['method'] ) ) ? sanitize_text_field( wp_unslash( $_POST['method'] ) ) : 0;
 		$type   = ( isset( $_POST['type'] ) ) ? sanitize_text_field( wp_unslash( $_POST['type'] ) ) : null;
-//		$nonce  = isset( $_POST['lp_get_data_nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['lp_get_data_nonce'] ) ) : null;
+		$nonce  = isset( $_POST['nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['nonce'] ) ) : null;
 
 //		lp_api_floorplan_lookup_nonce  floorplan
 //		lp_api_apartmentavailability_lookup_nonce  apartmentavailability
 //		lp_api_getRENTCafeURL_residentLogin_lookup_nonce    getRENTCafeURL  residentLogin
 //		lp_api_getRENTCafeURL_applicantLogin_lookup_nonce   getRENTCafeURL  applicantLogin
 
-//		if ( ! wp_verify_nonce( $nonce, 'lp_get_data_nonce' ) ) {
-//			return;
-//		}
+		if ( wp_verify_nonce( $nonce, 'get_rentcafe_data_ajax' ) ) {
+			$return = \LP_API_Lookups::get_rentcafe_data( $method, $type );
+			wp_send_json_success( $return );
+		}
 
-		$return = \LP_API_Lookups::get_rentcafe_data( $method, $type );
-
-		wp_send_json_success( $return );
 	}
 
 	/**
