@@ -67,7 +67,7 @@ class LP_API_Lookups extends LP_Base {
 	 * @param string      $method_name 'floorplan' or 'apartmentavailability' requestType.
 	 * @param string|null $type applicantLogin, residentLogin, availability, and propertyDetailPage.
 	 *
-	 * @return array
+	 * @return array|void
 	 */
 	public static function get_rentcafe_data( string $method_name, $type = null ) {
 
@@ -76,13 +76,18 @@ class LP_API_Lookups extends LP_Base {
 		$rentcafe_api_token     = array_key_exists( 'lp_rentcafe_api_token', $settings ) ? $settings['lp_rentcafe_api_token'] : null;
 		$rentcafe_property_id   = array_key_exists( 'lp_rentcafe_property_id', $settings ) ? $settings['lp_rentcafe_property_id'] : null;
 		$rentcafe_property_code = array_key_exists( 'lp_rentcafe_property_code', $settings ) ? $settings['lp_rentcafe_property_code'] : null;
-		if ( $rentcafe_property_id ) {
+		$lp_rentcafe_code_or_id = array_key_exists( 'lp_rentcafe_code_or_id', $settings ) ? $settings['lp_rentcafe_code_or_id'] : null;
+
+		if ( 'property_id' === $lp_rentcafe_code_or_id ) {
 			$url           = 'https://api.rentcafe.com/rentcafeapi.aspx?requestType=%s&APIToken=%s&propertyId=%s';
 			$json_data_url = sprintf( $url, $method_name, $rentcafe_api_token, $rentcafe_property_id );
-		} else {
+		} elseif ( 'property_code' === $lp_rentcafe_code_or_id ) {
 			$url           = 'https://api.rentcafe.com/rentcafeapi.aspx?requestType=%s&APIToken=%s&propertyCode=%s';
 			$json_data_url = sprintf( $url, $method_name, $rentcafe_api_token, $rentcafe_property_code );
+		} else {
+			wp_die();
 		}
+
 		if ( $type ) {
 			$json_data_url = $json_data_url . '&type=' . $type;
 		}

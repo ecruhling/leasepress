@@ -23,8 +23,8 @@ $cmb = new_cmb2_box(
 
 $cmb->add_field(
 	array(
-		'name'            => __( 'RENTCafe API Token', 'leasepress' ),
-		'desc'            => __( 'Format is: XXXXXXXX-XXXXXXXXXXXXXX', 'leasepress' ),
+		'name'            => esc_html__( 'RENTCafe API Token', 'leasepress' ),
+		'desc'            => esc_html__( 'Format is: XXXXXXXX-XXXXXXXXXXXXXX', 'leasepress' ),
 		'id'              => 'lp_rentcafe_api_token',
 		'type'            => 'text',
 		'sanitization_cb' => 'lp_sanitize_api_token',
@@ -34,7 +34,7 @@ $cmb->add_field(
 
 $cmb->add_field(
 	array(
-		'name'    => __( 'RENTCafe Property Code', 'leasepress' ),
+		'name'    => esc_html__( 'RENTCafe Property Code', 'leasepress' ),
 		'desc'    => __( 'Format is: pXXXXXXX (Either the Property Code OR<br>the Property ID MUST be supplied)', 'leasepress' ),
 		'id'      => 'lp_rentcafe_property_code',
 		'type'    => 'text',
@@ -44,7 +44,7 @@ $cmb->add_field(
 
 $cmb->add_field(
 	array(
-		'name'    => __( 'RENTCafe Property ID', 'leasepress' ),
+		'name'    => esc_html__( 'RENTCafe Property ID', 'leasepress' ),
 		'desc'    => __( 'Format is: XXXXXXX (Either the Property Code OR<br>the Property ID MUST be supplied)', 'leasepress' ),
 		'id'      => 'lp_rentcafe_property_id',
 		'type'    => 'text',
@@ -54,7 +54,21 @@ $cmb->add_field(
 
 $cmb->add_field(
 	array(
-		'name'             => __( 'Template for Floor Plans page', 'leasepress' ),
+		'name'             => esc_html__( 'Use For API lookups', 'leasepress' ),
+		'desc'             => __( 'A valid Property Code OR Property ID must be used for all API lookups', 'leasepress' ),
+		'id'               => 'lp_rentcafe_code_or_id',
+		'type'             => 'select',
+		'show_option_none' => false,
+		'options'          => array(
+			'property_code' => esc_html__( 'Property Code', 'leasepress' ),
+			'property_id'   => esc_html__( 'Property ID', 'leasepress' ),
+		),
+	)
+);
+
+$cmb->add_field(
+	array(
+		'name'             => esc_html__( 'Template for Floor Plans page', 'leasepress' ),
 		'desc'             => __( 'The page template that will contain site plans & floor plans.<br>The scripts will only run on a page with this template.', 'leasepress' ),
 		'id'               => 'lp_page_template',
 		'type'             => 'select',
@@ -66,18 +80,36 @@ $cmb->add_field(
 
 $cmb->add_field(
 	array(
-		'name'    => __( 'Length of time to cache data', 'leasepress' ),
+		'name'    => esc_html__( 'Length of time to cache data', 'leasepress' ),
 		'desc'    => __( 'RENTCafe data is cached in a transient.<br>Set the length of time to cache this data. Default is One Hour.<br> After changing this setting Clear Cache for best results.', 'leasepress' ),
 		'id'      => 'lp_cache_time',
 		'type'    => 'select',
 		'default' => HOUR_IN_SECONDS,
 		'options' => array(
-			HOUR_IN_SECONDS / 4 => __( 'Quarter Hour', 'leasepress' ),
-			HOUR_IN_SECONDS / 2 => __( 'Half Hour', 'leasepress' ),
-			HOUR_IN_SECONDS     => __( 'One Hour', 'leasepress' ),
-			HOUR_IN_SECONDS * 2 => __( 'Two Hours', 'leasepress' ),
-			HOUR_IN_SECONDS * 3 => __( 'Three Hours', 'leasepress' ),
+			HOUR_IN_SECONDS / 4 => esc_html__( 'Quarter Hour', 'leasepress' ),
+			HOUR_IN_SECONDS / 2 => esc_html__( 'Half Hour', 'leasepress' ),
+			HOUR_IN_SECONDS     => esc_html__( 'One Hour', 'leasepress' ),
+			HOUR_IN_SECONDS * 2 => esc_html__( 'Two Hours', 'leasepress' ),
+			HOUR_IN_SECONDS * 3 => esc_html__( 'Three Hours', 'leasepress' ),
 		),
+	)
+);
+
+$cmb->add_field(
+	array(
+		'name' => esc_html__( 'Do Not Display Any Prices', 'leasepress' ),
+		'desc' => esc_html__( 'In some cases, you may want to disable the display of any prices.', 'leasepress' ),
+		'id'   => 'lp_leasepress_disable_price',
+		'type' => 'checkbox',
+	)
+);
+
+$cmb->add_field(
+	array(
+		'name' => esc_html__( 'Do Not Display Price for Plans with no Availabilities', 'leasepress' ),
+		'desc' => esc_html__( 'If a particular floor plan has no availabilities, then do not display the price.', 'leasepress' ),
+		'id'   => 'lp_leasepress_disable_price_on_unavailable_plans',
+		'type' => 'checkbox',
 	)
 );
 
@@ -93,7 +125,7 @@ cmb2_metabox_form( 'leasepress_options', 'leasepress-settings' );
 			<p><input type="hidden" name="lp_action" value="api_clear_cache"/></p>
 			<p class="clear-cached-data">
 				<?php wp_nonce_field( 'lp_api_clear_cache_nonce', 'lp_api_clear_cache_nonce' ); ?>
-				<?php submit_button( __( 'Clear Cache' ), 'secondary api_clear_cache', 'lp_api_clear_cache_submit', false ); ?>
+				<?php submit_button( esc_html__( 'Clear Cache' ), 'secondary api_clear_cache', 'lp_api_clear_cache_submit', false ); ?>
 				<svg id="cache-loader" class="loader" width="60px" height="60px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
 				<path fill="#007cba" d="M73,50c0-12.7-10.3-23-23-23S27,37.3,27,50 M30.9,50c0-10.5,8.5-19.1,19.1-19.1S69.1,39.5,69.1,50">
 					<animateTransform
@@ -122,7 +154,7 @@ cmb2_metabox_form( 'leasepress_options', 'leasepress-settings' );
 			<p><input type="hidden" name="lp_action" value="api_floorplans_lookup"/></p>
 			<p>
 				<?php wp_nonce_field( 'get_rentcafe_data_ajax', 'lp_api_floorplan_lookup_nonce' ); ?>
-				<?php submit_button( __( 'Floorplans API Lookup' ), 'secondary api_lookup_button', 'lp_api_floorplans_lookup_submit', false, array( 'data-method' => 'floorplan' ) ); ?>
+				<?php submit_button( esc_html__( 'Floorplans API Lookup' ), 'secondary api_lookup_button', 'lp_api_floorplans_lookup_submit', false, array( 'data-method' => 'floorplan' ) ); ?>
 			</p>
 		</form>
 	</div>
@@ -139,7 +171,7 @@ cmb2_metabox_form( 'leasepress_options', 'leasepress-settings' );
 			<p><input type="hidden" name="lp_action" value="api_availabilities_lookup"/></p>
 			<p>
 				<?php wp_nonce_field( 'get_rentcafe_data_ajax', 'lp_api_apartmentavailability_lookup_nonce' ); ?>
-				<?php submit_button( __( 'Availabilities API Lookup' ), 'secondary api_lookup_button', 'lp_api_availabilities_lookup_submit', false, array( 'data-method' => 'apartmentavailability' ) ); ?>
+				<?php submit_button( esc_html__( 'Availabilities API Lookup' ), 'secondary api_lookup_button', 'lp_api_availabilities_lookup_submit', false, array( 'data-method' => 'apartmentavailability' ) ); ?>
 			</p>
 		</form>
 	</div>
