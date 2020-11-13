@@ -90,7 +90,7 @@ class LP_Rest extends LP_Base {
 	 * @return string
 	 * @since 1.0.0
 	 */
-	public function get_text_field( $post_obj ) {
+	public function get_text_field( array $post_obj ) {
 		$post_id = $post_obj['id'];
 
 		return get_post_meta( $post_id, 'leasepress_text', true );

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * LeasePress
  *
@@ -28,11 +27,10 @@ class LP_Extras extends LP_Base {
 	 *
 	 * @param array $classes The array with all the classes of the page.
 	 *
-	 * @since 1.0.0
-	 *
 	 * @return array
+	 * @since 1.0.0
 	 */
-	public static function add_lp_class( $classes ) {
+	public static function add_lp_class( array $classes ) {
 		$classes[] = 'leasepress';
 		return $classes;
 	}

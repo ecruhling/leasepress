@@ -1,5 +1,4 @@
 <?php
-
 /**
  * LeasePress
  *
@@ -20,7 +19,7 @@ class LP_Shortcode extends LP_Base {
 	 */
 	public function initialize() {
 		parent::initialize();
-        add_shortcode( 'foobar', array( $this, 'foobar_func' ) );
+		add_shortcode( 'foobar', array( $this, 'foobar_func' ) );
 	}
 
 	/**
@@ -28,20 +27,19 @@ class LP_Shortcode extends LP_Base {
 	 *
 	 * @param array $atts Parameters.
 	 *
-	 * @since 1.0.0
-	 *
 	 * @return string
+	 * @since 1.0.0
 	 */
-	public static function foobar_func( $atts ) {
+	public static function foobar_func( array $atts ) {
 		shortcode_atts(
 			array(
 				'foo' => 'something',
 				'bar' => 'something else',
-			), $atts
+			),
+			$atts
 		);
 
-		return '<span class="foo">foo = ' . $atts[ 'foo' ] . '</span>' .
-			'<span class="bar">foo = ' . $atts[ 'bar' ] . '</span>';
+		return '<span class="foo">foo = ' . $atts['foo'] . '</span><span class="bar">foo = ' . $atts['bar'] . '</span>';
 	}
 
 }

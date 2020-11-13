@@ -21,7 +21,7 @@ class LP_API_Lookups extends LP_Base {
 	 *
 	 * @return bool
 	 */
-	private function is_JSON( $json ) {
+	private function is_JSON( string $json ) {
 		json_decode( $json );
 
 		return ( json_last_error() === JSON_ERROR_NONE );
@@ -31,12 +31,12 @@ class LP_API_Lookups extends LP_Base {
 	 * Gets the contents of a file if it exists, otherwise grabs and caches
 	 *
 	 * @param string $file string.
-	 * @param string $methodName string.
+	 * @param string $method_name string.
 	 * @param int    $hours int.
 	 *
 	 * @return bool|string
 	 */
-	private function get_content( $file, $methodName, $hours = 24 ) {
+	private function get_content( string $file, string $method_name, $hours = 24 ) {
 
 		$current_time = time();
 		$expire_time  = $hours * 60 * 60;
@@ -47,7 +47,7 @@ class LP_API_Lookups extends LP_Base {
 
 		} else {
 
-			$content = $this->get_rentcafe_data( $methodName );
+			$content = $this->get_rentcafe_data( $method_name );
 
 			if ( $this->is_JSON( $content[1] ) ) {
 				file_put_contents( $file, $content[1] ); // write contents if file expired.
@@ -58,19 +58,18 @@ class LP_API_Lookups extends LP_Base {
 				// not valid JSON - use old file.
 				return wp_remote_get( $file ); // get contents of file; not valid JSON.
 			}
-
 		}
 	}
 
 	/**
 	 * Get RENTCafe data
 	 *
-	 * @param string      $methodName 'floorplan' or 'apartmentavailability' requestType.
-	 * @param string|null $type    applicantLogin, residentLogin, availability, and propertyDetailPage.
+	 * @param string      $method_name 'floorplan' or 'apartmentavailability' requestType.
+	 * @param string|null $type applicantLogin, residentLogin, availability, and propertyDetailPage.
 	 *
 	 * @return array
 	 */
-	public static function get_rentcafe_data( $methodName, $type = null ) {
+	public static function get_rentcafe_data( string $method_name, $type = null ) {
 
 		// set variables.
 		$settings               = lp_get_settings();
@@ -79,10 +78,10 @@ class LP_API_Lookups extends LP_Base {
 		$rentcafe_property_code = array_key_exists( 'lp_rentcafe_property_code', $settings ) ? $settings['lp_rentcafe_property_code'] : null;
 		if ( $rentcafe_property_id ) {
 			$url           = 'https://api.rentcafe.com/rentcafeapi.aspx?requestType=%s&APIToken=%s&propertyId=%s';
-			$json_data_url = sprintf( $url, $methodName, $rentcafe_api_token, $rentcafe_property_id );
+			$json_data_url = sprintf( $url, $method_name, $rentcafe_api_token, $rentcafe_property_id );
 		} else {
 			$url           = 'https://api.rentcafe.com/rentcafeapi.aspx?requestType=%s&APIToken=%s&propertyCode=%s';
-			$json_data_url = sprintf( $url, $methodName, $rentcafe_api_token, $rentcafe_property_code );
+			$json_data_url = sprintf( $url, $method_name, $rentcafe_api_token, $rentcafe_property_code );
 		}
 		if ( $type ) {
 			$json_data_url = $json_data_url . '&type=' . $type;
@@ -95,80 +94,19 @@ class LP_API_Lookups extends LP_Base {
 	}
 
 	/**
-	 * Get Entrata JSON
-	 *
-	 * @param string $methodName 'getUnitsAvailabilityAndPricing' or 'getUnitTypes'.
-	 *
-	 * @return bool|string
-	 */
-	private function get_entrata_data( $methodName ) {
-
-		// set variables
-		$authentication = base64_encode( get_theme_mod( 'entrata_username_setting' ) . ':' . get_theme_mod( 'entrata_password_setting' ) );
-		$url            = 'https://' . get_theme_mod( 'entrata_domain_setting' ) . '.entrata.com/api/v1/propertyunits';
-		$propertyID     = get_theme_mod( 'entrata_id_setting' );
-		$jsonRequest    = '{
-                        "auth": {
-                            "type" : "basic"
-                        },
-                        "requestId" : 15,
-                        "method": {
-                            "name": ' . json_encode( $methodName ) . ',
-                            "version":"r1",
-                            "params": {
-                                "propertyId" : ' . json_encode( $propertyID ) . ',
-                                "availableUnitsOnly" : "0",
-                                "unavailableUnitsOnly" : "0",
-                                "skipPricing" : "0",
-                                "showChildProperties" : "0",
-                                "includeDisabledFloorplans" : "0",
-                                "includeDisabledUnits" : "0",
-                                "showUnitSpaces" : "0",
-                                "useSpaceConfiguration" : "0",
-                                "allowLeaseExpirationOverride" : "0"
-                            }
-                        }
-                    }';
-
-		// init CURL resource
-		$resCurl = curl_init();
-
-		// JSON request setup
-		curl_setopt( $resCurl, CURLOPT_HTTPHEADER, array(
-			'Content-type: APPLICATION/JSON; CHARSET=UTF-8',
-			'Authorization: Basic ' . $authentication
-		) );
-		curl_setopt( $resCurl, CURLOPT_POSTFIELDS, $jsonRequest );
-		curl_setopt( $resCurl, CURLOPT_POST, true );
-		curl_setopt( $resCurl, CURLOPT_URL, $url );
-		curl_setopt( $resCurl, CURLOPT_RETURNTRANSFER, 1 );
-
-		$result = curl_exec( $resCurl );
-
-		if ( false === $result ) {
-			$result = 'Curl error: ' . curl_error( $resCurl );
-			curl_close( $resCurl );
-		} else {
-			curl_close( $resCurl );
-		}
-
-		return $result;
-	}
-
-	/**
 	 * Get The SVGs and PDFs for the plans
 	 *
-	 * @param string $searchFor string.
+	 * @param string $search_for string.
 	 *
 	 * @return array
 	 */
-	private function get_svgs_pdfs( $searchFor ) {
+	private function get_svgs_pdfs( string $search_for ) {
 
 		$pdf = null;
 		$svg = null;
 
 		// use the $name to search for files that match.
-		$search_query['s']           = $searchFor;
+		$search_query['s']           = $search_for;
 		$search_query['post_status'] = array(
 			'publish',
 			'inherit',
@@ -204,7 +142,6 @@ class LP_API_Lookups extends LP_Base {
 		$floorplans_data = array();
 
 		$floorplans_array = json_decode( $this->get_rentcafe_data( 'floorplan' )[1] );
-//		$floorplans_array = json_decode( $this->get_content( 'api_floorplans.json', 'floorplan', 1 ) );
 		if ( isset( $floorplans_array[0]->Error ) ) { // if an Error in API request.
 			return $floorplans_data;
 		}
@@ -214,7 +151,7 @@ class LP_API_Lookups extends LP_Base {
 
 			$baths = substr( $unit_type->Baths, 0, - 1 ); // truncate last '0' from Baths.
 			$baths = rtrim( $baths, '.0' ); // if there is still a decimal and a zero, remove that. half baths are retained.
-			$name  = strtolower( ltrim( $unit_type->UnitTypeMapping, '61073') ); // trim '61073' off unit type name.
+			$name  = strtolower( ltrim( $unit_type->UnitTypeMapping, '61073' ) ); // trim '61073' off unit type name.
 
 			// map some of the UnitTypeMapping values to correct names of SVG / PDF files.
 			// since some of the UnitTypeMapping values have 'e' or 'w' for East & West.
@@ -252,7 +189,7 @@ class LP_API_Lookups extends LP_Base {
 			[
 				$pdf,
 				$svg
-			]                        = $this->get_svgs_pdfs( $name ); // use $name to search for similar named SVGs and PDFs.
+			] = $this->get_svgs_pdfs( $name ); // use $name to search for similar named SVGs and PDFs.
 			$unit_type->Name         = $name; // add correct 'Name' to object.
 			$unit_type->Baths        = $baths; // change Baths to a nicer number.
 			$unit_type->FloorplanPDF = $pdf;
@@ -315,7 +252,7 @@ class LP_API_Lookups extends LP_Base {
 					break;
 			}
 
-			$unit->PriceRange = $sort_price; // add Price Range.
+			$unit->price_range = $sort_price; // add Price Range.
 
 			$availability_data[] = $unit;
 

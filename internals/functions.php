@@ -1,5 +1,4 @@
 <?php
-
 /**
  * LeasePress
  *
@@ -22,16 +21,15 @@ function lp_get_settings() {
 /**
  * Sanitizes an API Token, just to ensure everything is copacetic.
  *
- * based on WP's sanitize_title_with_dashes function, with some things removed in order to retain case
+ * Based on WordPress sanitize_title_with_dashes function, with some things removed in order to retain case.
  *
  * @param string $token The token to be sanitized.
  *
  * @return string The sanitized token.
  * @since 1.0
- *
  */
-function lp_sanitize_api_token( $token ) {
-	$token = strip_tags( $token );
+function lp_sanitize_api_token( string $token ) {
+	$token = wp_strip_all_tags( $token );
 	// Preserve escaped octets.
 	$token = preg_replace( '|%([a-fA-F0-9][a-fA-F0-9])|', '---$1---', $token );
 	// Remove percent signs that are not part of an octet.
@@ -39,7 +37,7 @@ function lp_sanitize_api_token( $token ) {
 	// Restore octets.
 	$token = preg_replace( '|---([a-fA-F0-9][a-fA-F0-9])---|', '%$1', $token );
 
-	$token = preg_replace( '/&.+?;/', '', $token ); // kill entities
+	$token = preg_replace( '/&.+?;/', '', $token ); // kill entities.
 	$token = str_replace( '.', '-', $token );
 
 	$token = preg_replace( '/\s+/', '-', $token );

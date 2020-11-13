@@ -1,5 +1,4 @@
 <?php
-
 /**
  * LeasePress
  *
@@ -12,6 +11,11 @@
 
 $lp_debug = new WPBP_Debug( __( 'LeasePress', 'leasepress' ) );
 
+/**
+ * Debug logging function
+ *
+ * @param string $text The text to add to the debug log.
+ */
 function lp_log( $text ) {
 	global $lp_debug;
 	$lp_debug->log( $text );
