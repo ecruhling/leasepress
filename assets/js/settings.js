@@ -51,7 +51,7 @@
         }
       });
     });
-    return $('.api_clear_cache').on('click', function(event) {
+    $('.api_clear_cache').on('click', function(event) {
       event.preventDefault();
       $.ajax({
         url: ajaxurl,
@@ -74,6 +74,18 @@
           });
         }
       });
+    });
+    return $('#save-button').on('click', function(event) {
+      var $codeOrId, $propertyCode, $propertyId;
+      $propertyCode = $('#lp_rentcafe_property_code').val();
+      $propertyId = $('#lp_rentcafe_property_id').val();
+      $codeOrId = $('#lp_rentcafe_code_or_id').val();
+      if ($codeOrId === 'property_code' && !$propertyCode || $codeOrId === 'property_id' && !$propertyId) {
+        event.preventDefault();
+        return $('.cmb-form').append('<strong class="invalid-code-id">&nbsp;&nbsp;&nbsp;A valid Property Code OR Property ID must be used!</strong>');
+      } else {
+        return $('.invalid-code-id').remove();
+      }
     });
   });
 })(jQuery);

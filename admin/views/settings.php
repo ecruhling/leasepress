@@ -113,7 +113,24 @@ $cmb->add_field(
 	)
 );
 
-cmb2_metabox_form( 'leasepress_options', 'leasepress-settings' );
+$cmb->add_field(
+	array(
+		'name'            => esc_html__( 'Replace Price with text', 'leasepress' ),
+		'desc'            => esc_html__( 'Disabled price will be replaced with this text.', 'leasepress' ),
+		'id'              => 'lp_rentcafe_replace_price_text',
+		'type'            => 'text',
+		'sanitization_cb' => 'sanitize_text_field',
+		'default'         => 'Call For Pricing',
+	)
+);
+
+cmb2_metabox_form(
+	'leasepress_options',
+	'leasepress-settings',
+	array(
+		'form_format' => '<form class="cmb-form" method="post" id="%1$s" enctype="multipart/form-data" encoding="multipart/form-data"><input type="hidden" name="object_id" value="%2$s">%3$s<input id="save-button" type="submit" name="submit-cmb" value="%4$s" class="button-primary"></form>',
+	)
+);
 
 ?>
 

@@ -58,5 +58,14 @@
 					$('p.clear-cached-data').append('<strong class="cache-cleared-message">&nbsp;Cache Cleared and Resaved!</strong>')
 					$('.cache-cleared-message').delay(3000).fadeOut('normal', () -> $(this).remove())
 			return
+		$('#save-button').on 'click', (event) ->
+			$propertyCode = $('#lp_rentcafe_property_code').val()
+			$propertyId = $('#lp_rentcafe_property_id').val()
+			$codeOrId = $('#lp_rentcafe_code_or_id').val()
+			if $codeOrId == 'property_code' && !$propertyCode || $codeOrId == 'property_id' && !$propertyId
+				(event).preventDefault()
+				$('.cmb-form').append('<strong class="invalid-code-id">&nbsp;&nbsp;&nbsp;A valid Property Code OR Property ID must be used!</strong>')
+			else
+				$('.invalid-code-id').remove()
 	return
 ) jQuery
