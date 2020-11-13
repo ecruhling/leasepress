@@ -99,7 +99,6 @@ class LP_PostTypes extends LP_Base {
 				'slug'               => 'demo',
 				'show_in_rest'       => true,
 				'dashboard_activity' => true,
-				'capability_type'    => array( 'demo', 'demoes' ),
 				// Add some custom columns to the admin screen.
 				'admin_cols'         => array(
 					'featured_image' => array(
@@ -158,12 +157,6 @@ class LP_PostTypes extends LP_Base {
 				),
 				'slug'             => 'demo-cat',
 				'show_in_rest'     => true,
-				'capabilities'     => array(
-					'manage_terms' => 'manage_demoes',
-					'edit_terms'   => 'manage_demoes',
-					'delete_terms' => 'manage_demoes',
-					'assign_terms' => 'read_demo',
-				),
 			),
 			array(
 				// Override the base names used for labels.

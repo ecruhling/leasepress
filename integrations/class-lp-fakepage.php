@@ -1,5 +1,4 @@
 <?php
-
 /**
  * LeasePress
  *
@@ -19,14 +18,14 @@ class LP_FakePage extends LP_Base {
 	 * Initialize the class
 	 */
 	public function initialize() {
-        parent::initialize();
-        new Fake_Page(
-            array(
-            'slug' => 'fake_slug',
-            'post_title' => 'Fake Page Title',
-            'post_content' => 'This is the fake page content'
-            )
-        );
-    }
+		parent::initialize();
+		new Fake_Page(
+			array(
+				'slug'         => 'fake_slug',
+				'post_title'   => 'Fake Page Title',
+				'post_content' => 'This is the fake page content',
+			)
+		);
+	}
 
 }
