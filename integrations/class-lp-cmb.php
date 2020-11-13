@@ -9,6 +9,8 @@
  * @link      https://resourceatlanta.com
  */
 
+use Cmb2Grid\Grid\Cmb2Grid;
+
 /**
  * All the CMB related code.
  */
@@ -34,8 +36,8 @@ class LP_CMB extends LP_Base {
 	 */
 	public function cmb_demo_metaboxes() {
 		// Start with an underscore to hide fields from custom fields list.
-		$prefix   = '_demo_';
-		$cmb_demo = new_cmb2_box(
+		$prefix     = '_demo_';
+		$cmb_demo   = new_cmb2_box(
 			array(
 				'id'           => $prefix . 'metabox',
 				'title'        => __( 'Demo Metabox', 'leasepress' ),
@@ -45,9 +47,9 @@ class LP_CMB extends LP_Base {
 				'show_names'   => true, // Show field names on the left.
 			)
 		);
-		$cmb2Grid = new \Cmb2Grid\Grid\Cmb2Grid( $cmb_demo );
-		$row      = $cmb2Grid->addRow();
-		$field1   = $cmb_demo->add_field(
+		$cmb_2_grid = new Cmb2Grid( $cmb_demo );
+		$row        = $cmb_2_grid->addRow();
+		$field1     = $cmb_demo->add_field(
 			array(
 				'name' => __( 'Text', 'leasepress' ),
 				'desc' => __( 'field description (optional)', 'leasepress' ),
@@ -55,7 +57,7 @@ class LP_CMB extends LP_Base {
 				'type' => 'text',
 			)
 		);
-		$field2   = $cmb_demo->add_field(
+		$field2     = $cmb_demo->add_field(
 			array(
 				'name' => __( 'Text 2', 'leasepress' ),
 				'desc' => __( 'field description (optional)', 'leasepress' ),
@@ -81,7 +83,7 @@ class LP_CMB extends LP_Base {
 			)
 		);
 		$row->addColumns( array( $field1, $field2 ) );
-		$row = $cmb2Grid->addRow();
+		$row = $cmb_2_grid->addRow();
 		$row->addColumns( array( $field3, $field4 ) );
 	}
 

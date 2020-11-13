@@ -1,5 +1,4 @@
 <?php
-
 /**
  * LeasePress
  *
@@ -36,7 +35,7 @@ class LP_Cron extends LP_Base {
 		// Remove the event by the schedule.
 		// $cronplus->clear_schedule_by_hook();
 		// Jump the scheduled event.
-		//$cronplus->unschedule_specific_event();
+		// $cronplus->unschedule_specific_event();.
 	}
 
 	/**
@@ -46,7 +45,7 @@ class LP_Cron extends LP_Base {
 	 *
 	 * @return void
 	 */
-	public function hourly_cron( $id ) {
+	public function hourly_cron( int $id ) {
 		echo esc_html( (string) $id );
 	}
 

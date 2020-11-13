@@ -1,5 +1,4 @@
 <?php
-
 /**
  * LeasePress
  *
@@ -21,7 +20,7 @@ class LP_Pointers extends LP_Base {
 	 * @since 1.0.0
 	 */
 	public function initialize() {
-        parent::initialize();
+		parent::initialize();
 		new PointerPlus( array( 'prefix' => 'leasepress' ) );
 		add_filter( 'leasepress-pointerplus_list', array( $this, 'custom_initial_pointers' ), 10, 2 );
 	}
@@ -30,22 +29,25 @@ class LP_Pointers extends LP_Base {
 	 * Add pointers.
 	 * Check on https://github.com/Mte90/pointerplus/blob/master/pointerplus.php for examples
 	 *
-	 * @param array $pointers The list of pointers.
-	 * @param string $prefix   For your pointers.
+	 * @param array  $pointers The list of pointers.
+	 * @param string $prefix For your pointers.
 	 *
 	 * @return mixed
 	 */
-	public function custom_initial_pointers( $pointers, $prefix ) {
-		return array_merge( $pointers, array(
-			$prefix . '_contextual_tab' => array(
-				'selector'   => '#contextual-help-link',
-				'title'      => __( 'LeasePress Help', 'leasepress' ),
-				'text'       => __( 'A pointer for help tab.<br>Go to Posts, Pages or Users for other pointers.', 'leasepress' ),
-				'edge'       => 'top',
-				'align'      => 'right',
-				'icon_class' => 'dashicons-welcome-learn-more',
-			),
-		) );
+	public function custom_initial_pointers( array $pointers, string $prefix ) {
+		return array_merge(
+			$pointers,
+			array(
+				$prefix . '_contextual_tab' => array(
+					'selector'   => '#contextual-help-link',
+					'title'      => __( 'LeasePress Help', 'leasepress' ),
+					'text'       => __( 'A pointer for help tab.<br>Go to Posts, Pages or Users for other pointers.', 'leasepress' ),
+					'edge'       => 'top',
+					'align'      => 'right',
+					'icon_class' => 'dashicons-welcome-learn-more',
+				),
+			)
+		);
 	}
 
 }

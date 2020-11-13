@@ -1,5 +1,4 @@
 <?php
-
 /**
  * LeasePress
  *
@@ -19,8 +18,8 @@ class LP_Template extends LP_Base {
 	 * Initialize the class
 	 */
 	public function initialize() {
-        parent::initialize();
-		// Override the template hierarchy for load /templates/content-demo.php
+		parent::initialize();
+		// Override the template hierarchy for load /templates/content-demo.php.
 		add_filter( 'template_include', array( __CLASS__, 'load_content_demo' ) );
 	}
 
@@ -29,11 +28,10 @@ class LP_Template extends LP_Base {
 	 *
 	 * @param string $original_template The original template HTML.
 	 *
-	 * @since 1.0.0
-	 *
 	 * @return string
+	 * @since 1.0.0
 	 */
-	public static function load_content_demo( $original_template ) {
+	public static function load_content_demo( string $original_template ) {
 		if ( is_singular( 'demo' ) && in_the_loop() ) {
 			return wpbp_get_template_part( 'leasepress', 'content', 'demo', false );
 		}

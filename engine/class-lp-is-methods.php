@@ -1,5 +1,4 @@
 <?php
-
 /**
  * LeasePress
  *
@@ -18,10 +17,11 @@ class LP_Is_Methods {
 	/**
 	 * Whether given user is an administrator.
 	 *
-	 * @param WP_User $user The given user.
+	 * @param WP_User|null $user The given user.
+	 *
 	 * @return bool
 	 */
-	public static function is_user_admin( WP_User $user = NULL ) {
+	public static function is_user_admin( WP_User $user = null ) {
 		if ( is_null( $user ) ) {
 			$user = wp_get_current_user();
 		}
@@ -36,12 +36,12 @@ class LP_Is_Methods {
 	/**
 	 * What type of request is this?
 	 *
-	 * @since 1.0.0
+	 * @param string $type admin, ajax, cron, cli or frontend.
 	 *
-	 * @param  string $type admin, ajax, cron, cli or frontend.
 	 * @return bool
+	 * @since 1.0.0
 	 */
-	public function request( $type ) {
+	public function request( string $type ) {
 		switch ( $type ) {
 			case 'admin_backend':
 				return $this->is_admin_backend();

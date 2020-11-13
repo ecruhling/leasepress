@@ -1,5 +1,4 @@
 <?php
-
 /**
  * LeasePress
  *
@@ -17,6 +16,8 @@ class LP_Base {
 
 	/**
 	 * The settings of the plugin
+	 *
+	 * @var $settings array
 	 */
 	public $settings = array();
 
