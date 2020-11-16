@@ -33,7 +33,7 @@ class LP_Enqueue extends LP_Base {
 	 * @since 1.0.0
 	 */
 	public static function enqueue_styles() {
-		wp_enqueue_style( 'leasepress-plugin-styles', plugins_url( 'assets/css/public.css', LP_PLUGIN_ABSOLUTE ), array(), LP_VERSION );
+		wp_enqueue_style( 'leasepress-plugin-styles', plugins_url( 'assets/css/public.css', LP_PLUGIN_ABSOLUTE_PATH ), array(), LP_VERSION );
 	}
 
 	/**
@@ -46,7 +46,7 @@ class LP_Enqueue extends LP_Base {
 		$settings = lp_get_settings();
 		$template = array_key_exists( 'lp_page_template', $settings ) ? $settings['lp_page_template'] : null;
 		if ( is_page_template( $template ) ) {
-			wp_enqueue_script( 'leasepress-plugin-script', plugins_url( 'assets/js/public.js', LP_PLUGIN_ABSOLUTE ), array( 'jquery' ), LP_VERSION, true );
+			wp_enqueue_script( 'leasepress-plugin-script', plugins_url( 'assets/js/public.js', LP_PLUGIN_ABSOLUTE_PATH ), array( 'jquery' ), LP_VERSION, true );
 		}
 	}
 

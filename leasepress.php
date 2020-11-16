@@ -26,7 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 define( 'LP_VERSION', '1.0.0' );
 define( 'LP_NAME', 'LeasePress' );
 define( 'LP_PLUGIN_ROOT', plugin_dir_path( __FILE__ ) );
-define( 'LP_PLUGIN_ABSOLUTE', __FILE__ );
+define( 'LP_PLUGIN_ABSOLUTE_PATH', __FILE__ );
 
 /**
  * Load the textdomain of the plugin
