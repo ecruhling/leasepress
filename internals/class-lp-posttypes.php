@@ -24,7 +24,7 @@ class LP_PostTypes extends LP_Base {
 		/*
 		 * Custom Columns
 		 */
-		$post_columns = new CPT_columns( 'demo' );
+		$post_columns = new CPT_columns( 'lp-floor-plans' );
 		$post_columns->add_column(
 			'cmb2_field',
 			array(
@@ -42,7 +42,7 @@ class LP_PostTypes extends LP_Base {
 		/*
 		 * Custom Bulk Actions
 		 */
-		$bulk_actions = new Seravo_Custom_Bulk_Action( array( 'post_type' => 'demo' ) );
+		$bulk_actions = new Seravo_Custom_Bulk_Action( array( 'post_type' => 'lp-floor-plans' ) );
 		$bulk_actions->register_bulk_action(
 			array(
 				'menu_text'    => 'Mark meta',
@@ -75,7 +75,7 @@ class LP_PostTypes extends LP_Base {
 			$post_types = $query->get( 'post_type' );
 			if ( 'post' === $post_types ) {
 				$post_types = array( $post_types );
-				$query->set( 'post_type', array_push( $post_types, array( 'demo' ) ) );
+				$query->set( 'post_type', array_push( $post_types, array( 'lp-floor-plans' ) ) );
 			}
 		}
 
@@ -90,50 +90,44 @@ class LP_PostTypes extends LP_Base {
 	public function load_cpts() {
 		// Create Custom Post Type https://github.com/johnbillion/extended-cpts/wiki.
 		$tax = register_extended_post_type(
-			'demo',
+			'lp-floor-plans',
 			array(
-				// Show all posts on the post type archive.
 				'archive'            => array(
-					'nopaging' => true,
+					'nopaging' => true, // Show all posts on the post type archive.
 				),
-				'slug'               => 'demo',
+				'slug'               => 'lp-floor-plans',
 				'show_in_rest'       => true,
 				'dashboard_activity' => true,
-				// Add some custom columns to the admin screen.
-				'admin_cols'         => array(
+				'menu_icon'          => 'dashicons-screenoptions',
+				'admin_cols'         => array( // Add some custom columns to the admin screen.
 					'featured_image' => array(
 						'title'          => 'Featured Image',
 						'featured_image' => 'thumbnail',
 					),
 					'title',
 					'genre'          => array(
-						'taxonomy' => 'demo-section',
-					),
-					'custom_field'   => array(
-						'title' => 'By Lib',
-						'cap'   => 'manage_options',
+						'taxonomy' => 'lp-floor-plan-taxonomy',
 					),
 					'date'           => array(
 						'title'   => 'Date',
 						'default' => 'ASC',
 					),
 				),
-				// Add a dropdown filter to the admin screen.
-				'admin_filters'      => array(
+				'admin_filters'      => array( // Add a dropdown filter to the admin screen.
 					'genre' => array(
-						'taxonomy' => 'demo-section',
+						'taxonomy' => 'lp-floor-plan-taxonomy',
 					),
 				),
 			),
 			array(
 				// Override the base names used for labels.
-				'singular' => __( 'Demo', 'leasepress' ),
-				'plural'   => __( 'Demos', 'leasepress' ),
+				'singular' => __( 'Floor Plan', 'leasepress' ),
+				'plural'   => __( 'Floor Plans', 'leasepress' ),
 			)
 		);
 
 		$tax->add_taxonomy(
-			'demo-section',
+			'lp-floor-plan-taxonomy',
 			array(
 				'hierarchical' => false,
 				'show_ui'      => false,
@@ -141,8 +135,8 @@ class LP_PostTypes extends LP_Base {
 		);
 		// Create Custom Taxonomy https://github.com/johnbillion/extended-taxos.
 		register_extended_taxonomy(
-			'demo-section',
-			'demo',
+			'lp-floor-plan-taxonomy',
+			'lp-floor-plans',
 			array(
 				// Use radio buttons in the meta box for this taxonomy on the post editing screen.
 				'meta_box'         => 'radio',
@@ -155,13 +149,13 @@ class LP_PostTypes extends LP_Base {
 						'featured_image' => 'thumbnail',
 					),
 				),
-				'slug'             => 'demo-cat',
+				'slug'             => 'lp-floor-plan-category',
 				'show_in_rest'     => true,
 			),
 			array(
 				// Override the base names used for labels.
-				'singular' => __( 'Demo Category', 'leasepress' ),
-				'plural'   => __( 'Demo Categories', 'leasepress' ),
+				'singular' => __( 'Floor Plan Category', 'leasepress' ),
+				'plural'   => __( 'Floor Plan Categories', 'leasepress' ),
 			)
 		);
 	}
@@ -178,7 +172,7 @@ class LP_PostTypes extends LP_Base {
 	public function pending_cpt_bubble() {
 		global $menu;
 
-		$post_types = array( 'demo' );
+		$post_types = array( 'lp-floor-plans' );
 		foreach ( $post_types as $type ) {
 			if ( ! post_type_exists( $type ) ) {
 				continue;
