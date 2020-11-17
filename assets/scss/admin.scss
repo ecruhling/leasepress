@@ -2,6 +2,6 @@
 
 // Dashboard
 
-#dashboard_right_now a.demo-count:before {
-	content: "\f115";
+#dashboard_right_now a.demo-count::before {
+  content: "\f115";
 }

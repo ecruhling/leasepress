@@ -33,14 +33,14 @@ mix
 	// })
 
 // JS
-// mix
+mix
 	.js('assets/js/admin.js', 'scripts')
 	.js('assets/js/public.js', 'scripts')
 	.js('assets/js/settings.js', 'scripts')
 	// .extract();
 
 // CoffeeScript
-mix
+// mix
 	// .coffee('assets/coffee/admin.coffee', 'scripts')
 	// .coffee('assets/coffee/public.coffee', 'scripts')
 	// .coffee('assets/coffee/settings.coffee', 'scripts')

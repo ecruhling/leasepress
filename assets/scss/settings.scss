@@ -31,7 +31,8 @@
   color: black;
 }
 
-.ui-tabs-active, .ui-tabs-active:hover,
+.ui-tabs-active,
+.ui-tabs-active:hover,
 .ui-tabs-active:active {
   color: rgb(0, 0, 0);
   background: rgb(239, 239, 239) !important;
@@ -40,26 +41,26 @@
 // Settings page
 .metabox-holder {
   .postbox {
-	max-width: 100%;
+    max-width: 100%;
 
-	h3 {
-	  padding-left: 10px;
-	}
+    h3 {
+      padding-left: 10px;
+    }
   }
 }
 
 .settings-tab {
   @media screen and (min-width: 783px) {
-	float: left;
-	margin-right: 320px;
+    float: left;
+    margin-right: 320px;
   }
 }
 
 .right-column-settings-page {
   @media screen and (min-width: 783px) {
-	max-width: 270px;
-	float: right;
-	margin-left: -320px;
+    max-width: 270px;
+    float: right;
+    margin-left: -320px;
   }
 }
 

@@ -93,6 +93,9 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+/* eslint-disable no-unused-vars */
+
+/*global ajaxurl:true*/
 // Place your SETTINGS PAGE specific JavaScript here
 (function ($) {
   'use strict';

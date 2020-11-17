@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-vars */
+/*global ajaxurl:true*/
+
 // Place your SETTINGS PAGE specific JavaScript here
 
 (function ($) {
@@ -41,7 +44,7 @@
 				},
 				beforeSend: function () {
 					$('html, body').animate({
-						scrollTop: $rightColumn.offset().top - 30
+						scrollTop: $rightColumn.offset().top - 30,
 					}, 500)
 					$dataLoader.fadeIn()
 				},
@@ -58,7 +61,7 @@
 					} else {
 						$rentcafeDataContainer.append('No Data!')
 					}
-				}
+				},
 			})
 		})
 
@@ -72,7 +75,7 @@
 				type: 'POST',
 				dataType: 'html',
 				data: {
-					action: 'delete_rentcafe_transient'
+					action: 'delete_rentcafe_transient',
 				},
 				beforeSend: function () {
 					$('.api_clear_cache').addClass('disabled')
@@ -88,7 +91,7 @@
 					$('.cache-cleared-message').delay(3000).fadeOut('normal', function () {
 						$(this).remove()
 					})
-				}
+				},
 			})
 		})
 

@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-vars */
+/*global ls_js_vars:true*/
+
 // Place your PUBLIC-FACING JavaScript here
 
 (function ($) {
