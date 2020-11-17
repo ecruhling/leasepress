@@ -54,8 +54,8 @@ $cmb->add_field(
 
 $cmb->add_field(
 	array(
-		'name'             => esc_html__( 'Use For API lookups', 'leasepress' ),
-		'desc'             => __( 'A valid Property Code OR Property ID must be used for all API lookups', 'leasepress' ),
+		'name'             => esc_html__( 'Use for API lookups', 'leasepress' ),
+		'desc'             => __( 'A valid Property Code OR Property ID must be used for all API lookups  <span class="lp-tooltip" data-tooltip="Use this when you want to rearrange the title parts manually." tabindex="0"><strong>[?]</strong></span>', 'leasepress' ),
 		'id'               => 'lp_rentcafe_code_or_id',
 		'type'             => 'select',
 		'show_option_none' => false,

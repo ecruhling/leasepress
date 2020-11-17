@@ -17,6 +17,7 @@
  * Text Domain:       leasepress
  * Domain Path:       /languages
  * Requires PHP:      7.1.3
+ * Based On:          WordPress Plugin Boilerplate Powered 3.1.3    https://github.com/WPBP/WordPress-Plugin-Boilerplate-Powered
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

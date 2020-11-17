@@ -1,15 +1,17 @@
 {
-	"name": "leasepress",
-	"version": "1.0.0",
-	"description": "",
-	"author": "Erik Ruhling <erik@resourceatlanta.com>",
-	"devDependencies": {
-		"grunt": "*",
-		"grunt-contrib-coffee": "2.x",
-		"grunt-contrib-compass": "*",
-		"grunt-contrib-watch": "*"
-	},
-	"dependencies": {
-		"svg-injector": "^1.1.3"
-	}
+ "name": "leasepress",
+ "version": "1.0.0",
+ "description": "",
+ "author": "Erik Ruhling <erik@resourceatlanta.com>",
+ "license": "UNLICENSED",
+ "devDependencies": {
+  "grunt": "*",
+  "grunt-contrib-coffee": "2.x",
+  "grunt-contrib-compass": "*",
+  "grunt-contrib-watch": "*"
+ },
+ "dependencies": {
+  "@popperjs/core": "^2.5.4",
+  "svg-injector": "^1.1.3"
+ }
 }

@@ -6,8 +6,8 @@
     "admin.coffee"
   ],
   "names": [],
-  "mappings": "AAAA,CAAC,QAAA,CAAC,CAAD,CAAA;EACC;EACA,CAAA,CAAE,QAAA,CAAA,CAAA,EAAA,CAAF,EAFD;;AAAA,CAAD,CAAA,CAME,MANF",
+  "mappings": "AACwC;;AAExC,CAAC,QAAA,CAAC,CAAD,CAAA;EACA;EACA,CAAA,CAAE,QAAA,CAAA,CAAA,EAAA,CAAF,EAFA;;;;;;AAAA,CAAD,CAAA,CASE,MATF",
   "sourcesContent": [
-    "(($) ->\n  'use strict'\n  $ ->\n    # Place your administration-specific JavaScript here\n    return\n  return\n) jQuery\n"
+    "#import { createPopper } from '@popperjs/core'\n#createPopper = require '@popperjs/core'\n\n(($) ->\n\t'use strict'\n\t$ ->\n# Place your administration-specific JavaScript here\n#\t\ttooltips = document.querySelector('.lp-tooltip')\n#\t\tcreatePopper tooltips,\n#\t\t\tplacement: 'right-end'\n#\t\treturn\n\treturn\n) jQuery\n"
   ]
 }
