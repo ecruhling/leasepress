@@ -9,5 +9,6 @@
 #		createPopper tooltips,
 #			placement: 'right-end'
 #		return
+		console.log('IDIOT!')
 	return
 ) jQuery

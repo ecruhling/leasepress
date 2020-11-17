@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./assets/scss/admin.scss"],"names":[],"mappings":"AAAA,iBAAgB;AAIhB;EACC","file":"styles/admin.css","sourcesContent":["@charset \"UTF-8\";\n#dashboard_right_now a.demo-count:before {\n  content: \"\";\n}"],"sourceRoot":""}

@@ -37,10 +37,10 @@ class LP_Admin_Enqueue extends LP_Admin_Base {
 	public function enqueue_admin_styles() {
 		$screen = get_current_screen();
 		if ( 'toplevel_page_leasepress' === $screen->id ) {
-			wp_enqueue_style( 'leasepress-settings-styles', plugins_url( 'assets/css/settings.css', LP_PLUGIN_ABSOLUTE_PATH ), array( 'dashicons' ), LP_VERSION );
+			wp_enqueue_style( 'leasepress-settings-styles', plugins_url( 'dist/styles/settings.css', LP_PLUGIN_ABSOLUTE_PATH ), array( 'dashicons' ), LP_VERSION );
 		}
 
-		wp_enqueue_style( 'leasepress-admin-styles', plugins_url( 'assets/css/admin.css', LP_PLUGIN_ABSOLUTE_PATH ), array( 'dashicons' ), LP_VERSION );
+		wp_enqueue_style( 'leasepress-admin-styles', plugins_url( 'dist/styles/admin.css', LP_PLUGIN_ABSOLUTE_PATH ), array( 'dashicons' ), LP_VERSION );
 
 		return null;
 	}
@@ -57,7 +57,7 @@ class LP_Admin_Enqueue extends LP_Admin_Base {
 			wp_enqueue_script(
 				'leasepress-settings-script',
 				plugins_url(
-					'assets/js/settings.js',
+					'dist/scripts/settings.js',
 					LP_PLUGIN_ABSOLUTE_PATH
 				),
 				array(
@@ -65,21 +65,21 @@ class LP_Admin_Enqueue extends LP_Admin_Base {
 					'jquery-ui-tabs',
 				),
 				LP_VERSION,
-				true,
+				true
 			);
 		}
 
 		wp_enqueue_script(
 			'leasepress-admin-script',
 			plugins_url(
-				'assets/js/admin.js',
+				'dist/scripts/admin.js',
 				LP_PLUGIN_ABSOLUTE_PATH
 			),
 			array(
 				'jquery',
 			),
 			LP_VERSION,
-			true,
+			true
 		);
 
 		return null;
