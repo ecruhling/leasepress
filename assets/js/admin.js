@@ -1,13 +1,12 @@
-//import { createPopper } from '@popperjs/core'
-//createPopper = require '@popperjs/core'
-(function($) {
-  'use strict';
-  $(function() {});
-// Place your administration-specific JavaScript here
-//		tooltips = document.querySelector('.lp-tooltip')
-//		createPopper tooltips,
-//			placement: 'right-end'
-//		return
-})(jQuery);
+// Place your ADMINISTRATION-SPECIFIC JavaScript here
+import { createPopper } from '@popperjs/core'
 
-//# sourceMappingURL=admin.js.map
+(function ($) {
+	'use strict'
+	// $(function () {
+		const tooltip = document.querySelector('.lp-tooltip')
+		createPopper(tooltip, {
+			placement: 'top',
+		})
+	// })
+})(jQuery)

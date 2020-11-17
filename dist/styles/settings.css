@@ -1,1 +1,74 @@
-.ui-state-default{display:inline;border:solid #ccc;border-width:1px 1px 0;padding:12px 0;background:none repeat scroll 0 0 #e4e4e4}.ui-tabs-nav{padding-bottom:9px;padding-left:10px;border-bottom:1px solid #ccc}.ui-tabs-anchor{text-decoration:none;font-weight:600;font-size:15px;line-height:24px;color:#7f7f7f;padding:10px}.ui-state-active a,.ui-tabs-anchor:hover{color:#000}.ui-tabs-active,.ui-tabs-active:active,.ui-tabs-active:hover{color:#000;background:#efefef!important}.metabox-holder .postbox{max-width:100%}.metabox-holder .postbox h3{padding-left:10px}@media screen and (min-width:783px){.settings-tab{float:left;margin-right:320px}}@media screen and (min-width:783px){.right-column-settings-page{max-width:270px;float:right;margin-left:-320px}}p.clear-cached-data{position:relative}.loader{display:none;position:absolute;top:26px;left:-13px}#cache-loader{top:-15px;left:14px}
+.ui-state-default {
+  display: inline;
+  border-color: #cccccc;
+  border-width: 1px;
+  border-style: solid;
+  border-bottom-width: 0;
+  padding: 12px 0;
+  background: none repeat scroll 0 0 #e4e4e4;
+}
+
+.ui-tabs-nav {
+  padding-bottom: 9px;
+  padding-left: 10px;
+  border-bottom: 1px solid #cccccc;
+}
+
+.ui-tabs-anchor {
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 24px;
+  color: #7f7f7f;
+  padding: 10px;
+}
+
+.ui-tabs-anchor:hover,
+.ui-state-active a {
+  color: black;
+}
+
+.ui-tabs-active, .ui-tabs-active:hover,
+.ui-tabs-active:active {
+  color: black;
+  background: #efefef !important;
+}
+
+.metabox-holder .postbox {
+  max-width: 100%;
+}
+.metabox-holder .postbox h3 {
+  padding-left: 10px;
+}
+
+@media screen and (min-width: 783px) {
+  .settings-tab {
+    float: left;
+    margin-right: 320px;
+  }
+}
+
+@media screen and (min-width: 783px) {
+  .right-column-settings-page {
+    max-width: 270px;
+    float: right;
+    margin-left: -320px;
+  }
+}
+
+p.clear-cached-data {
+  position: relative;
+}
+
+.loader {
+  display: none;
+  position: absolute;
+  top: 26px;
+  left: -13px;
+}
+
+#cache-loader {
+  top: -15px;
+  left: 14px;
+}
+/*# sourceMappingURL=settings.css.map*/

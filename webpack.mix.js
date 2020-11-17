@@ -34,16 +34,16 @@ mix
 
 // JS
 // mix
-// 	.js('assets/js/admin.js', 'scripts')
-// 	.js('assets/js/public.js', 'scripts')
-// 	.js('assets/js/settings.js', 'scripts')
-// 	.extract();
+	.js('assets/js/admin.js', 'scripts')
+	.js('assets/js/public.js', 'scripts')
+	.js('assets/js/settings.js', 'scripts')
+	// .extract();
 
 // CoffeeScript
 mix
-	.coffee('assets/coffee/admin.coffee', 'scripts')
-	.coffee('assets/coffee/public.coffee', 'scripts')
-	.coffee('assets/coffee/settings.coffee', 'scripts')
+	// .coffee('assets/coffee/admin.coffee', 'scripts')
+	// .coffee('assets/coffee/public.coffee', 'scripts')
+	// .coffee('assets/coffee/settings.coffee', 'scripts')
 
 // Other Assets
 mix

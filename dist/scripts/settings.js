@@ -1,1 +1,218 @@
-!function(e){var t={};function a(r){if(t[r])return t[r].exports;var n=t[r]={i:r,l:!1,exports:{}};return e[r].call(n.exports,n,n.exports,a),n.l=!0,n.exports}a.m=e,a.c=t,a.d=function(e,t,r){a.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},a.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},a.t=function(e,t){if(1&t&&(e=a(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(a.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var n in e)a.d(r,n,function(t){return e[t]}.bind(null,n));return r},a.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return a.d(t,"a",t),t},a.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},a.p="/",a(a.s=2)}({2:function(e,t,a){e.exports=a("zEBP")},zEBP:function(e,t){!function(e){"use strict";e((function(){var t,a,r,n;return e("#tabs").tabs(),r=e("#rentcafe-request-data"),n=e("#right-column"),a=e("#data-loader"),t=e("#cache-loader"),e(".api_lookup_button").on("click",(function(t){var o,c,u;return t.preventDefault(),r.empty(),o=e(this).data("method"),c=(u=e(this).data("type"))?e("#lp_api_"+o+"_"+u+"_lookup_nonce").attr("value"):e("#lp_api_"+o+"_lookup_nonce").attr("value"),e.ajax({url:ajaxurl,type:"POST",dataType:"html",data:{method:o,type:u,action:"get_rentcafe_data_ajax",nonce:c},beforeSend:function(){return e("html, body").animate({scrollTop:n.offset().top-30},500),a.fadeIn()},error:function(e,t,a){return console.log(e,t,a)},success:function(e,t,n){var o;return a.fadeOut(),e.length?(o=JSON.parse(e),r.append('<p><strong>RENTCafe URL Lookup:</strong> <a href="'+o.data[0]+'" target="_blank" rel="noopener">'+o.data[0]+"</a></p>"),r.append("<p><strong>Data:</strong> "+o.data[1].body)):r.append("no data")}})})),e(".api_clear_cache").on("click",(function(a){a.preventDefault(),e.ajax({url:ajaxurl,type:"POST",dataType:"html",data:{action:"delete_rentcafe_transient"},beforeSend:function(){return e(".api_clear_cache").addClass("disabled"),t.fadeIn()},error:function(e,t,a){},success:function(a,r,n){return e(".api_clear_cache").removeClass("disabled"),t.fadeOut(),e("p.clear-cached-data").append('<strong class="cache-cleared-message">&nbsp;Cache Cleared and Resaved!</strong>'),e(".cache-cleared-message").delay(3e3).fadeOut("normal",(function(){return e(this).remove()}))}})})),e("#save-button").on("click",(function(t){var a,r,n;return r=e("#lp_rentcafe_property_code").val(),n=e("#lp_rentcafe_property_id").val(),"property_code"===(a=e("#lp_rentcafe_code_or_id").val())&&!r||"property_id"===a&&!n?(t.preventDefault(),e(".cmb-form").append('<strong class="invalid-code-id">&nbsp;&nbsp;&nbsp;A valid Property Code OR Property ID must be used!</strong>')):e(".invalid-code-id").remove()}))}))}(jQuery)}});
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "/";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./assets/js/settings.js":
+/*!*******************************!*\
+  !*** ./assets/js/settings.js ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// Place your SETTINGS PAGE specific JavaScript here
+(function ($) {
+  'use strict';
+
+  $(document).ready(function () {
+    $('#tabs').tabs(); // initialize tabs
+    // variables
+
+    var $rentcafeDataContainer = $('#rentcafe-request-data');
+    var $rightColumn = $('#right-column');
+    var $dataLoader = $('#data-loader');
+    var $cacheLoader = $('#cache-loader'); // API lookup button click
+
+    $('.api_lookup_button').on('click', function (e) {
+      e.preventDefault(); // variables
+
+      var $method = $(this).data('method');
+      var $type = $(this).data('type');
+      var $nonce;
+      $rentcafeDataContainer.empty(); // clear data container
+
+      if ($type) {
+        // if the method type exists, get the nonce value using $method & $type in the name
+        $nonce = $('#lp_api_' + $method + '_' + $type + '_lookup_nonce').attr('value');
+      } else {
+        // $type does not exist, nonce name uses just the method name
+        $nonce = $('#lp_api_' + $method + '_lookup_nonce').attr('value');
+      } // AJAX call
+
+
+      $.ajax({
+        url: ajaxurl,
+        type: 'POST',
+        dataType: 'html',
+        data: {
+          method: $method,
+          type: $type,
+          action: 'get_rentcafe_data_ajax',
+          nonce: $nonce
+        },
+        beforeSend: function beforeSend() {
+          $('html, body').animate({
+            scrollTop: $rightColumn.offset().top - 30
+          }, 500);
+          $dataLoader.fadeIn();
+        },
+        error: function error(jqXHR, textStatus, errorThrown) {
+          console.log(jqXHR, textStatus, errorThrown);
+        },
+        success: function success(data) {
+          var response;
+          $dataLoader.fadeOut();
+
+          if (data.length) {
+            response = JSON.parse(data);
+            $rentcafeDataContainer.append('<p><strong>RENTCafe URL Lookup:</strong> <a href="' + response.data[0] + '" title="RENTCafe URL Lookup" target="_blank" rel="noopener">' + response.data[0] + '</a></p>');
+            $rentcafeDataContainer.append('<p><strong>Data:</strong> ' + response.data[1].body);
+          } else {
+            $rentcafeDataContainer.append('No Data!');
+          }
+        }
+      });
+    }); // API Clear Cache button click
+
+    $('.api_clear_cache').on('click', function (e) {
+      e.preventDefault(); // AJAX call
+
+      $.ajax({
+        url: ajaxurl,
+        type: 'POST',
+        dataType: 'html',
+        data: {
+          action: 'delete_rentcafe_transient'
+        },
+        beforeSend: function beforeSend() {
+          $('.api_clear_cache').addClass('disabled');
+          $cacheLoader.fadeIn();
+        },
+        error: function error(jqXHR, textStatus, errorThrown) {
+          console.log(jqXHR, textStatus, errorThrown);
+        },
+        success: function success() {
+          $('.api_clear_cache').removeClass('disabled');
+          $cacheLoader.fadeOut();
+          $('p.clear-cached-data').append('<strong class="cache-cleared-message">&nbsp;Cache Cleared and Resaved!</strong>');
+          $('.cache-cleared-message').delay(3000).fadeOut('normal', function () {
+            $(this).remove();
+          });
+        }
+      });
+    }); // Save button click (validation of some fields)
+
+    $('#save-button').on('click', function (e) {
+      var $propertyCode = $('#lp_rentcafe_property_code').val();
+      var $propertyId = $('#lp_rentcafe_property_id').val();
+      var $codeOrId = $('#lp_rentcafe_code_or_id').val();
+
+      if ($codeOrId === 'property_code' && !$propertyCode || $codeOrId === 'property_id' && !$propertyId) {
+        e.preventDefault();
+        $('.cmb-form').append('<strong class="invalid-code-id">&nbsp;&nbsp;&nbsp;A valid Property Code OR Property ID must be used!</strong>');
+      } else {
+        $('.invalid-code-id').remove();
+      }
+    });
+  });
+})(jQuery);
+
+/***/ }),
+
+/***/ 2:
+/*!*************************************!*\
+  !*** multi ./assets/js/settings.js ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! /Users/erik/Sites/test.resourceatlanta.test/wp-content/plugins/leasepress/assets/js/settings.js */"./assets/js/settings.js");
+
+
+/***/ })
+
+/******/ });
+//# sourceMappingURL=settings.js.map

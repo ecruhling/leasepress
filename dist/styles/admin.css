@@ -1,1 +1,5 @@
-@charset "UTF-8";#dashboard_right_now a.demo-count:before{content:"\F115"}
+@charset "UTF-8";
+#dashboard_right_now a.demo-count:before {
+  content: "\F115";
+}
+/*# sourceMappingURL=admin.css.map*/
