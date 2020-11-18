@@ -42,8 +42,10 @@ class LP_Initialize {
 	 */
 	public function __construct() {
 		$this->is        = new LP_Is_Methods();
+		$this->svg       = new LP_SVG_Support();
 		$this->classes   = array();
 		$this->classes[] = 'LP_PostTypes';
+//		$this->classes[] = 'LP_SVG_Support';
 		$this->classes[] = 'LP_CMB';
 		$this->classes[] = 'LP_Cron';
 		$this->classes[] = 'LP_FakePage';

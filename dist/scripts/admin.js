@@ -93,7 +93,11 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-// Place your ADMINISTRATION-SPECIFIC JavaScript here
+/**
+ * admin.js
+ *
+ * This script is enqueued only on the backend (admin)
+ */
 (function ($) {
   'use strict';
 

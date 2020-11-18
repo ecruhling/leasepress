@@ -9,6 +9,8 @@
  * @link      https://resourceatlanta.com
  */
 
+//add_theme_support( 'resource-svg' );
+
 /**
  * Get the settings of the plugin in a filterable way
  *
