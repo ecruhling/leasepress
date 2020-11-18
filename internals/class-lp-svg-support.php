@@ -10,105 +10,6 @@
  */
 
 /**
- * Utility function to fix extension if needed.
- *
- * @param string $original_extension the original file extension.
- * @param string $filename the filename.
- *
- * @return string
- */
-function fix_extension_if_needed( string $original_extension, string $filename ) {
-	if ( extension_is_too_small( $original_extension ) ) {
-		return get_extension_from_filename( $filename );
-	}
-
-	return $original_extension;
-}
-
-/**
- * Utility function to check length of extension.
- *
- * @param string $extension the extension.
- *
- * @return bool
- */
-function extension_is_too_small( string $extension ) {
-	return ( strlen( $extension ) < 1 );
-}
-
-/**
- * Utility function to get the extension from the filename.
- *
- * @param string $filename the filename.
- *
- * @return mixed|string
- */
-function get_extension_from_filename( string $filename ) {
-	$parts       = explode( '.', $filename );
-	$lower_parts = array_map( 'strtolower', $parts );
-	$last_part   = array_pop( $lower_parts );
-
-	if ( dual_part_extension( $last_part ) ) {
-		$penultimate_part = array_pop( $lower_parts );
-
-		return "{$penultimate_part}.{$last_part}";
-	} elseif ( has_no_extension( $filename ) ) {
-		return '';
-	}
-
-	return $last_part;
-}
-
-/**
- * Utility function for dual part extensions.
- *
- * @param string $extension the extension.
- *
- * @return bool
- */
-function dual_part_extension( string $extension ) {
-	return in_array(
-		$extension,
-		array(
-			'gz',
-			'xz',
-			'bz2',
-		),
-		true
-	);
-}
-
-/**
- * Utility function; check if file has no extension.
- *
- * @param string $filename the filename.
- *
- * @return bool
- */
-function has_no_extension( string $filename ) {
-	return (
-		( strpos( $filename, '.', 0 ) === false )
-		||
-		(
-			( substr_count( $filename, '.' ) < 2 )
-			&&
-			is_dot_file( $filename )
-		)
-	);
-}
-
-/**
- * Utility function; check if dot is in filename.
- *
- * @param string $filename the filename.
- *
- * @return bool
- */
-function is_dot_file( string $filename ) {
-	return ( strpos( $filename, '.', 0 ) === 0 );
-}
-
-/**
  * Enable SVG support
  */
 class LP_SVG_Support {
@@ -171,7 +72,8 @@ class LP_SVG_Support {
 	 * @return array|mixed
 	 */
 	public function filter_mimes( $mimes = array() ) {
-		$mimes['svg'] = 'image/svg+xml';
+		$mimes['svg']  = 'image/svg+xml';
+		$mimes['svgz'] = 'image/svg+xml';
 
 		return $mimes;
 	}
@@ -219,7 +121,7 @@ class LP_SVG_Support {
 	}
 
 	/**
-	 * Fixes for SVG mime type.
+	 * Fixes for SVG mime type. WordPress 4.7.1 - 4.7.2 problem.
 	 *
 	 * @param null $data file data.
 	 * @param null $filename the filename.
@@ -227,11 +129,17 @@ class LP_SVG_Support {
 	 * @return mixed|null
 	 */
 	public function fix_mime_type_svg( $data = null, $filename = null ) {
-		$original_extension = ( isset( $data['ext'] ) ? $data['ext'] : '' );
-		$ext                = fix_extension_if_needed( $original_extension, $filename );
+		$ext = ( isset( $data['ext'] ) ? $data['ext'] : '' );
+		if ( strlen( $ext ) < 1 ) {
+			$exploded = explode( '.', $filename );
+			$ext      = strtolower( end( $exploded ) );
+		}
 		if ( 'svg' === $ext ) {
 			$data['type'] = 'image/svg+xml';
 			$data['ext']  = 'svg';
+		} elseif ( 'svgz' === $ext ) {
+			$data['type'] = 'image/svg+xml';
+			$data['ext']  = 'svgz';
 		}
 
 		return $data;
