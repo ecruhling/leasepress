@@ -36,6 +36,13 @@ class LP_Initialize {
 	public $classes = null;
 
 	/**
+	 * Instance of this LP_SVG_Support.
+	 *
+	 * @var LP_SVG_Support
+	 */
+	protected $svg = null;
+
+	/**
 	 * The Constructor that loads the entry classes
 	 *
 	 * @since 1.0.0
@@ -45,7 +52,6 @@ class LP_Initialize {
 		$this->svg       = new LP_SVG_Support();
 		$this->classes   = array();
 		$this->classes[] = 'LP_PostTypes';
-//		$this->classes[] = 'LP_SVG_Support';
 		$this->classes[] = 'LP_CMB';
 		$this->classes[] = 'LP_Cron';
 		$this->classes[] = 'LP_FakePage';

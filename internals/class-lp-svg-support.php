@@ -222,13 +222,11 @@ class LP_SVG_Support {
 	 * Fixes for SVG mime type.
 	 *
 	 * @param null $data file data.
-	 * @param null $file the file.
 	 * @param null $filename the filename.
-	 * @param null $mimes mime types list.
 	 *
 	 * @return mixed|null
 	 */
-	public function fix_mime_type_svg( $data = null, $file = null, $filename = null, $mimes = null ) {
+	public function fix_mime_type_svg( $data = null, $filename = null ) {
 		$original_extension = ( isset( $data['ext'] ) ? $data['ext'] : '' );
 		$ext                = fix_extension_if_needed( $original_extension, $filename );
 		if ( 'svg' === $ext ) {
@@ -293,13 +291,13 @@ class LP_SVG_Support {
 	/**
 	 * Create all the SVG dimensions.
 	 *
-	 * @param array   $viewbox which image in the view are we looking at?.
-	 * @param object  $attr image attributes.
-	 * @param array   $data the data.
-	 * @param integer $dimension the image dimensions.
-	 * @param integer $viewboxoffset the image offset in list.
+	 * @param array            $viewbox which image in the view are we looking at?.
+	 * @param SimpleXMLElement $attr image attributes.
+	 * @param array            $data the data.
+	 * @param string           $dimension the image dimensions.
+	 * @param integer          $viewboxoffset the image offset in list.
 	 */
-	protected function fill_svg_dimensions( array $viewbox, $attr, array &$data, int $dimension, int $viewboxoffset ) {
+	protected function fill_svg_dimensions( array $viewbox, SimpleXMLElement $attr, array &$data, string $dimension, int $viewboxoffset ) {
 		if ( isset( $attr->{$dimension} ) ) {
 			$data[ $dimension ] = intval( $attr->{$dimension} );
 		}
