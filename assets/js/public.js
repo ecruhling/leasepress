@@ -4,16 +4,18 @@ import SVGInjector from 'svg-injector'
 /**
  * public.js
  *
- * This script is enqueued only on the frontend, and only
- * on the page template as selected in the settings area 'Template for Floor Plans page'
+ * This script is enqueued only on the frontend,
+ * and only on the page template as selected in the
+ * settings area 'Template for Floor Plans page'
  */
 
 $(document).ready(() => {
+
 	console.log('floor plans page template')
 	/**
 	 * Variables
 	 */
-	const injectedSVGs = $('.injected-svg') // all 'injected SVGs'
+	const injectedSVGs = $('img[src$=".svg"]') // all SVG files - img src ends with ( &= ) svg
 	const injectorOptions = {
 		evalScripts: 'never',
 	}

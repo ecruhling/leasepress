@@ -102,8 +102,9 @@ __webpack_require__.r(__webpack_exports__);
 /**
  * public.js
  *
- * This script is enqueued only on the frontend, and only
- * on the page template as selected in the settings area 'Template for Floor Plans page'
+ * This script is enqueued only on the frontend,
+ * and only on the page template as selected in the
+ * settings area 'Template for Floor Plans page'
  */
 
 $(document).ready(function () {
@@ -112,7 +113,7 @@ $(document).ready(function () {
    * Variables
    */
 
-  var injectedSVGs = $('.injected-svg'); // all 'injected SVGs'
+  var injectedSVGs = $('img[src$=".svg"]'); // all SVG files - img src ends with ( &= ) svg
 
   var injectorOptions = {
     evalScripts: 'never'
