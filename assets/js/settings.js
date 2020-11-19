@@ -9,6 +9,7 @@
 (function ($) {
 	'use strict'
 	$(document).ready(() => {
+		// TODO: use some other tab creation
 		$('#tabs').tabs() // initialize tabs
 
 		// variables
@@ -16,7 +17,32 @@
 		const $rightColumn = $('#right-column')
 		const $dataLoader = $('#data-loader')
 		const $cacheLoader = $('#cache-loader')
-		const $createFPLoader = $('#create-floor-plans-loader')
+
+		/**
+		 * Generic AJAX function
+		 *
+		 * @param nonce
+		 * @param action
+		 * @param beforeSend
+		 * @param success
+		 * @constructor
+		 */
+		function AjaxCall (nonce, action, beforeSend, success) {
+			$.ajax({
+				url: ajaxurl,
+				type: 'POST',
+				dataType: 'html',
+				data: {
+					nonce: nonce,
+					action: action,
+				},
+				beforeSend: beforeSend,
+				error: function (jqXHR, textStatus, errorThrown) {
+					console.log(jqXHR, textStatus, errorThrown)
+				},
+				success: success
+			})
+		}
 
 		// Save button click (validation of some fields)
 		$('#save-button').on('click', function (e) {
@@ -36,21 +62,14 @@
 			e.preventDefault()
 
 			// AJAX call
-			$.ajax({
-				url: ajaxurl,
-				type: 'POST',
-				dataType: 'html',
-				data: {
-					action: 'delete_rentcafe_transient',
-				},
-				beforeSend: function () {
+			new AjaxCall(
+				$('#lp_api_clear_cache_nonce').attr('value'),
+				'delete_rentcafe_transient',
+				function () {
 					$('.api_clear_cache').addClass('disabled')
 					$cacheLoader.fadeIn()
 				},
-				error: function (jqXHR, textStatus, errorThrown) {
-					console.log(jqXHR, textStatus, errorThrown)
-				},
-				success: function () {
+				function () {
 					$('.api_clear_cache').removeClass('disabled')
 					$cacheLoader.fadeOut()
 					$('p.clear-cached-data').append('<strong class="cache-cleared-message">&nbsp;Cache Cleared and Resaved!</strong>')
@@ -58,7 +77,7 @@
 						$(this).remove()
 					})
 				},
-			})
+			)
 		})
 
 		// Create / delete floor plans button click
@@ -69,25 +88,15 @@
 			const $method = $(this).attr('id')
 			const $nonce = $('#' + $method + '_nonce').attr('value')
 
-			console.log($method, $nonce)
-
 			// AJAX call
-			$.ajax({
-				url: ajaxurl,
-				type: 'POST',
-				dataType: 'html',
-				data: {
-					nonce: $nonce,
-					action: $method,
-				},
-				beforeSend: function () {
+			new AjaxCall(
+				$nonce,
+				$method,
+				function () {
 					$('#' + $method).addClass('disabled')
 					$('#' + $method + '_loader').fadeIn()
 				},
-				error: function (jqXHR, textStatus, errorThrown) {
-					console.log(jqXHR, textStatus, errorThrown)
-				},
-				success: function (response) {
+				function (response) {
 					const action = ($method === 'lp_create_floor_plans') ? 'Added' : 'Deleted'
 					$('#' + $method).removeClass('disabled')
 					$('#' + $method + '_loader').fadeOut()
@@ -95,8 +104,8 @@
 					$('.floor-plans-message').delay(3000).fadeOut('normal', function () {
 						$(this).remove()
 					})
-				},
-			})
+				}
+			)
 		})
 
 		// API lookup buttons click

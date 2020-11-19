@@ -104,6 +104,7 @@
   'use strict';
 
   $(document).ready(function () {
+    // TODO: use some other tab creation
     $('#tabs').tabs(); // initialize tabs
     // variables
 
@@ -111,7 +112,33 @@
     var $rightColumn = $('#right-column');
     var $dataLoader = $('#data-loader');
     var $cacheLoader = $('#cache-loader');
-    var $createFPLoader = $('#create-floor-plans-loader'); // Save button click (validation of some fields)
+    /**
+     * Generic AJAX function
+     *
+     * @param nonce
+     * @param action
+     * @param beforeSend
+     * @param success
+     * @constructor
+     */
+
+    function AjaxCall(nonce, action, beforeSend, success) {
+      $.ajax({
+        url: ajaxurl,
+        type: 'POST',
+        dataType: 'html',
+        data: {
+          nonce: nonce,
+          action: action
+        },
+        beforeSend: beforeSend,
+        error: function error(jqXHR, textStatus, errorThrown) {
+          console.log(jqXHR, textStatus, errorThrown);
+        },
+        success: success
+      });
+    } // Save button click (validation of some fields)
+
 
     $('#save-button').on('click', function (e) {
       var $propertyCode = $('#lp_rentcafe_property_code').val();
@@ -129,28 +156,16 @@
     $('.api_clear_cache').on('click', function (e) {
       e.preventDefault(); // AJAX call
 
-      $.ajax({
-        url: ajaxurl,
-        type: 'POST',
-        dataType: 'html',
-        data: {
-          action: 'delete_rentcafe_transient'
-        },
-        beforeSend: function beforeSend() {
-          $('.api_clear_cache').addClass('disabled');
-          $cacheLoader.fadeIn();
-        },
-        error: function error(jqXHR, textStatus, errorThrown) {
-          console.log(jqXHR, textStatus, errorThrown);
-        },
-        success: function success() {
-          $('.api_clear_cache').removeClass('disabled');
-          $cacheLoader.fadeOut();
-          $('p.clear-cached-data').append('<strong class="cache-cleared-message">&nbsp;Cache Cleared and Resaved!</strong>');
-          $('.cache-cleared-message').delay(3000).fadeOut('normal', function () {
-            $(this).remove();
-          });
-        }
+      new AjaxCall($('#lp_api_clear_cache_nonce').attr('value'), 'delete_rentcafe_transient', function () {
+        $('.api_clear_cache').addClass('disabled');
+        $cacheLoader.fadeIn();
+      }, function () {
+        $('.api_clear_cache').removeClass('disabled');
+        $cacheLoader.fadeOut();
+        $('p.clear-cached-data').append('<strong class="cache-cleared-message">&nbsp;Cache Cleared and Resaved!</strong>');
+        $('.cache-cleared-message').delay(3000).fadeOut('normal', function () {
+          $(this).remove();
+        });
       });
     }); // Create / delete floor plans button click
 
@@ -158,33 +173,19 @@
       e.preventDefault(); // variables
 
       var $method = $(this).attr('id');
-      var $nonce = $('#' + $method + '_nonce').attr('value');
-      console.log($method, $nonce); // AJAX call
+      var $nonce = $('#' + $method + '_nonce').attr('value'); // AJAX call
 
-      $.ajax({
-        url: ajaxurl,
-        type: 'POST',
-        dataType: 'html',
-        data: {
-          nonce: $nonce,
-          action: $method
-        },
-        beforeSend: function beforeSend() {
-          $('#' + $method).addClass('disabled');
-          $('#' + $method + '_loader').fadeIn();
-        },
-        error: function error(jqXHR, textStatus, errorThrown) {
-          console.log(jqXHR, textStatus, errorThrown);
-        },
-        success: function success(response) {
-          var action = $method === 'lp_create_floor_plans' ? 'Added' : 'Deleted';
-          $('#' + $method).removeClass('disabled');
-          $('#' + $method + '_loader').fadeOut();
-          $('p.' + $method).append('<strong class="floor-plans-message">&nbsp;' + $.parseJSON(response).data + ' Floor Plans ' + action + ':</strong>');
-          $('.floor-plans-message').delay(3000).fadeOut('normal', function () {
-            $(this).remove();
-          });
-        }
+      new AjaxCall($nonce, $method, function () {
+        $('#' + $method).addClass('disabled');
+        $('#' + $method + '_loader').fadeIn();
+      }, function (response) {
+        var action = $method === 'lp_create_floor_plans' ? 'Added' : 'Deleted';
+        $('#' + $method).removeClass('disabled');
+        $('#' + $method + '_loader').fadeOut();
+        $('p.' + $method).append('<strong class="floor-plans-message">&nbsp;' + $.parseJSON(response).data + ' Floor Plans ' + action + ':</strong>');
+        $('.floor-plans-message').delay(3000).fadeOut('normal', function () {
+          $(this).remove();
+        });
       });
     }); // API lookup buttons click
 

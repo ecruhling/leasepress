@@ -49,19 +49,21 @@ class LP_Ajax_Admin extends LP_Admin_Base {
 	/**
 	 * Delete and regenerate cached RENTCafe data
 	 *
-	 * @return mixed
+	 * @return void
 	 */
 	public function delete_rentcafe_transient() {
+		$nonce = isset( $_POST['nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['nonce'] ) ) : null;
 
-		// forget both transients.
-		forget_transient( 'lp_rentcafe_floorplan_api_data', null );
-		forget_transient( 'lp_rentcafe_apartmentavailability_api_data', null );
+		if ( wp_verify_nonce( $nonce, 'lp_api_clear_cache_nonce' ) ) {
 
-		// regenerate both transients.
-		LP_Transient::get_or_cache_transient( 'floorplan' );
-		LP_Transient::get_or_cache_transient( 'apartmentavailability' );
+			// forget both transients.
+			forget_transient( 'lp_rentcafe_floorplan_api_data', null );
+			forget_transient( 'lp_rentcafe_apartmentavailability_api_data', null );
 
-		return null;
+			// regenerate both transients.
+			LP_Transient::get_or_cache_transient( 'floorplan' );
+			LP_Transient::get_or_cache_transient( 'apartmentavailability' );
+		}
 	}
 
 	/**
