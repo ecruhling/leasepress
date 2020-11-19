@@ -26,6 +26,7 @@ class LP_Ajax_Admin extends LP_Admin_Base {
 		add_action( 'wp_ajax_delete_rentcafe_transient', array( $this, 'delete_rentcafe_transient' ) );
 		add_action( 'wp_ajax_get_rentcafe_data_ajax', array( $this, 'get_rentcafe_data_ajax' ) );
 		add_action( 'wp_ajax_lp_create_floor_plans', array( $this, 'lp_create_floor_plans' ) );
+		add_action( 'wp_ajax_lp_delete_floor_plans', array( $this, 'lp_delete_floor_plans' ) );
 	}
 
 	/**
@@ -122,10 +123,14 @@ class LP_Ajax_Admin extends LP_Admin_Base {
 	 * Delete Floor Plans
 	 */
 	public function lp_delete_floor_plans() {
-		$floor_plans = get_pages( array( 'post_type' => 'lp-floor-plans' ) );
+		$nonce = isset( $_POST['nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['nonce'] ) ) : null;
 
-		foreach ( $floor_plans as $floor_plan ) {
-			wp_delete_post( $floor_plan->ID, true );
+		if ( wp_verify_nonce( $nonce, 'lp_delete_floor_plans_nonce' ) ) {
+			$floor_plans = get_pages( array( 'post_type' => 'lp-floor-plans' ) );
+
+			foreach ( $floor_plans as $floor_plan ) {
+				wp_delete_post( $floor_plan->ID, true );
+			}
 		}
 	}
 }

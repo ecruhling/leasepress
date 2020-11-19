@@ -112,7 +112,7 @@ class LP_PostTypes extends LP_Base {
 				'menu_icon'          => 'dashicons-screenoptions',
 				'admin_cols'         => array(
 					'title',
-					// @codingStandardsIgnoreStart (These are meta_key queries)
+					// @codingStandardsIgnoreStart (These are meta_key queries and WPCS doesn't like meta_key queries)
 					'lp_beds'              => array(
 						'title'    => 'Beds',
 						'meta_key' => 'lp_beds',
@@ -186,7 +186,7 @@ class LP_PostTypes extends LP_Base {
 	 * Reference:  http://wordpress.stackexchange.com/questions/89028/put-update-like-notification-bubble-on-multiple-cpts-menus-for-pending-items/95058
 	 *
 	 * @param string $needle First parameter.
-	 * @param array $haystack Second parameter.
+	 * @param array  $haystack Second parameter.
 	 *
 	 * @return mixed
 	 * @since 1.0.0

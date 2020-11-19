@@ -62,11 +62,14 @@
 		})
 
 		// Create / delete floor plans button click
-		$('.lp_create_floor_plans').on('click', function (e) {
+		$('.lp_create_delete_floor_plans').on('click', function (e) {
 			e.preventDefault()
 
 			// variables
-			const $nonce = $('#lp_create_floor_plans_nonce').attr('value')
+			const $action = $(this).attr('id')
+			const $nonce = $('#' + $action + '_nonce').attr('value')
+
+			console.log($action, $nonce)
 
 			// AJAX call
 			$.ajax({
@@ -75,18 +78,18 @@
 				dataType: 'html',
 				data: {
 					nonce: $nonce,
-					action: 'lp_create_floor_plans',
+					action: $action,
 				},
 				beforeSend: function () {
-					$('.lp_create_floor_plans').addClass('disabled')
-					$createFPLoader.fadeIn()
+					$('#' + $action).addClass('disabled')
+					$('#' + $action + '_loader').fadeIn()
 				},
 				error: function (jqXHR, textStatus, errorThrown) {
 					console.log(jqXHR, textStatus, errorThrown)
 				},
 				success: function (data) {
-					$('.lp_create_floor_plans').removeClass('disabled')
-					$createFPLoader.fadeOut()
+					$('#' + $action).removeClass('disabled')
+					$('#' + $action + '_loader').fadeOut()
 					// console.log(data)
 				},
 			})

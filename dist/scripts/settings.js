@@ -154,10 +154,12 @@
       });
     }); // Create / delete floor plans button click
 
-    $('.lp_create_floor_plans').on('click', function (e) {
+    $('.lp_create_delete_floor_plans').on('click', function (e) {
       e.preventDefault(); // variables
 
-      var $nonce = $('#lp_create_floor_plans_nonce').attr('value'); // AJAX call
+      var $action = $(this).attr('id');
+      var $nonce = $('#' + $action + '_nonce').attr('value');
+      console.log($action, $nonce); // AJAX call
 
       $.ajax({
         url: ajaxurl,
@@ -165,18 +167,18 @@
         dataType: 'html',
         data: {
           nonce: $nonce,
-          action: 'lp_create_floor_plans'
+          action: $action
         },
         beforeSend: function beforeSend() {
-          $('.lp_create_floor_plans').addClass('disabled');
-          $createFPLoader.fadeIn();
+          $('#' + $action).addClass('disabled');
+          $('#' + $action + '_loader').fadeIn();
         },
         error: function error(jqXHR, textStatus, errorThrown) {
           console.log(jqXHR, textStatus, errorThrown);
         },
         success: function success(data) {
-          $('.lp_create_floor_plans').removeClass('disabled');
-          $createFPLoader.fadeOut(); // console.log(data)
+          $('#' + $action).removeClass('disabled');
+          $('#' + $action + '_loader').fadeOut(); // console.log(data)
         }
       });
     }); // API lookup buttons click
