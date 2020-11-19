@@ -66,10 +66,10 @@
 			e.preventDefault()
 
 			// variables
-			const $action = $(this).attr('id')
-			const $nonce = $('#' + $action + '_nonce').attr('value')
+			const $method = $(this).attr('id')
+			const $nonce = $('#' + $method + '_nonce').attr('value')
 
-			console.log($action, $nonce)
+			console.log($method, $nonce)
 
 			// AJAX call
 			$.ajax({
@@ -78,20 +78,21 @@
 				dataType: 'html',
 				data: {
 					nonce: $nonce,
-					action: $action,
+					action: $method,
 				},
 				beforeSend: function () {
-					$('#' + $action).addClass('disabled')
-					$('#' + $action + '_loader').fadeIn()
+					$('#' + $method).addClass('disabled')
+					$('#' + $method + '_loader').fadeIn()
 				},
 				error: function (jqXHR, textStatus, errorThrown) {
 					console.log(jqXHR, textStatus, errorThrown)
 				},
 				success: function (response) {
-					$('#' + $action).removeClass('disabled')
-					$('#' + $action + '_loader').fadeOut()
-					$('p.create-floor-plans').append('<strong class="floor-plans-created-message">&nbsp;' + ($.parseJSON(response)).data + ' Floor Plans Added!</strong>')
-					$('.floor-plans-created-message').delay(3000).fadeOut('normal', function () {
+					const action = ($method === 'lp_create_floor_plans') ? 'Added' : 'Deleted'
+					$('#' + $method).removeClass('disabled')
+					$('#' + $method + '_loader').fadeOut()
+					$('p.' + $method).append('<strong class="floor-plans-message">&nbsp;' + ($.parseJSON(response)).data + ' Floor Plans ' + action + ':</strong>')
+					$('.floor-plans-message').delay(3000).fadeOut('normal', function () {
 						$(this).remove()
 					})
 				},

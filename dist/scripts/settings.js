@@ -157,9 +157,9 @@
     $('.lp_create_delete_floor_plans').on('click', function (e) {
       e.preventDefault(); // variables
 
-      var $action = $(this).attr('id');
-      var $nonce = $('#' + $action + '_nonce').attr('value');
-      console.log($action, $nonce); // AJAX call
+      var $method = $(this).attr('id');
+      var $nonce = $('#' + $method + '_nonce').attr('value');
+      console.log($method, $nonce); // AJAX call
 
       $.ajax({
         url: ajaxurl,
@@ -167,20 +167,21 @@
         dataType: 'html',
         data: {
           nonce: $nonce,
-          action: $action
+          action: $method
         },
         beforeSend: function beforeSend() {
-          $('#' + $action).addClass('disabled');
-          $('#' + $action + '_loader').fadeIn();
+          $('#' + $method).addClass('disabled');
+          $('#' + $method + '_loader').fadeIn();
         },
         error: function error(jqXHR, textStatus, errorThrown) {
           console.log(jqXHR, textStatus, errorThrown);
         },
         success: function success(response) {
-          $('#' + $action).removeClass('disabled');
-          $('#' + $action + '_loader').fadeOut();
-          $('p.create-floor-plans').append('<strong class="floor-plans-created-message">&nbsp;' + $.parseJSON(response).data + ' Floor Plans Added!</strong>');
-          $('.floor-plans-created-message').delay(3000).fadeOut('normal', function () {
+          var action = $method === 'lp_create_floor_plans' ? 'Added' : 'Deleted';
+          $('#' + $method).removeClass('disabled');
+          $('#' + $method + '_loader').fadeOut();
+          $('p.' + $method).append('<strong class="floor-plans-message">&nbsp;' + $.parseJSON(response).data + ' Floor Plans ' + action + ':</strong>');
+          $('.floor-plans-message').delay(3000).fadeOut('normal', function () {
             $(this).remove();
           });
         }

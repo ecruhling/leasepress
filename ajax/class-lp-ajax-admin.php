@@ -137,6 +137,9 @@ class LP_Ajax_Admin extends LP_Admin_Base {
 			foreach ( $floor_plans as $floor_plan ) {
 				wp_delete_post( $floor_plan->ID, true );
 			}
+
+			wp_send_json_success( count( $floor_plans ) );
+
 		}
 	}
 }

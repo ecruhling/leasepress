@@ -165,7 +165,7 @@ cmb2_metabox_form(
 		<p><?php esc_html_e( 'Using the data from RENTCafe, create a CPT Floor Plan for each floor plan.', 'leasepress' ); ?></p>
 		<form method="post">
 			<p><input type="hidden" name="lp_action" value="lp_create_floor_plans"/></p>
-			<p class="create-floor-plans">
+			<p class="lp_create_floor_plans">
 				<?php wp_nonce_field( 'lp_create_floor_plans_nonce', 'lp_create_floor_plans_nonce' ); ?>
 				<?php submit_button( esc_html__( 'Create Floor Plans' ), 'secondary lp_create_delete_floor_plans', 'lp_create_floor_plans', false ); ?>
 				<svg id="lp_create_floor_plans_loader" class="loader" width="60px" height="60px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
@@ -190,7 +190,7 @@ cmb2_metabox_form(
 		<p><?php esc_html_e( 'Delete ALL Floor Plans CPT posts.', 'leasepress' ); ?></p>
 		<form method="post">
 			<p><input type="hidden" name="lp_action" value="lp_delete_floor_plans"/></p>
-			<p class="delete-floor-plans">
+			<p class="lp_delete_floor_plans">
 				<?php wp_nonce_field( 'lp_delete_floor_plans_nonce', 'lp_delete_floor_plans_nonce' ); ?>
 				<?php submit_button( esc_html__( 'Delete Floor Plans' ), 'secondary lp_create_delete_floor_plans', 'lp_delete_floor_plans', false ); ?>
 				<svg id="lp_delete_floor_plans_loader" class="loader" width="60px" height="60px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">

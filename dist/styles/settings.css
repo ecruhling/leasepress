@@ -58,8 +58,8 @@
 }
 
 p.clear-cached-data,
-p.create-floor-plans,
-p.delete-floor-plans {
+p.lp_create_floor_plans,
+p.lp_delete_floor_plans {
   position: relative;
 }
 
