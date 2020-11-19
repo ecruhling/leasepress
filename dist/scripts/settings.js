@@ -110,7 +110,76 @@
     var $rentcafeDataContainer = $('#rentcafe-request-data');
     var $rightColumn = $('#right-column');
     var $dataLoader = $('#data-loader');
-    var $cacheLoader = $('#cache-loader'); // API lookup button click
+    var $cacheLoader = $('#cache-loader');
+    var $createFPLoader = $('#create-floor-plans-loader'); // Save button click (validation of some fields)
+
+    $('#save-button').on('click', function (e) {
+      var $propertyCode = $('#lp_rentcafe_property_code').val();
+      var $propertyId = $('#lp_rentcafe_property_id').val();
+      var $codeOrId = $('#lp_rentcafe_code_or_id').val();
+
+      if ($codeOrId === 'property_code' && !$propertyCode || $codeOrId === 'property_id' && !$propertyId) {
+        e.preventDefault();
+        $('.cmb-form').append('<strong class="invalid-code-id">&nbsp;&nbsp;&nbsp;A valid Property Code OR Property ID must be used!</strong>');
+      } else {
+        $('.invalid-code-id').remove();
+      }
+    }); // API clear cache button click
+
+    $('.api_clear_cache').on('click', function (e) {
+      e.preventDefault(); // AJAX call
+
+      $.ajax({
+        url: ajaxurl,
+        type: 'POST',
+        dataType: 'html',
+        data: {
+          action: 'delete_rentcafe_transient'
+        },
+        beforeSend: function beforeSend() {
+          $('.api_clear_cache').addClass('disabled');
+          $cacheLoader.fadeIn();
+        },
+        error: function error(jqXHR, textStatus, errorThrown) {
+          console.log(jqXHR, textStatus, errorThrown);
+        },
+        success: function success() {
+          $('.api_clear_cache').removeClass('disabled');
+          $cacheLoader.fadeOut();
+          $('p.clear-cached-data').append('<strong class="cache-cleared-message">&nbsp;Cache Cleared and Resaved!</strong>');
+          $('.cache-cleared-message').delay(3000).fadeOut('normal', function () {
+            $(this).remove();
+          });
+        }
+      });
+    }); // Create / delete floor plans button click
+
+    $('.lp_create_floor_plans').on('click', function (e) {
+      e.preventDefault(); // variables
+
+      var $nonce = $('#lp_create_floor_plans_nonce').attr('value'); // AJAX call
+
+      $.ajax({
+        url: ajaxurl,
+        type: 'POST',
+        dataType: 'html',
+        data: {
+          nonce: $nonce,
+          action: 'lp_create_floor_plans'
+        },
+        beforeSend: function beforeSend() {
+          $('.lp_create_floor_plans').addClass('disabled');
+          $createFPLoader.fadeIn();
+        },
+        error: function error(jqXHR, textStatus, errorThrown) {
+          console.log(jqXHR, textStatus, errorThrown);
+        },
+        success: function success(data) {
+          $('.lp_create_floor_plans').removeClass('disabled');
+          $createFPLoader.fadeOut(); // console.log(data)
+        }
+      });
+    }); // API lookup buttons click
 
     $('.api_lookup_button').on('click', function (e) {
       e.preventDefault(); // variables
@@ -161,47 +230,6 @@
           }
         }
       });
-    }); // API Clear Cache button click
-
-    $('.api_clear_cache').on('click', function (e) {
-      e.preventDefault(); // AJAX call
-
-      $.ajax({
-        url: ajaxurl,
-        type: 'POST',
-        dataType: 'html',
-        data: {
-          action: 'delete_rentcafe_transient'
-        },
-        beforeSend: function beforeSend() {
-          $('.api_clear_cache').addClass('disabled');
-          $cacheLoader.fadeIn();
-        },
-        error: function error(jqXHR, textStatus, errorThrown) {
-          console.log(jqXHR, textStatus, errorThrown);
-        },
-        success: function success() {
-          $('.api_clear_cache').removeClass('disabled');
-          $cacheLoader.fadeOut();
-          $('p.clear-cached-data').append('<strong class="cache-cleared-message">&nbsp;Cache Cleared and Resaved!</strong>');
-          $('.cache-cleared-message').delay(3000).fadeOut('normal', function () {
-            $(this).remove();
-          });
-        }
-      });
-    }); // Save button click (validation of some fields)
-
-    $('#save-button').on('click', function (e) {
-      var $propertyCode = $('#lp_rentcafe_property_code').val();
-      var $propertyId = $('#lp_rentcafe_property_id').val();
-      var $codeOrId = $('#lp_rentcafe_code_or_id').val();
-
-      if ($codeOrId === 'property_code' && !$propertyCode || $codeOrId === 'property_id' && !$propertyId) {
-        e.preventDefault();
-        $('.cmb-form').append('<strong class="invalid-code-id">&nbsp;&nbsp;&nbsp;A valid Property Code OR Property ID must be used!</strong>');
-      } else {
-        $('.invalid-code-id').remove();
-      }
     });
   });
 })(jQuery);

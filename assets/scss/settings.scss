@@ -64,7 +64,9 @@
   }
 }
 
-p.clear-cached-data {
+p.clear-cached-data,
+p.create-floor-plans,
+p.delete-floor-plans {
   position: relative;
 }
 
@@ -75,7 +77,9 @@ p.clear-cached-data {
   left: -13px;
 }
 
-#cache-loader {
+#cache-loader,
+#create-floor-plans-loader,
+#delete-floor-plans-loader {
   top: -15px;
   left: 14px;
 }

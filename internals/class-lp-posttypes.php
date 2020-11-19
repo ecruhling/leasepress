@@ -89,7 +89,7 @@ class LP_PostTypes extends LP_Base {
 	 */
 	public function load_cpts() {
 		// Create Custom Post Type https://github.com/johnbillion/extended-cpts/wiki.
-		$tax = register_extended_post_type(
+		register_extended_post_type(
 			'lp-floor-plans',
 			array(
 				'archive'            => array(
@@ -105,17 +105,9 @@ class LP_PostTypes extends LP_Base {
 						'featured_image' => 'thumbnail',
 					),
 					'title',
-					'genre'          => array(
-						'taxonomy' => 'lp-floor-plan-taxonomy',
-					),
 					'date'           => array(
 						'title'   => 'Date',
 						'default' => 'ASC',
-					),
-				),
-				'admin_filters'      => array( // Add a dropdown filter to the admin screen.
-					'genre' => array(
-						'taxonomy' => 'lp-floor-plan-taxonomy',
 					),
 				),
 			),
@@ -123,39 +115,6 @@ class LP_PostTypes extends LP_Base {
 				// Override the base names used for labels.
 				'singular' => __( 'Floor Plan', 'leasepress' ),
 				'plural'   => __( 'Floor Plans', 'leasepress' ),
-			)
-		);
-
-		$tax->add_taxonomy(
-			'lp-floor-plan-taxonomy',
-			array(
-				'hierarchical' => false,
-				'show_ui'      => false,
-			)
-		);
-		// Create Custom Taxonomy https://github.com/johnbillion/extended-taxos.
-		register_extended_taxonomy(
-			'lp-floor-plan-taxonomy',
-			'lp-floor-plans',
-			array(
-				// Use radio buttons in the meta box for this taxonomy on the post editing screen.
-				'meta_box'         => 'radio',
-				// Show this taxonomy in the 'At a Glance' dashboard widget.
-				'dashboard_glance' => true,
-				// Add a custom column to the admin screen.
-				'admin_cols'       => array(
-					'featured_image' => array(
-						'title'          => 'Featured Image',
-						'featured_image' => 'thumbnail',
-					),
-				),
-				'slug'             => 'lp-floor-plan-category',
-				'show_in_rest'     => true,
-			),
-			array(
-				// Override the base names used for labels.
-				'singular' => __( 'Floor Plan Category', 'leasepress' ),
-				'plural'   => __( 'Floor Plan Categories', 'leasepress' ),
 			)
 		);
 	}
