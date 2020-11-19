@@ -21,45 +21,53 @@ class LP_PostTypes extends LP_Base {
 		parent::initialize();
 		add_action( 'init', array( $this, 'load_cpts' ) );
 
-		/*
-		 * Custom Columns
-		 */
-		$post_columns = new CPT_columns( 'lp-floor-plans' );
-		$post_columns->add_column(
-			'cmb2_field',
-			array(
-				'label'    => __( 'CMB2 Field', 'leasepress' ),
-				'type'     => 'post_meta',
-				'orderby'  => 'meta_value',
-				'sortable' => true,
-				'prefix'   => '<b>',
-				'suffix'   => '</b>',
-				'def'      => 'Not defined', // Default value in case post meta not found.
-				'order'    => '-1',
-			)
-		);
-
-		/*
-		 * Custom Bulk Actions
-		 */
-		$bulk_actions = new Seravo_Custom_Bulk_Action( array( 'post_type' => 'lp-floor-plans' ) );
-		$bulk_actions->register_bulk_action(
-			array(
-				'menu_text'    => 'Mark meta',
-				'admin_notice' => 'Written something on custom bulk meta',
-				'callback'     => function ( $post_ids ) {
-					foreach ( $post_ids as $post_id ) {
-						update_post_meta( $post_id, '_demo_leasepress_text', 'Random stuff' );
-					}
-
-					return true;
-				},
-			)
-		);
-		$bulk_actions->init();
 		// Add bubble notification for CPT pending.
 		add_action( 'admin_menu', array( $this, 'pending_cpt_bubble' ), 999 );
 		add_filter( 'pre_get_posts', array( $this, 'filter_search' ) );
+
+		/**
+		 * Add CMB2 Custom Metaboxes
+		 */
+		function lp_add_floor_plans_metaboxes() {
+
+			$cmb = new_cmb2_box(
+				array(
+					'id'           => 'lp_floor_plans_metaboxes',
+					'title'        => __( 'RENTCafe Data Fields', 'leasepress' ),
+					'object_types' => array( 'lp-floor-plans' ),
+					'context'      => 'normal',
+					'priority'     => 'default',
+				)
+			);
+
+			$cmb->add_field(
+				array(
+					'name' => __( 'Unit Type Mapping', 'leasepress' ),
+					'id'   => 'lp_unit_type_mapping',
+					'type' => 'text',
+				)
+			);
+
+			$cmb->add_field(
+				array(
+					'name' => __( 'Beds', 'leasepress' ),
+					'id'   => 'lp_beds',
+					'type' => 'text',
+				)
+			);
+
+			$cmb->add_field(
+				array(
+					'name' => __( 'Baths', 'leasepress' ),
+					'id'   => 'lp_baths',
+					'type' => 'text',
+				)
+			);
+
+		}
+
+		add_action( 'cmb2_init', 'lp_add_floor_plans_metaboxes' );
+
 	}
 
 	/**
@@ -83,7 +91,7 @@ class LP_PostTypes extends LP_Base {
 	}
 
 	/**
-	 * Load CPT and Taxonomies on WordPress
+	 * Create Floor Plans CPT
 	 *
 	 * @return void
 	 */
@@ -97,22 +105,34 @@ class LP_PostTypes extends LP_Base {
 				),
 				'slug'               => 'lp-floor-plans',
 				'show_in_rest'       => true,
-				'dashboard_activity' => true,
+				'dashboard_glance'   => false,
+				'dashboard_activity' => false,
+				'enter_title_here'   => 'Floor Plan Name',
+				'show_in_feed'       => false,
 				'menu_icon'          => 'dashicons-screenoptions',
-				'admin_cols'         => array( // Add some custom columns to the admin screen.
-					'featured_image' => array(
-						'title'          => 'Featured Image',
-						'featured_image' => 'thumbnail',
-					),
+				'admin_cols'         => array(
 					'title',
-					'date'           => array(
+					// @codingStandardsIgnoreStart (These are meta_key queries)
+					'lp_beds'              => array(
+						'title'    => 'Beds',
+						'meta_key' => 'lp_beds',
+					),
+					'lp_baths'             => array(
+						'title'    => 'Baths',
+						'meta_key' => 'lp_baths',
+					),
+					'lp_unit_type_mapping' => array(
+						'title'    => 'Unit Type Mapping',
+						'meta_key' => 'lp_unit_type_mapping',
+						// @codingStandardsIgnoreEnd
+					),
+					'date'                 => array(
 						'title'   => 'Date',
 						'default' => 'ASC',
 					),
 				),
 			),
 			array(
-				// Override the base names used for labels.
 				'singular' => __( 'Floor Plan', 'leasepress' ),
 				'plural'   => __( 'Floor Plans', 'leasepress' ),
 			)
@@ -161,12 +181,12 @@ class LP_PostTypes extends LP_Base {
 	}
 
 	/**
-	 * Required for the bubble notification<br>
+	 * Required for the bubble notification
 	 *
 	 * Reference:  http://wordpress.stackexchange.com/questions/89028/put-update-like-notification-bubble-on-multiple-cpts-menus-for-pending-items/95058
 	 *
 	 * @param string $needle First parameter.
-	 * @param array  $haystack Second parameter.
+	 * @param array $haystack Second parameter.
 	 *
 	 * @return mixed
 	 * @since 1.0.0

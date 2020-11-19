@@ -77,12 +77,16 @@ class LP_Ajax_Admin extends LP_Admin_Base {
 
 			foreach ( $floor_plans_json as $floor_plan ) {
 				$postarr = array(
-					// @codingStandardsIgnoreStart (FloorplanName is the correct name and cannot be changed)
-					'post_title'  => $floor_plan->FloorplanName,
-					// @codingStandardsIgnoreEnd
 					'post_type'   => 'lp-floor-plans',
 					'post_status' => 'publish',
-					'meta_input'  => '',
+					// @codingStandardsIgnoreStart (The following are the correct attribute names and cannot be changed)
+					'post_title'  => $floor_plan->FloorplanName,
+					'meta_input'  => array(
+						'lp_unit_type_mapping' => $floor_plan->UnitTypeMapping,
+						'lp_beds' => $floor_plan->Beds,
+						'lp_baths' => $floor_plan->Baths,
+						// @codingStandardsIgnoreEnd
+					),
 				);
 				wp_insert_post( $postarr );
 				// TODO: create a new post for each floor plan.
