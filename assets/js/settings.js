@@ -87,10 +87,13 @@
 				error: function (jqXHR, textStatus, errorThrown) {
 					console.log(jqXHR, textStatus, errorThrown)
 				},
-				success: function (data) {
+				success: function (response) {
 					$('#' + $action).removeClass('disabled')
 					$('#' + $action + '_loader').fadeOut()
-					// console.log(data)
+					$('p.create-floor-plans').append('<strong class="floor-plans-created-message">&nbsp;' + ($.parseJSON(response)).data + ' Floor Plans Added!</strong>')
+					$('.floor-plans-created-message').delay(3000).fadeOut('normal', function () {
+						$(this).remove()
+					})
 				},
 			})
 		})

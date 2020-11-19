@@ -176,9 +176,13 @@
         error: function error(jqXHR, textStatus, errorThrown) {
           console.log(jqXHR, textStatus, errorThrown);
         },
-        success: function success(data) {
+        success: function success(response) {
           $('#' + $action).removeClass('disabled');
-          $('#' + $action + '_loader').fadeOut(); // console.log(data)
+          $('#' + $action + '_loader').fadeOut();
+          $('p.create-floor-plans').append('<strong class="floor-plans-created-message">&nbsp;' + $.parseJSON(response).data + ' Floor Plans Added!</strong>');
+          $('.floor-plans-created-message').delay(3000).fadeOut('normal', function () {
+            $(this).remove();
+          });
         }
       });
     }); // API lookup buttons click

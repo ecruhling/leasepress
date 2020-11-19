@@ -66,6 +66,9 @@ class LP_Ajax_Admin extends LP_Admin_Base {
 
 	/**
 	 * Create Floor Plans
+	 *
+	 * Using the data coming from RENTCafe, create a floor plan CPT
+	 * for each floor plan.
 	 */
 	public function lp_create_floor_plans() {
 		$nonce = isset( $_POST['nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['nonce'] ) ) : null;
@@ -74,9 +77,9 @@ class LP_Ajax_Admin extends LP_Admin_Base {
 			$floor_plans_data = LP_API_Lookups::get_rentcafe_data( 'floorplan', null );
 			// TODO: check for error code!
 
-			$floor_plans_json = json_decode( $floor_plans_data[1]['body'] );
+			$floor_plans = json_decode( $floor_plans_data[1]['body'] );
 
-			foreach ( $floor_plans_json as $floor_plan ) {
+			foreach ( $floor_plans as $floor_plan ) {
 				$postarr = array(
 					'post_type'   => 'lp-floor-plans',
 					'post_status' => 'publish',
@@ -84,12 +87,13 @@ class LP_Ajax_Admin extends LP_Admin_Base {
 					'post_title'  => $floor_plan->FloorplanName,
 					'meta_input'  => array(
 						'lp_unit_type_mapping' => $floor_plan->UnitTypeMapping,
-						'lp_beds' => $floor_plan->Beds,
-						'lp_baths' => $floor_plan->Baths,
+						'lp_beds'              => $floor_plan->Beds,
+						'lp_baths'             => $floor_plan->Baths,
 						// @codingStandardsIgnoreEnd
 					),
 				);
 				wp_insert_post( $postarr );
+
 				// TODO: create a new post for each floor plan.
 				// sample data:
 				// "PropertyId": "1254808",
@@ -114,13 +118,15 @@ class LP_Ajax_Admin extends LP_Admin_Base {
 
 			}
 
-			wp_send_json_success( $floor_plans_data );
+			wp_send_json_success( count( $floor_plans ) );
 
 		}
 	}
 
 	/**
 	 * Delete Floor Plans
+	 *
+	 * Completely deletes all the Floor Plans CPT posts.
 	 */
 	public function lp_delete_floor_plans() {
 		$nonce = isset( $_POST['nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['nonce'] ) ) : null;
