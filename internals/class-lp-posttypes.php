@@ -32,11 +32,13 @@ class LP_PostTypes extends LP_Base {
 
 			$cmb = new_cmb2_box(
 				array(
-					'id'           => 'lp_floor_plans_metaboxes',
+					'id'           => 'lp_floor_plans_rentcafe_data_fields',
 					'title'        => __( 'RENTCafe Data Fields', 'leasepress' ),
 					'object_types' => array( 'lp-floor-plans' ),
-					'context'      => 'normal',
+					'context'      => 'after_title',
 					'priority'     => 'high',
+					'show_names'   => true,
+					'cmb_styles'   => false,
 				)
 			);
 
