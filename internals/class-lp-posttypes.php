@@ -36,7 +36,7 @@ class LP_PostTypes extends LP_Base {
 					'title'        => __( 'RENTCafe Data Fields', 'leasepress' ),
 					'object_types' => array( 'lp-floor-plans' ),
 					'context'      => 'normal',
-					'priority'     => 'default',
+					'priority'     => 'high',
 				)
 			);
 
@@ -105,10 +105,12 @@ class LP_PostTypes extends LP_Base {
 				),
 				'slug'               => 'lp-floor-plans',
 				'show_in_rest'       => true,
+				'block_editor'       => false,
 				'dashboard_glance'   => false,
 				'dashboard_activity' => false,
 				'enter_title_here'   => 'Floor Plan Name',
 				'show_in_feed'       => false,
+				'supports'           => array( 'title', 'editor', 'custom-fields', 'revisions' ),
 				'menu_icon'          => 'dashicons-screenoptions',
 				'admin_cols'         => array(
 					'title',
@@ -186,7 +188,7 @@ class LP_PostTypes extends LP_Base {
 	 * Reference:  http://wordpress.stackexchange.com/questions/89028/put-update-like-notification-bubble-on-multiple-cpts-menus-for-pending-items/95058
 	 *
 	 * @param string $needle First parameter.
-	 * @param array  $haystack Second parameter.
+	 * @param array $haystack Second parameter.
 	 *
 	 * @return mixed
 	 * @since 1.0.0
