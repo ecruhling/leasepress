@@ -35,25 +35,15 @@
   background: #efefef !important;
 }
 
-.metabox-holder .postbox {
-  max-width: 100%;
+.flex-50 {
+  flex: 1 1 calc(100% - 30px);
+  min-width: calc(100% - 30px);
+  padding-right: 30px;
 }
-.metabox-holder .postbox h3 {
-  padding-left: 10px;
-}
-
 @media screen and (min-width: 783px) {
-  .settings-tab {
-    float: left;
-    margin-right: 320px;
-  }
-}
-
-@media screen and (min-width: 783px) {
-  .right-column-settings-page {
-    max-width: 270px;
-    float: right;
-    margin-left: -320px;
+  .flex-50 {
+    flex: 1 1 calc(50% - 30px);
+    min-width: calc(50% - 30px);
   }
 }
 

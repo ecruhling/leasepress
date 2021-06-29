@@ -1,6 +1,6 @@
 <?php
 /**
- * Additional settings tab for the administration dashboard.
+ * Display of tabular data for the administration dashboard.
  *
  * @package   LeasePress
  * @author    Erik Ruhling <ecruhling@gmail.com>
