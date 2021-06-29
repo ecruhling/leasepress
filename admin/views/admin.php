@@ -14,8 +14,17 @@
 
 ?>
 
-<div class="wrap">
-	<h2><?php echo esc_html( get_admin_page_title() ); ?></h2>
+<div class="resource-lp wrap">
+	<div id="resource-lp-main">
+		<div class="header-wrap">
+			<div class="wrapper">
+				<div class="header mdb-header bg-brand-light flex-container">
+					<h1>LeasePress</h1>
+				</div>
+			</div>
+		</div>
+		<div class="wrapper">
+		<h2><?php echo esc_html( get_admin_page_title() ); ?></h2>
 	<div id="tabs">
 		<ul>
 			<li><a href="#tabs-1" title="Settings"><?php esc_html_e( 'Settings', 'leasepress' ); ?></a></li>
@@ -52,6 +61,8 @@ repeatCount="indefinite"/>
 		</div>
 		<div id="tabs-3" class="metabox-holder">
 			<?php require_once plugin_dir_path( __FILE__ ) . 'export-import.php'; ?>
+		</div>
+	</div>
 		</div>
 	</div>
 </div>

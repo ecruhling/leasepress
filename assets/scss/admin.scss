@@ -5,3 +5,35 @@
 #dashboard_right_now a.demo-count::before {
   content: "\f115";
 }
+
+.resource-lp {
+  &.wrap {
+	margin: 0;
+  }
+
+  .wrapper {
+	min-width: 920px;
+	max-width: 1280px;
+	margin-left: 30px;
+  }
+
+  .header-wrap {
+	background: rgba(#676c73, 0.5);
+	padding: 30px 0;
+  }
+
+  h1 {
+	font-size: 1.3125rem;
+	font-weight: 500;
+	padding: 0;
+	letter-spacing: 0.5px;
+  }
+}
+
+#resource-lp-main {
+  margin-left: -20px;
+
+  @media screen and (max-width: 782px) {
+	margin-left: -10px;
+  }
+}
