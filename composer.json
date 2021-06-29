@@ -1,6 +1,7 @@
 {
   "name": "ecruhling/leasepress",
-  "description": "Wordpress Plugin Boilerplate with steroids!",
+  "type": "wordpress-plugin",
+  "description": "based on WPBP\n/\nWordPress-Plugin-Boilerplate-Powered",
   "license": "GPL-2.0-or-later",
   "authors": [
 	{
