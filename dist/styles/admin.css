@@ -46,6 +46,14 @@
   padding: 0;
   letter-spacing: 0.5px;
 }
+.resource-lp .cmb-th {
+  padding-bottom: 0;
+  width: auto;
+  float: none;
+}
+.resource-lp .cmb-td {
+  padding: 0;
+}
 
 #resource-lp-main {
   margin-left: -20px;
