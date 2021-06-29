@@ -124,6 +124,11 @@ $cmb->add_field(
 	)
 );
 
+?>
+
+<div class="container-shadow">
+<?php
+
 cmb2_metabox_form(
 	'leasepress_options',
 	'leasepress-settings',
@@ -133,8 +138,9 @@ cmb2_metabox_form(
 );
 
 ?>
+</div>
 
-<div class="action-panel">
+<div class="container-shadow">
 	<h3 class="hndle"><span><?php esc_html_e( 'Clear All Cached Data', 'leasepress' ); ?></span></h3>
 	<div class="inside">
 		<p><?php esc_html_e( 'clear all cached RENTCafe data (floorplan & apartmentavailability requestType) and performs a new lookup. Results are cached.', 'leasepress' ); ?></p>
@@ -159,7 +165,7 @@ cmb2_metabox_form(
 		</form>
 	</div>
 </div>
-<div class="action-panel">
+<div class="container-shadow">
 	<h3 class="hndle"><span><?php esc_html_e( 'Create Floor Plans CPT', 'leasepress' ); ?></span></h3>
 	<div class="inside">
 		<p><?php esc_html_e( 'Using the data from RENTCafe, create a CPT Floor Plan for each floor plan.', 'leasepress' ); ?></p>
@@ -184,7 +190,7 @@ cmb2_metabox_form(
 		</form>
 	</div>
 </div>
-<div class="action-panel">
+<div class="container-shadow">
 	<h3 class="hndle"><span><?php esc_html_e( 'Delete Floor Plans CPT', 'leasepress' ); ?></span></h3>
 	<div class="inside">
 		<p><?php esc_html_e( 'Delete ALL Floor Plans CPT posts.', 'leasepress' ); ?></p>
@@ -209,7 +215,7 @@ cmb2_metabox_form(
 		</form>
 	</div>
 </div>
-<div class="action-panel">
+<div class="container-shadow">
 	<h3 class="hndle"><span><?php esc_html_e( 'RentCAFE API Floorplan Lookup', 'leasepress' ); ?></span></h3>
 	<div class="inside">
 		<p>
@@ -226,7 +232,7 @@ cmb2_metabox_form(
 		</form>
 	</div>
 </div>
-<div class="action-panel">
+<div class="container-shadow">
 	<h3 class="hndle"><span><?php esc_html_e( 'RentCAFE API Availabilities Lookup', 'leasepress' ); ?></span></h3>
 	<div class="inside">
 		<p>
@@ -243,7 +249,7 @@ cmb2_metabox_form(
 		</form>
 	</div>
 </div>
-<div class="action-panel">
+<div class="container-shadow">
 	<h3 class="hndle">
 		<span><?php esc_html_e( 'RentCAFE API getRentCafeUrl residentLogin Lookup', 'leasepress' ); ?></span>
 	</h3>
@@ -273,7 +279,7 @@ cmb2_metabox_form(
 		</form>
 	</div>
 </div>
-<div class="action-panel">
+<div class="container-shadow">
 	<h3 class="hndle">
 		<span><?php esc_html_e( 'RentCAFE API getRentCafeUrl applicantLogin Lookup', 'leasepress' ); ?></span>
 	</h3>

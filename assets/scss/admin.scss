@@ -44,6 +44,15 @@
 	display: grid;
   }
 
+  .container-shadow {
+	background: #fff;
+	border: 1px solid #d6d6d6;
+	box-shadow: 0 2px 8px 0 rgb(0 0 0 / 5%), 0 2px 1px 0 rgb(0 0 0 / 5%);
+	border-radius: 4px;
+	padding: 1rem 1.5rem;
+	margin-bottom: 1.5rem;
+  }
+
   h1 {
 	font-size: 1.3125rem;
 	font-weight: 500;
