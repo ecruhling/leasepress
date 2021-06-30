@@ -9,23 +9,27 @@
  * @link      https://resourceatlanta.com
  */
 
+namespace LeasePress\Engine;
+
 /**
- * This class is the base skeleton of the plugin
+ * Base skeleton of the plugin
  */
-class LP_Base {
+class Base {
 
 	/**
 	 * The settings of the plugin
 	 *
 	 * @var $settings array
 	 */
-	public $settings = array();
+	public array $settings = array();
 
 	/**
-	 * Initialize the class
+	 * Initialize the class and get the plugin settings
+	 *
+	 * @return bool
 	 */
-	public function initialize() {
-		$this->settings = lp_get_settings();
+	public function initialize(): bool {
+		$this->settings = \lp_get_settings();
 
 		return true;
 	}

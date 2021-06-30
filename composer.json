@@ -1,7 +1,7 @@
 {
   "name": "ecruhling/leasepress",
   "type": "wordpress-plugin",
-  "description": "based on WPBP\n/\nWordPress-Plugin-Boilerplate-Powered",
+  "description": "based on WordPress-Plugin-Boilerplate-Powered",
   "license": "GPL-2.0-or-later",
   "authors": [
 	{
