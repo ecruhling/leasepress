@@ -73,7 +73,7 @@ if ( version_compare( PHP_VERSION, LP_MIN_PHP_VERSION, '<=' ) ) {
 	return;
 }
 
-$plugin_name_libraries = require_once LP_PLUGIN_ROOT . 'vendor/autoload.php';
+$leasepress_libraries = require_once LP_PLUGIN_ROOT . 'vendor/autoload.php';
 
 require_once LP_PLUGIN_ROOT . 'internals/functions.php';
 require_once LP_PLUGIN_ROOT . 'internals/debug.php';
@@ -81,9 +81,9 @@ require_once LP_PLUGIN_ROOT . 'internals/debug.php';
 if ( ! wp_installing() ) {
 	add_action(
 		'plugins_loaded',
-		static function () use ( $plugin_name_libraries ) {
+		static function () use ( $leasepress_libraries ) {
 			try {
-				new Initialize( $plugin_name_libraries );
+				new Initialize( $leasepress_libraries );
 			} catch ( Exception $e ) {
 				wp_die( 'initializing the LeasePress plugin has failed.' );
 			}

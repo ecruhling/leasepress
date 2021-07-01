@@ -30,83 +30,84 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
  * Loop for uninstall
  *
  * @return void
- * @global $wpdb
  */
-function l_uninstall_multisite() {
+function lp_uninstall_multisite() {
 	if ( is_multisite() ) {
 		$blogs = get_sites();
+
 		if ( ! empty( $blogs ) ) {
 			foreach ( $blogs as $blog ) {
-				switch_to_blog( $blog->blog_id );
-				l_uninstall();
+				switch_to_blog( (int) $blog->blog_id );
+				lp_uninstall();
 				restore_current_blog();
 			}
 
 			return;
 		}
 	}
-	l_uninstall();
+
+	lp_uninstall();
 }
 
 /**
  * What happens on uninstall?
  *
- * @return void
  * @global WP_Roles $wp_roles
+ * @return void
  */
-function l_uninstall() {
+function lp_uninstall() {
 	global $wp_roles;
-	/*
-	  @TODO
-	  // Delete all transient and options
-	  delete_transient( 'TRANSIENT_NAME' );
-	  delete_option( 'OPTION_NAME' );
-	  remove_role( 'advanced' );
-	  // Remove custom file directory
-	  $upload_dir = wp_upload_dir();
-	  $directory = $upload_dir['basedir'] . DIRECTORY_SEPARATOR . "CUSTOM_DIRECTORY_NAME" . DIRECTORY_SEPARATOR;
-	  if (is_dir($directory)) {
-	  foreach(glob($directory.'*.*') as $v){
-	  unlink($v);
-	  }
-	  rmdir($directory);
-	  // Delete post meta data
-	  $posts = get_posts(array('posts_per_page' => -1));
-	  foreach ($posts as $post) {
-	  $post_meta = get_post_meta($post->ID);
-	  delete_post_meta($post->ID, 'your-post-meta');
-	  }
-	  // Delete user meta data
-	  $users = get_users();
-	  foreach ($users as $user) {
-	  delete_user_meta($user->ID, 'your-user-meta');
-	  }
-	  // Remove and optimize tables
-	  $GLOBALS['wpdb']->query("DROP TABLE `".$GLOBALS['wpdb']->prefix."TABLE_NAME`");
-	  $GLOBALS['wpdb']->query("OPTIMIZE TABLE `" .$GLOBALS['wpdb']->prefix."options`");
-	 */
+	/*   // phpcs:ignore
+	@TODO
+	// Delete all transient and options
+	delete_transient( 'TRANSIENT_NAME' );
+	delete_option( 'OPTION_NAME' );
+	remove_role( 'advanced' );
+	// Remove custom file directory
+	$upload_dir = wp_upload_dir();
+	$directory = $upload_dir['basedir'] . DIRECTORY_SEPARATOR . "CUSTOM_DIRECTORY_NAME" . DIRECTORY_SEPARATOR;
+	if (is_dir($directory)) {
+		foreach(glob($directory.'*.*') as $v){
+			unlink($v);
+		}
+		rmdir($directory);
+		// Delete post meta data
+		$posts = get_posts(array('posts_per_page' => -1));
+		foreach ($posts as $post) {
+			$post_meta = get_post_meta($post->ID);
+			delete_post_meta($post->ID, 'your-post-meta');
+		}
+		// Delete user meta data
+		$users = get_users();
+		foreach ($users as $user) {
+			delete_user_meta($user->ID, 'your-user-meta');
+		}
+		// Remove and optimize tables
+		$GLOBALS['wpdb']->query("DROP TABLE `".$GLOBALS['wpdb']->prefix."TABLE_NAME`");
+		$GLOBALS['wpdb']->query("OPTIMIZE TABLE `" .$GLOBALS['wpdb']->prefix."options`");
+		*/
 
 	// Remove the capabilities of the plugin.
 	if ( ! isset( $wp_roles ) ) {
-		$wp_roles = new WP_Roles();
+		$wp_roles = new WP_Roles(); // phpcs:ignore
 	}
 
 	$caps = array(
 		'create_plugins',
 		'read_demo',
-		'read_private_demoes',
+		'read_private_demos',
 		'edit_demo',
-		'edit_demoes',
-		'edit_private_demoes',
-		'edit_published_demoes',
-		'edit_others_demoes',
-		'publish_demoes',
+		'edit_demos',
+		'edit_private_demos',
+		'edit_published_demos',
+		'edit_others_demos',
+		'publish_demos',
 		'delete_demo',
-		'delete_demoes',
-		'delete_private_demoes',
-		'delete_published_demoes',
-		'delete_others_demoes',
-		'manage_demoes',
+		'delete_demos',
+		'delete_private_demos',
+		'delete_published_demos',
+		'delete_others_demos',
+		'manage_demos',
 	);
 
 	foreach ( $wp_roles as $role ) {
@@ -115,3 +116,5 @@ function l_uninstall() {
 		}
 	}
 }
+
+lp_uninstall_multisite();

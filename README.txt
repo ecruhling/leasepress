@@ -4,9 +4,9 @@ Tags: rentcafe, yardi, site plans, floor plans, rent, lease
 Requires at least: 5.3
 Tested up to: 5.3
 Stable tag: 1.0.0
-Requires PHP: 7.1.3
+Requires PHP: 7.1.4
 
-Ready to graduate from renting to leasing? Supports API data from RENTCafe (Yardi).
+Supports API data from RENTCafe (Yardi).
 
 == Description ==
 
@@ -63,7 +63,7 @@ you put the stable version, in order to eliminate any doubt.
 
 == Frequently Asked Questions ==
 
-= With which services does LeasePress integrate? =
+= Which services does LeasePress integrate? =
 
 LeasePress can currently integrate with RENTCafe (Yardi). You must have an account with the service in order to use LeasePress.
 You must enable the API at the service.
