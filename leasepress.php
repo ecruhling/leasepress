@@ -85,7 +85,7 @@ if ( ! wp_installing() ) {
 			try {
 				new Initialize( $plugin_name_libraries );
 			} catch ( Exception $e ) {
-				wp_die( 'die' );
+				wp_die( 'initializing the LeasePress plugin has failed.' );
 			}
 		}
 	);
