@@ -9,16 +9,25 @@
  * @link      https://resourceatlanta.com
  */
 
+namespace LeasePress\Internals;
+
+use LeasePress\Engine\Base;
+use function add_shortcode;
+use function shortcode_atts;
+
 /**
- * This class contain all the snippet or extra that improve the experience on the frontend
+ * Shortcodes of this plugin
  */
-class LP_Shortcode extends LP_Base {
+class Shortcode extends Base {
 
 	/**
-	 * Initialize the snippet
+	 * Initialize the class.
+	 *
+	 * @return void
 	 */
 	public function initialize() {
 		parent::initialize();
+
 		add_shortcode( 'foobar', array( $this, 'foobar_func' ) );
 	}
 
@@ -30,7 +39,7 @@ class LP_Shortcode extends LP_Base {
 	 * @return string
 	 * @since 1.0.0
 	 */
-	public static function foobar_func( array $atts ) {
+	public static function foobar_func( array $atts ): string {
 		shortcode_atts(
 			array(
 				'foo' => 'something',

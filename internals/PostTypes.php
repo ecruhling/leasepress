@@ -118,7 +118,7 @@ class PostTypes extends Base {
 	 */
 	public function load_cpts() {
 		// Create Custom Post Type https://github.com/johnbillion/extended-cpts/wiki.
-		$tax = register_extended_post_type(
+		register_extended_post_type(
 			'lp-floor-plans',
 			array(
 				'archive'            => array(

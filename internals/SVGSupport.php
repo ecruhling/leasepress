@@ -9,10 +9,15 @@
  * @link      https://resourceatlanta.com
  */
 
+namespace LeasePress\Internals;
+
+use LeasePress\Engine\Base;
+use SimpleXMLElement;
+
 /**
  * Enable SVG support
  */
-class LP_SVG_Support {
+class SVGSupport extends Base {
 
 	/**
 	 * Constructor
@@ -60,7 +65,7 @@ class LP_SVG_Support {
 	 *
 	 * @return string|string[]
 	 */
-	public function remove_dimensions_svg( $html = '' ) {
+	public function remove_dimensions_svg( string $html = '' ) {
 		return str_ireplace( array( ' width=\"1\"', ' height=\"1\"' ), '', $html );
 	}
 
@@ -69,9 +74,9 @@ class LP_SVG_Support {
 	 *
 	 * @param array $mimes A list of mime types.
 	 *
-	 * @return array|mixed
+	 * @return array
 	 */
-	public function filter_mimes( $mimes = array() ) {
+	public function filter_mimes( array $mimes = array() ): array {
 		$mimes['svg']  = 'image/svg+xml';
 		$mimes['svgz'] = 'image/svg+xml';
 
@@ -101,7 +106,7 @@ class LP_SVG_Support {
 	 *
 	 * @return string
 	 */
-	public function filter_mce_css( string $mce_css ) {
+	public function filter_mce_css( string $mce_css ): string {
 		$mce_css .= ', ' . get_admin_url( 'admin-ajax.php?action=adminlc_mce_svg.css' );
 
 		return $mce_css;
@@ -126,10 +131,10 @@ class LP_SVG_Support {
 	 * @param null $data file data.
 	 * @param null $filename the filename.
 	 *
-	 * @return mixed|null
+	 * @return array|null
 	 */
-	public function fix_mime_type_svg( $data = null, $filename = null ) {
-		$ext = ( isset( $data['ext'] ) ? $data['ext'] : '' );
+	public function fix_mime_type_svg( $data = null, $filename = null ): ?array {
+		$ext = ( $data['ext'] ?? '' );
 		if ( strlen( $ext ) < 1 ) {
 			$exploded = explode( '.', $filename );
 			$ext      = strtolower( end( $exploded ) );
@@ -151,9 +156,9 @@ class LP_SVG_Support {
 	 * @param array  $data the data.
 	 * @param string $id the ID.
 	 *
-	 * @return mixed
+	 * @return array
 	 */
-	public function ensure_svg_metadata( array $data, string $id ) {
+	public function ensure_svg_metadata( array $data, string $id ): array {
 		$attachment = get_post( $id );
 		$mime_type  = $attachment->post_mime_type;
 		if ( 'image/svg+xml' === $mime_type ) {
@@ -178,7 +183,7 @@ class LP_SVG_Support {
 	 *
 	 * @return bool
 	 */
-	protected function missing_or_invalid_svg_dimensions( array $data ) {
+	protected function missing_or_invalid_svg_dimensions( array $data ): bool {
 		if ( ! is_array( $data ) ) {
 			return true;
 		}
