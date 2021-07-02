@@ -16,7 +16,7 @@ parameters:
         # Does not work in "scanFiles"
         - vendor/wpbp/widgets-helper/class.wph-widget.php
     scanFiles:
-        - plugin-name.php
+        - leasepress.php
         - uninstall.php
         - vendor/yoast/i18n-module/src/i18n-wordpressorg-v3.php
         - vendor/freemius/wordpress-sdk/start.php

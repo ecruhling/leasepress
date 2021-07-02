@@ -82,11 +82,13 @@ if ( ! wp_installing() ) {
 	add_action(
 		'plugins_loaded',
 		static function () use ( $leasepress_libraries ) {
-			try {
-				new Initialize( $leasepress_libraries );
-			} catch ( Exception $e ) {
-				wp_die( 'initializing the LeasePress plugin has failed.' );
-			}
+			new Initialize( $leasepress_libraries );
+
+//			try {
+//				new Initialize( $leasepress_libraries );
+//			} catch ( Exception $e ) {
+//				wp_die( 'initializing the LeasePress plugin has failed.' );
+//			}
 		}
 	);
 }

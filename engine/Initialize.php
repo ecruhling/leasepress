@@ -98,14 +98,14 @@ class Initialize {
 	 * @since 1.0.0
 	 */
 	private function load_classes() {
-		$this->classes = apply_filters( 'plugin_name_classes_to_execute', $this->classes );
+		$this->classes = apply_filters( 'leasepress_classes_to_execute', $this->classes );
 
 		foreach ( $this->classes as $class ) {
 			try {
 				$temp = new $class();
 				$temp->initialize();
 			} catch ( Throwable $err ) {
-				do_action( 'plugin_name_initialize_failed', $err );
+				do_action( 'leasepress_initialize_failed', $err );
 
 				if ( WP_DEBUG ) {
 					throw new Exception( $err->getMessage() );
@@ -151,7 +151,7 @@ class Initialize {
 			$this->find_classes( $php_files, $folder, $namespace );
 
 			if ( ! WP_DEBUG ) {
-				wp_die( esc_html__( 'LeasePress is on production environment with missing `composer dumpautoload -o` that will improve the performance on autoloading itself.', 'leasepress' ) );
+				wp_die( esc_html__( 'LeasePress is on a production environment with missing `composer dumpautoload -o` that will improve the performance on autoloading itself.', 'leasepress' ) );
 			}
 
 			return $this->classes;

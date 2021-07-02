@@ -75,8 +75,8 @@ modules:
       phpBinary: php
       language: ''
       configFile: 'wp-config-test.php'
-      plugins: [ "WordPress-Plugin-Boilerplate-Powered/plugin-name/plugin-name.php" ]
-      activatePlugins: [ "WordPress-Plugin-Boilerplate-Powered/plugin-name/plugin-name.php" ]
+      plugins: [ "LeasePress/leasepress/leasepress.php" ]
+      activatePlugins: [ "LeasePress/leasepress/leasepress.php" ]
     WPWebDriver:
       url: "%WP_URL%"
       browser: chrome

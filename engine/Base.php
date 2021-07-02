@@ -11,6 +11,8 @@
 
 namespace LeasePress\Engine;
 
+use function lp_get_settings;
+
 /**
  * Base skeleton of the plugin
  */
@@ -26,10 +28,10 @@ class Base {
 	/**
 	 * Initialize the class and get the plugin settings
 	 *
-	 * @return bool
+	 * @return void|bool
 	 */
-	public function initialize(): bool {
-		$this->settings = \lp_get_settings();
+	public function initialize() {
+		$this->settings = lp_get_settings();
 
 		return true;
 	}
