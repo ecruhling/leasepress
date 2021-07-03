@@ -9,28 +9,28 @@
  * @link      https://resourceatlanta.com
  */
 
-//add_theme_support( 'resource-svg' );
-
 /**
  * Get the settings of the plugin in a filterable way
  *
  * @return array
  */
-function lp_get_settings() {
+function lp_get_settings(): array {
 	return apply_filters( 'lp_get_settings', get_option( 'leasepress-settings' ) );
 }
 
 /**
- * Sanitizes an API Token, just to ensure everything is copacetic.
+ * Sanitizes an API Token.
  *
- * Based on WordPress sanitize_title_with_dashes function, with some things removed in order to retain case.
+ * Based on WordPress sanitize_title_with_dashes function,
+ * with some things removed in order to retain character case.
  *
  * @param string $token The token to be sanitized.
  *
  * @return string The sanitized token.
  * @since 1.0
+ * @noinspection PhpUnused
  */
-function lp_sanitize_api_token( string $token ) {
+function lp_sanitize_api_token( string $token ): string {
 	$token = wp_strip_all_tags( $token );
 	// Preserve escaped octets.
 	$token = preg_replace( '|%([a-fA-F0-9][a-fA-F0-9])|', '---$1---', $token );
@@ -44,7 +44,6 @@ function lp_sanitize_api_token( string $token ) {
 
 	$token = preg_replace( '/\s+/', '-', $token );
 	$token = preg_replace( '|-+|', '-', $token );
-	$token = trim( $token, '-' );
 
-	return $token;
+	return trim( $token, '-' );
 }

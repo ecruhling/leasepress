@@ -9,62 +9,71 @@ import SVGInjector from 'svg-injector'
  * settings area 'Template for Floor Plans page'
  */
 
-$(document).ready(() => {
+(function ($) {
+	'use strict'
+	$(function () {
+		// Write in console log the PHP value passed in enqueue_js_vars in public/class-plugin-name.php
+		// console.log(pn_js_vars.alert)
+	})
 
-	console.log('floor plans page template')
-	/**
-	 * Variables
-	 */
-	const injectedSVGs = $('img[src$=".svg"]') // all SVG files - img src ends with ( &= ) svg
-	const injectorOptions = {
-		evalScripts: 'never',
-	}
+	$(document).ready(() => {
 
-	/**
-	 * Inject and create inline SVGs (site plans)
-	 * then run a callback function to create the interactivity
-	 */
-	new SVGInjector(injectedSVGs, injectorOptions, function () {
+		console.log('floor plans page template')
+		/**
+		 * Variables
+		 */
+		const injectedSVGs = $('img[src$=".svg"]') // all SVG files - img src ends with ( &= ) svg
+		const injectorOptions = {
+			evalScripts: 'never',
+		}
 
-		// Variables
-		const $units = $('.injected-svg g[id^="units"] [id^="unit"]') // all individual units
+		/**
+		 * Inject and create inline SVGs (site plans)
+		 * then run a callback function to create the interactivity
+		 */
+		new SVGInjector(injectedSVGs, injectorOptions, function () {
 
-		$units.addClass('unavailable') // add unavailable class to all units
-		$('#site-plans-content').prepend($('.tooltip-info-box')) // move all tooltip boxes to #site-plans-content (main site plan container)
+			// Variables
+			const $units = $('.injected-svg g[id^="units"] [id^="unit"]') // all individual units
 
-		$('.unit-data').each(function () {
+			$units.addClass('unavailable') // add unavailable class to all units
+			$('#site-plans-content').prepend($('.tooltip-info-box')) // move all tooltip boxes to #site-plans-content (main site plan container)
 
-			const number = $(this).data('number') // unit-xxx
-			// remove unavailable class on units that have data
-			$('.injected-svg [id = "' + number + '"]').removeClass('unavailable') // selector written like this because there are multiple g(units) with the same id
+			$('.unit-data').each(function () {
+
+				const number = $(this).data('number') // unit-xxx
+				// remove unavailable class on units that have data
+				$('.injected-svg [id = "' + number + '"]').removeClass('unavailable') // selector written like this because there are multiple g(units) with the same id
+
+			})
+
+			// Hover function for individual units
+			$units.hover(
+				function () {
+					const unit = $(this).attr('id')
+					const main = $('#site-plans-content')
+					const offset = $(this).offset()
+					const offsetLeft = offset.left - main.offset().left
+					const offsetTop = offset.top - main.offset().top
+					const position = {
+						left: offsetLeft + 50,
+						top: offsetTop,
+					}
+
+					$('#' + unit + 'InfoBox').css(position).fadeIn(200)
+				},
+				function () {
+					$('.tooltip-info-box').fadeOut(200)
+				}  // for mouse out
+			).click(
+				function () {
+					const unit = $(this).attr('id')
+					$('#' + unit + '-modal').modal('show')
+				}
+			)
 
 		})
 
-		// Hover function for individual units
-		$units.hover(
-			function () {
-				const unit = $(this).attr('id')
-				const main = $('#site-plans-content')
-				const offset = $(this).offset()
-				const offsetLeft = offset.left - main.offset().left
-				const offsetTop = offset.top - main.offset().top
-				const position = {
-					left: offsetLeft + 50,
-					top: offsetTop,
-				}
-
-				$('#' + unit + 'InfoBox').css(position).fadeIn(200)
-			},
-			function () {
-				$('.tooltip-info-box').fadeOut(200)
-			}  // for mouse out
-		).click(
-			function () {
-				const unit = $(this).attr('id')
-				$('#' + unit + '-modal').modal('show')
-			}
-		)
-
 	})
 
-});
+})(jQuery)

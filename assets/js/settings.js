@@ -9,7 +9,7 @@
 (function ($) {
 	'use strict'
 	$(document).ready(() => {
-		// TODO: use some other tab creation
+		// TODO: use some other kind of tab creation
 		$('#tabs').tabs() // initialize tabs
 
 		// variables

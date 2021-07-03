@@ -1,6 +1,6 @@
 <?php
 /**
- * LeasePress Admin AJAX
+ * LeasePress
  *
  * @package   LeasePress
  * @author Erik Ruhling <ecruhling@gmail.com>
@@ -9,32 +9,40 @@
  * @link   https://resourceatlanta.com
  */
 
+namespace LeasePress\Ajax;
+
+use LeasePress\Engine\Base;
+use LeasePress\Internals\Transient;
+use function apply_filters;
+
 /**
- * AJAX on the backend
+ * AJAX for logged-in users
  */
-class LP_Ajax_Admin extends LP_Admin_Base {
+class Ajax_Admin extends Base {
 
 	/**
-	 * Initialize the class
+	 * Initialize the class.
+	 *
+	 * @return void
 	 */
 	public function initialize() {
 		if ( ! apply_filters( 'leasepress_lp_ajax_admin_initialize', true ) ) {
 			return;
 		}
 
-		// For logged in user.
-		add_action( 'wp_ajax_delete_rentcafe_transient', array( $this, 'delete_rentcafe_transient' ) );
-		add_action( 'wp_ajax_get_rentcafe_data_ajax', array( $this, 'get_rentcafe_data_ajax' ) );
+		// For logged in users.
+		add_action( 'wp_ajax_lp_delete_rentcafe_transient', array( $this, 'lp_delete_rentcafe_transient' ) );
+		add_action( 'wp_ajax_lp_get_rentcafe_data', array( $this, 'lp_get_rentcafe_data' ) );
 		add_action( 'wp_ajax_lp_create_floor_plans', array( $this, 'lp_create_floor_plans' ) );
 		add_action( 'wp_ajax_lp_delete_floor_plans', array( $this, 'lp_delete_floor_plans' ) );
 	}
 
 	/**
-	 * Get RENTCafe data AJAX
+	 * Get RENTCafe data via AJAX
 	 *
 	 * @return void
 	 */
-	public function get_rentcafe_data_ajax() {
+	public function lp_get_rentcafe_data() {
 		$method = ( isset( $_POST['method'] ) ) ? sanitize_text_field( wp_unslash( $_POST['method'] ) ) : 0;
 		$type   = ( isset( $_POST['type'] ) ) ? sanitize_text_field( wp_unslash( $_POST['type'] ) ) : null;
 		$nonce  = isset( $_POST['nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['nonce'] ) ) : null;
@@ -51,18 +59,18 @@ class LP_Ajax_Admin extends LP_Admin_Base {
 	 *
 	 * @return void
 	 */
-	public function delete_rentcafe_transient() {
+	public function lp_delete_rentcafe_transient() {
 		$nonce = isset( $_POST['nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['nonce'] ) ) : null;
 
 		if ( wp_verify_nonce( $nonce, 'lp_api_clear_cache_nonce' ) ) {
 
 			// forget both transients.
-			forget_transient( 'lp_rentcafe_floorplan_api_data', null );
-			forget_transient( 'lp_rentcafe_apartmentavailability_api_data', null );
+			forget_transient( 'lp_rentcafe_floorplan_api_data' );
+			forget_transient( 'lp_rentcafe_apartmentavailability_api_data' );
 
 			// regenerate both transients.
-			LP_Transient::get_or_cache_transient( 'floorplan' );
-			LP_Transient::get_or_cache_transient( 'apartmentavailability' );
+			( new Transient() )->get_or_cache_transient( 'floorplan' );
+			( new Transient() )->get_or_cache_transient( 'apartmentavailability' );
 		}
 	}
 
@@ -97,26 +105,6 @@ class LP_Ajax_Admin extends LP_Admin_Base {
 				wp_insert_post( $postarr );
 
 				// TODO: create a new post for each floor plan.
-				// sample data:
-				// "PropertyId": "1254808",
-				// "FloorplanId": "3456956",
-				// "FloorplanName": "Express",
-				// "Beds": "0",
-				// "Baths": "1.00",
-				// "MinimumSQFT": "496",
-				// "MaximumSQFT": "518",
-				// "MinimumRent": "1065",
-				// "MaximumRent": "1245",
-				// "MinimumDeposit": "0",
-				// "MaximumDeposit": "0",
-				// "AvailableUnitsCount": "30",
-				// "AvailabilityURL": "https://the-line-rentcafewebsite.securecafe.com/onlineleasing/the-line/oleapplication.aspx?stepname=Apartments&myOlePropertyId=1254808&floorPlans=3456956",
-				// "FloorplanImageURL": "https://cdn.rentcafe.com/dmslivecafe/2/92356/TheLine-0x1-Express_496-518-SF.png",
-				// "FloorplanImageName": "TheLine-0x1-Express_496-518-SF.png",
-				// "FloorplanImageAltText": "The Line Express",
-				// "PropertyShowsSpecials": "0",
-				// "FloorplanHasSpecials": "0",
-				// "UnitTypeMapping": "S1Line"
 
 			}
 

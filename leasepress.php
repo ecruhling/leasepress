@@ -10,7 +10,7 @@
  *
  * @wordpress-plugin
  * Plugin Name:       LeasePress
- * Description:       Ready to graduate from renting to leasing? Supports API data from RENTCafe.
+ * Description:       Supports API data from RENTCafe.
  * Version:           1.0.0
  * Author:            Resource Branding and Design
  * Author URI:        https://resourceatlanta.com
@@ -82,13 +82,11 @@ if ( ! wp_installing() ) {
 	add_action(
 		'plugins_loaded',
 		static function () use ( $leasepress_libraries ) {
-			new Initialize( $leasepress_libraries );
-
-//			try {
-//				new Initialize( $leasepress_libraries );
-//			} catch ( Exception $e ) {
-//				wp_die( 'initializing the LeasePress plugin has failed.' );
-//			}
+			try {
+				new Initialize( $leasepress_libraries );
+			} catch ( Exception $e ) {
+				wp_die( 'initializing the LeasePress plugin has failed.' );
+			}
 		}
 	);
 }

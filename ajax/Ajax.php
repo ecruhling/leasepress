@@ -1,6 +1,6 @@
 <?php
 /**
- * LeasePress frontend AJAX
+ * LeasePress
  *
  * @package   LeasePress
  * @author    Erik Ruhling <ecruhling@gmail.com>
@@ -9,16 +9,25 @@
  * @link      https://resourceatlanta.com
  */
 
+namespace LeasePress\Ajax;
+
+use LeasePress\Engine\Base;
+use function add_action;
+use function apply_filters;
+use function wp_send_json_success;
+
 /**
- * AJAX on the frontend
+ * AJAX in the public
  */
-class LP_Ajax extends LP_Base {
+class Ajax extends Base {
 
 	/**
-	 * Initialize the class
+	 * Initialize the class.
+	 *
+	 * @return void
 	 */
 	public function initialize() {
-		if ( ! apply_filters( 'leasepress_l_ajax_initialize', true ) ) {
+		if ( ! apply_filters( 'leasepress_lp_ajax_initialize', true ) ) {
 			return;
 		}
 
@@ -30,6 +39,7 @@ class LP_Ajax extends LP_Base {
 	 * The method to run on ajax
 	 *
 	 * @return void
+	 * @since 1.0.0
 	 */
 	public function your_method() {
 		$return = array(
