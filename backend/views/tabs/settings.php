@@ -141,7 +141,7 @@ cmb2_metabox_form(
 </div>
 
 <div class="container-shadow">
-	<h3 class="hndle"><span><?php esc_html_e( 'Clear All Cached Data', 'leasepress' ); ?></span></h3>
+	<h3 class="handle"><span><?php esc_html_e( 'Clear All Cached Data', 'leasepress' ); ?></span></h3>
 	<div class="inside">
 		<p><?php esc_html_e( 'clear all cached RENTCafe data (floorplan & apartmentavailability requestType) and performs a new lookup. Results are cached.', 'leasepress' ); ?></p>
 		<form method="post">
@@ -166,7 +166,7 @@ cmb2_metabox_form(
 	</div>
 </div>
 <div class="container-shadow">
-	<h3 class="hndle"><span><?php esc_html_e( 'Create Floor Plans CPT', 'leasepress' ); ?></span></h3>
+	<h3 class="handle"><span><?php esc_html_e( 'Create Floor Plans CPT', 'leasepress' ); ?></span></h3>
 	<div class="inside">
 		<p><?php esc_html_e( 'Using the data from RENTCafe, create a CPT Floor Plan for each floor plan.', 'leasepress' ); ?></p>
 		<form method="post">
@@ -191,7 +191,7 @@ cmb2_metabox_form(
 	</div>
 </div>
 <div class="container-shadow">
-	<h3 class="hndle"><span><?php esc_html_e( 'Delete Floor Plans CPT', 'leasepress' ); ?></span></h3>
+	<h3 class="handle"><span><?php esc_html_e( 'Delete Floor Plans CPT', 'leasepress' ); ?></span></h3>
 	<div class="inside">
 		<p><?php esc_html_e( 'Delete ALL Floor Plans CPT posts.', 'leasepress' ); ?></p>
 		<form method="post">
@@ -216,7 +216,7 @@ cmb2_metabox_form(
 	</div>
 </div>
 <div class="container-shadow">
-	<h3 class="hndle"><span><?php esc_html_e( 'RentCAFE API Floorplan Lookup', 'leasepress' ); ?></span></h3>
+	<h3 class="handle"><span><?php esc_html_e( 'RentCAFE API Floorplan Lookup', 'leasepress' ); ?></span></h3>
 	<div class="inside">
 		<p>
 			<?php esc_html_e( 'perform a real-time lookup of the RentCAFE API Floorplan method, using the above information. Result is not cached.', 'leasepress' ); ?>
@@ -233,7 +233,7 @@ cmb2_metabox_form(
 	</div>
 </div>
 <div class="container-shadow">
-	<h3 class="hndle"><span><?php esc_html_e( 'RentCAFE API Availabilities Lookup', 'leasepress' ); ?></span></h3>
+	<h3 class="handle"><span><?php esc_html_e( 'RentCAFE API Availabilities Lookup', 'leasepress' ); ?></span></h3>
 	<div class="inside">
 		<p>
 			<?php esc_html_e( 'perform a real-time lookup of the RentCAFE API Availabilities method, using the above information. Result is not cached.', 'leasepress' ); ?>
@@ -250,7 +250,7 @@ cmb2_metabox_form(
 	</div>
 </div>
 <div class="container-shadow">
-	<h3 class="hndle">
+	<h3 class="handle">
 		<span><?php esc_html_e( 'RentCAFE API getRentCafeUrl residentLogin Lookup', 'leasepress' ); ?></span>
 	</h3>
 	<div class="inside">
@@ -280,7 +280,7 @@ cmb2_metabox_form(
 	</div>
 </div>
 <div class="container-shadow">
-	<h3 class="hndle">
+	<h3 class="handle">
 		<span><?php esc_html_e( 'RentCAFE API getRentCafeUrl applicantLogin Lookup', 'leasepress' ); ?></span>
 	</h3>
 	<div class="inside">

@@ -9,20 +9,28 @@
  * @link      https://resourceatlanta.com
  */
 
+namespace LeasePress\Integrations;
+
 use Cmb2Grid\Grid\Cmb2Grid;
+use LeasePress\Engine\Base;
+use function __;
+use function add_action;
+use function new_cmb2_box;
 
 /**
  * All the CMB related code.
  */
-class LP_CMB extends LP_Base {
+class CMB extends Base {
 
 	/**
-	 * Initialize CMB2.
+	 * Initialize class.
 	 *
+	 * @return void
 	 * @since 1.0.0
 	 */
 	public function initialize() {
 		parent::initialize();
+
 		require_once LP_PLUGIN_ROOT . 'vendor/cmb2/init.php';
 		require_once LP_PLUGIN_ROOT . 'vendor/cmb2-grid/Cmb2GridPluginLoad.php';
 		add_action( 'cmb2_init', array( $this, 'cmb_demo_metaboxes' ) );
@@ -36,8 +44,8 @@ class LP_CMB extends LP_Base {
 	 */
 	public function cmb_demo_metaboxes() {
 		// Start with an underscore to hide fields from custom fields list.
-		$prefix     = '_demo_';
-		$cmb_demo   = new_cmb2_box(
+		$prefix   = '_demo_';
+		$cmb_demo = new_cmb2_box(
 			array(
 				'id'           => $prefix . 'metabox',
 				'title'        => __( 'Demo Metabox', 'leasepress' ),
@@ -47,9 +55,11 @@ class LP_CMB extends LP_Base {
 				'show_names'   => true, // Show field names on the left.
 			)
 		);
-		$cmb_2_grid = new Cmb2Grid( $cmb_demo );
-		$row        = $cmb_2_grid->addRow();
-		$field1     = $cmb_demo->add_field(
+
+		$cmb2_grid = new Cmb2Grid( $cmb_demo );
+		$row       = $cmb2_grid->addRow();
+
+		$field1 = $cmb_demo->add_field(
 			array(
 				'name' => __( 'Text', 'leasepress' ),
 				'desc' => __( 'field description (optional)', 'leasepress' ),
@@ -57,7 +67,7 @@ class LP_CMB extends LP_Base {
 				'type' => 'text',
 			)
 		);
-		$field2     = $cmb_demo->add_field(
+		$field2 = $cmb_demo->add_field(
 			array(
 				'name' => __( 'Text 2', 'leasepress' ),
 				'desc' => __( 'field description (optional)', 'leasepress' ),
@@ -82,9 +92,11 @@ class LP_CMB extends LP_Base {
 				'type' => 'text_small',
 			)
 		);
+
 		$row->addColumns( array( $field1, $field2 ) );
-		$row = $cmb_2_grid->addRow();
+		$row = $cmb2_grid->addRow();
 		$row->addColumns( array( $field3, $field4 ) );
+
 	}
 
 }

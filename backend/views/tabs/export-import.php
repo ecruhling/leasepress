@@ -12,7 +12,7 @@
 ?>
 
 <div class="postbox">
-	<h3 class="hndle"><span><?php esc_html_e( 'Export LeasePress Settings', 'leasepress' ); ?></span></h3>
+	<h3 class="handle"><span><?php esc_html_e( 'Export LeasePress Settings', 'leasepress' ); ?></span></h3>
 	<div class="inside">
 		<p><?php esc_html_e( 'Export LeasePress settings for this site as a .json file. This will allows you to easily import the configuration to another installation.', 'leasepress' ); ?></p>
 		<form method="post">
@@ -25,7 +25,7 @@
 	</div>
 </div>
 <div class="postbox">
-	<h3 class="hndle"><span><?php esc_html_e( 'Import LeasePress Settings', 'leasepress' ); ?></span></h3>
+	<h3 class="handle"><span><?php esc_html_e( 'Import LeasePress Settings', 'leasepress' ); ?></span></h3>
 	<div class="inside">
 		<p><?php esc_html_e( 'Import LeasePress settings from a .json file. This file can be retrieved by exporting the settings from another installation.', 'leasepress' ); ?></p>
 		<form method="post" enctype="multipart/form-data">

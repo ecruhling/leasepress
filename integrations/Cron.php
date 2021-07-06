@@ -9,13 +9,21 @@
  * @link      https://resourceatlanta.com
  */
 
+namespace LeasePress\Integrations;
+
+use CronPlus;
+use LeasePress\Engine\Base;
+use function esc_html;
+
 /**
- * This class contain the Cron stuff
+ * The various Cron of this plugin
  */
-class LP_Cron extends LP_Base {
+class Cron extends Base {
 
 	/**
 	 * Initialize the class
+	 *
+	 * @return void
 	 */
 	public function initialize() {
 		/*
@@ -41,9 +49,10 @@ class LP_Cron extends LP_Base {
 	/**
 	 * Cron Hourly example
 	 *
-	 * @param integer $id The ID.
+	 * @param int $id The ID.
 	 *
 	 * @return void
+	 * @since 1.0.0
 	 */
 	public function hourly_cron( int $id ) {
 		echo esc_html( (string) $id );

@@ -7,19 +7,28 @@
  * @copyright Resource Branding and Design
  * @license   GPL 2.0+
  * @link      https://resourceatlanta.com
+ * @noinspection PhpUnused
  */
+
+namespace LeasePress\Frontend\Extras;
+
+use LeasePress\Engine\Base;
+use function add_filter;
 
 /**
- * This class contain all the snippet or extra that improve the experience on the frontend
+ * Add custom css class to <body>
  */
-class LP_Extras extends LP_Base {
+class Body_Class extends Base {
 
 	/**
-	 * Initialize the snippet
+	 * Initialize the class.
+	 *
+	 * @return void
 	 */
 	public function initialize() {
 		parent::initialize();
-		add_filter( 'body_class', array( __CLASS__, 'add_lp_class' ), 10, 3 );
+
+		add_filter( 'body_class', array( self::class, 'add_lp_class' ), 10, 3 );
 	}
 
 	/**
@@ -30,8 +39,9 @@ class LP_Extras extends LP_Base {
 	 * @return array
 	 * @since 1.0.0
 	 */
-	public static function add_lp_class( array $classes ) {
+	public static function add_lp_class( array $classes ): array {
 		$classes[] = 'leasepress';
+
 		return $classes;
 	}
 

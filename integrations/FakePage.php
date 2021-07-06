@@ -9,13 +9,22 @@
  * @link      https://resourceatlanta.com
  */
 
+namespace LeasePress\Integrations;
+
+use Fake_Page;
+use LeasePress\Engine\Base;
+
 /**
- * This class contain the Fake Page
+ * Fake Pages inside WordPress
+ *
+ * @noinspection PhpUnused
  */
-class LP_FakePage extends LP_Base {
+class FakePage extends Base {
 
 	/**
-	 * Initialize the class
+	 * Initialize the class.
+	 *
+	 * @return void
 	 */
 	public function initialize() {
 		parent::initialize();

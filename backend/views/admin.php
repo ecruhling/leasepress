@@ -14,8 +14,8 @@
 
 ?>
 
-<div class="resource-lp wrap">
-	<div id="resource-lp-main">
+<div class="lp wrap">
+	<div id="lp-main">
 		<div class="header-wrap">
 			<div class="wrapper grid-container">
 				<div class="header flex-container">

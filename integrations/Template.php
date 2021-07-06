@@ -9,18 +9,28 @@
  * @link      https://resourceatlanta.com
  */
 
+namespace LeasePress\Integrations;
+
+use LeasePress\Engine\Base;
+use function add_filter;
+use function in_the_loop;
+use function is_singular;
+use function wpbp_get_template_part;
+
 /**
- * This class contain the Templating stuff for the frontend
+ * Load custom template files
  */
-class LP_Template extends LP_Base {
+class Template extends Base {
 
 	/**
-	 * Initialize the class
+	 * Initialize the class.
+	 *
+	 * @return void
 	 */
 	public function initialize() {
 		parent::initialize();
 		// Override the template hierarchy for load /templates/content-demo.php.
-		add_filter( 'template_include', array( __CLASS__, 'load_content_demo' ) );
+		add_filter( 'template_include', array( self::class, 'load_content_demo' ) );
 	}
 
 	/**
@@ -31,7 +41,7 @@ class LP_Template extends LP_Base {
 	 * @return string
 	 * @since 1.0.0
 	 */
-	public static function load_content_demo( string $original_template ) {
+	public static function load_content_demo( string $original_template ): string {
 		if ( is_singular( 'demo' ) && in_the_loop() ) {
 			return wpbp_get_template_part( 'leasepress', 'content', 'demo', false );
 		}

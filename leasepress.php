@@ -75,8 +75,8 @@ if ( version_compare( PHP_VERSION, LP_MIN_PHP_VERSION, '<=' ) ) {
 
 $leasepress_libraries = require_once LP_PLUGIN_ROOT . 'vendor/autoload.php';
 
-require_once LP_PLUGIN_ROOT . 'internals/functions.php';
-require_once LP_PLUGIN_ROOT . 'internals/debug.php';
+require_once LP_PLUGIN_ROOT . 'functions/functions.php';
+require_once LP_PLUGIN_ROOT . 'functions/debug.php';
 
 if ( ! wp_installing() ) {
 	add_action(

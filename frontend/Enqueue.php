@@ -9,21 +9,31 @@
  * @link      https://resourceatlanta.com
  */
 
+namespace LeasePress\Frontend;
+
+use LeasePress\Engine\Base;
+use function __;
+use function add_action;
+use function wp_enqueue_script;
+use function wp_localize_script;
+
 /**
- * This class contain the Enqueue stuff for the frontend
+ * Enqueue stuff on the frontend
  */
-class LP_Enqueue extends LP_Base {
+class Enqueue extends Base {
 
 	/**
-	 * Initialize the class
+	 * Initialize the class.
+	 *
+	 * @return void
 	 */
 	public function initialize() {
 		parent::initialize();
 
 		// Load public-facing style sheet and JavaScript.
-		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'enqueue_styles' ) );
-		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'enqueue_scripts' ) );
-		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'enqueue_js_vars' ) );
+		add_action( 'wp_enqueue_scripts', array( self::class, 'enqueue_styles' ) );
+		add_action( 'wp_enqueue_scripts', array( self::class, 'enqueue_scripts' ) );
+		add_action( 'wp_enqueue_scripts', array( self::class, 'enqueue_js_vars' ) );
 	}
 
 	/**
@@ -51,7 +61,7 @@ class LP_Enqueue extends LP_Base {
 	}
 
 	/**
-	 * Print the PHP var in the HTML of the frontend for access by JavaScript
+	 * Print the PHP var in the HTML of the frontend for access by JavaScript.
 	 *
 	 * @return void
 	 * @since 1.0.0
@@ -62,7 +72,7 @@ class LP_Enqueue extends LP_Base {
 		if ( is_page_template( $template ) ) {
 			wp_localize_script(
 				'leasepress-plugin-script',
-				'ls_js_vars',
+				'lp_js_vars',
 				array(
 					'alert'    => __( 'LeasePress public.js enqueued and running', 'leasepress' ),
 					'template' => $template,

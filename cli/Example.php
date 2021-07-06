@@ -9,19 +9,35 @@
  * @link      https://resourceatlanta.com
  */
 
-use WP_CLI\ExitException;
+namespace LeasePress\Cli;
+
+use Exception;
+use LeasePress\Engine\Base;
+use WP_CLI;
+use function apply_filters;
+use function defined;
 
 if ( defined( 'WP_CLI' ) && WP_CLI ) {
+
 	/**
-	 * This class contain the WP CLI support
+	 * WP CLI command example
 	 */
-	class LP_WPCli extends LP_Base {
+	class Example extends Base {
+
+		/**
+		 * Initialize the commands
+		 *
+		 * @throws Exception Exception.
+		 * @since 1.0.0
+		 */
+		public function __construct() {
+			WP_CLI::add_command( 'lp_commandname', array( $this, 'command_example' ) );
+		}
 
 		/**
 		 * Initialize the class.
-		 * Overrides: LP_Base::initialize
 		 *
-		 * @return bool|void
+		 * @return void
 		 */
 		public function initialize() {
 			if ( ! apply_filters( 'leasepress_lp_enqueue_admin_initialize', true ) ) {
@@ -32,23 +48,14 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 		}
 
 		/**
-		 * Initialize the commands
-		 *
-		 * @return void
-		 * @throws Exception Comment.
-		 */
-		public function __construct() {
-			WP_CLI::add_command( 'lp_commandname', array( $this, 'command_example' ) );
-		}
-
-		/**
 		 * Example command
 		 * API reference: https://wp-cli.org/docs/internal-api/
 		 *
 		 * @param array $args The attributes.
 		 *
 		 * @return void
-		 * @throws ExitException Comment.
+		 * @throws WP_CLI\ExitException Exit Exception.
+		 * @since 1.0.0
 		 */
 		public function command_example( array $args ) {
 			// Message prefixed with "Success: ".
