@@ -9,9 +9,13 @@
  * @link      https://resourceatlanta.com
  */
 
+namespace LeasePress\Backend;
+
+use LeasePress\Engine\Base;
+
 /**
- * This class is for all the API Lookups
+ * This class is for all the API Lookups (eventually)
  */
-class LP_Admin_APILookups extends LP_Admin_Base {
+class API_Lookups extends Base {
 
 }
