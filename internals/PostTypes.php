@@ -11,8 +11,8 @@
 
 namespace LeasePress\Internals;
 
-use CPT_columns;
 use LeasePress\Engine\Base;
+use CPT_columns;
 use Seravo_Custom_Bulk_Action;
 use WP_Query;
 use function __;
@@ -81,7 +81,7 @@ class PostTypes extends Base {
 		$bulk_actions->init();
 
 		// Add CPT metaboxes.
-		add_action( 'cmb2_init', 'lp_add_floor_plans_metaboxes' );
+		add_action( 'cmb2_init', array( $this, 'lp_add_floor_plans_metaboxes' ) );
 
 		// Add bubble notification for cpt pending.
 		add_action( 'admin_menu', array( $this, 'pending_cpt_bubble' ), 999 );
