@@ -9,16 +9,29 @@
  * @link      https://resourceatlanta.com
  */
 
+namespace LeasePress\Rest;
+
+use LeasePress\Engine\Base;
+use WP_Error;
+use WP_Post;
+use WP_REST_Server;
+use function add_action;
+use function get_post_meta;
+use function register_rest_field;
+use function register_rest_route;
+use function update_post_meta;
+
 /**
- * This class contain the Rest stuff
+ * Example class for REST
  */
-class LP_Rest extends LP_Base {
+class Example extends Base {
 
 	/**
 	 * Initialize the class
 	 */
 	public function initialize() {
 		parent::initialize();
+
 		add_action( 'rest_api_init', array( $this, 'add_custom_stuff' ) );
 	}
 
@@ -30,7 +43,7 @@ class LP_Rest extends LP_Base {
 	 */
 	public function add_custom_stuff() {
 		$this->add_custom_field();
-		$this->add_custom_ruote();
+		$this->add_custom_route();
 	}
 
 	/**
@@ -60,7 +73,7 @@ class LP_Rest extends LP_Base {
 	 * @return void
 	 * @since 1.0.0
 	 */
-	public function add_custom_ruote() {
+	public function add_custom_route() {
 		// Only an example with 2 parameters.
 		register_rest_route(
 			'wp/v2',
@@ -90,7 +103,7 @@ class LP_Rest extends LP_Base {
 	 * @return string
 	 * @since 1.0.0
 	 */
-	public function get_text_field( array $post_obj ) {
+	public function get_text_field( array $post_obj ): string {
 		$post_id = $post_obj['id'];
 
 		return get_post_meta( $post_id, 'leasepress_text', true );
@@ -128,7 +141,7 @@ class LP_Rest extends LP_Base {
 	 * @return array
 	 * @since 1.0.0
 	 */
-	public function sum( array $data ) {
+	public function sum( array $data ): array {
 		return array( 'result' => $data['first'] + $data['second'] );
 	}
 

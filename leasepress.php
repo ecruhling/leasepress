@@ -32,7 +32,6 @@ const LP_TEXTDOMAIN      = 'leasepress';
 const LP_NAME            = 'leasepress';
 const LP_PLUGIN_ABSOLUTE = __FILE__;
 const LP_MIN_PHP_VERSION = 7.1;
-const LP_WP_VERSION      = 5.3;
 define( 'LP_PLUGIN_ROOT', plugin_dir_path( __FILE__ ) );
 
 /**
