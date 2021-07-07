@@ -12,6 +12,7 @@
 namespace LeasePress\Internals;
 
 use LeasePress\Engine\Base;
+use LeasePress\Integrations\RentCafe;
 use stdClass;
 use function is_wp_error;
 use function json_decode;
@@ -48,7 +49,7 @@ class Transient extends Base {
 		return remember_transient(
 			$key,
 			static function () use ( $method, $key ) {
-				$response = LP_API_Lookups::get_rentcafe_data( $method )[1];
+				$response = RentCafe::get_rentcafe_data( $method )[1];
 				if ( is_wp_error( $response ) ) {
 					// In case API is down we return an empty object.
 					return new stdClass();

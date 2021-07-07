@@ -29,7 +29,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 const LP_VERSION         = '1.0.0';
 const LP_TEXTDOMAIN      = 'leasepress';
-const LP_NAME            = 'leasepress';
+const LP_NAME            = 'LeasePress';
 const LP_PLUGIN_ABSOLUTE = __FILE__;
 const LP_MIN_PHP_VERSION = 7.1;
 define( 'LP_PLUGIN_ROOT', plugin_dir_path( __FILE__ ) );

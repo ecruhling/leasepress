@@ -185,4 +185,17 @@ class Is_Methods {
 		return is_multisite() ? user_can( $user, 'manage_network' ) : user_can( $user, 'manage_options' );
 	}
 
+	/**
+	 * Checks if file contains valid JSON
+	 *
+	 * @param string $json string.
+	 *
+	 * @return bool
+	 */
+	public function is_JSON( string $json ): bool { // phpcs:ignore
+		json_decode( $json );
+
+		return ( json_last_error() === JSON_ERROR_NONE );
+	}
+
 }

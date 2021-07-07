@@ -12,6 +12,7 @@
 namespace LeasePress\Ajax;
 
 use LeasePress\Engine\Base;
+use LeasePress\Integrations\RentCafe;
 use LeasePress\Internals\Transient;
 use function apply_filters;
 
@@ -48,7 +49,7 @@ class Ajax_Admin extends Base {
 		$nonce  = isset( $_POST['nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['nonce'] ) ) : null;
 
 		if ( wp_verify_nonce( $nonce, 'get_rentcafe_data_ajax' ) ) {
-			$return = LP_API_Lookups::get_rentcafe_data( $method, $type );
+			$return = RentCafe::get_rentcafe_data( $method, $type );
 			wp_send_json_success( $return );
 		}
 
@@ -84,7 +85,7 @@ class Ajax_Admin extends Base {
 		$nonce = isset( $_POST['nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['nonce'] ) ) : null;
 
 		if ( wp_verify_nonce( $nonce, 'lp_create_floor_plans_nonce' ) ) {
-			$floor_plans_data = LP_API_Lookups::get_rentcafe_data( 'floorplan', null );
+			$floor_plans_data = RentCafe::get_rentcafe_data( 'floorplan', null );
 			// TODO: check for error code!
 
 			$floor_plans = json_decode( $floor_plans_data[1]['body'] );

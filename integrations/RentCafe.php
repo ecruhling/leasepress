@@ -9,10 +9,21 @@
  * @link      https://resourceatlanta.com
  */
 
+namespace LeasePress\Integrations;
+
+use LeasePress\Engine\Base;
+use WP_Error;
+use WP_Query;
+use function file_exists;
+use function file_put_contents;
+use function filemtime;
+use function time;
+use function wp_remote_get;
+
 /**
- * This class is where all the API lookups happen
+ * This class is for all the RentCAFE API Lookups
  */
-class LP_API_Lookups extends LP_Base {
+class RentCafe extends Base {
 
 	/**
 	 * Checks if file contains valid JSON
@@ -21,7 +32,7 @@ class LP_API_Lookups extends LP_Base {
 	 *
 	 * @return bool
 	 */
-	private function is_JSON( string $json ) {
+	private function is_JSON( string $json ): bool {
 		json_decode( $json );
 
 		return ( json_last_error() === JSON_ERROR_NONE );
@@ -34,7 +45,7 @@ class LP_API_Lookups extends LP_Base {
 	 * @param string $method_name string.
 	 * @param int    $hours int.
 	 *
-	 * @return bool|string
+	 * @return array|bool|string|WP_Error
 	 */
 	private function get_content( string $file, string $method_name, $hours = 24 ) {
 
@@ -67,9 +78,9 @@ class LP_API_Lookups extends LP_Base {
 	 * @param string      $method_name 'floorplan' or 'apartmentavailability' requestType.
 	 * @param string|null $type applicantLogin, residentLogin, availability, and propertyDetailPage.
 	 *
-	 * @return array|void
+	 * @return array
 	 */
-	public static function get_rentcafe_data( string $method_name, $type = null ) {
+	public static function get_rentcafe_data( string $method_name, string $type = null ): array {
 
 		// set variables.
 		$settings               = lp_get_settings();
@@ -105,7 +116,7 @@ class LP_API_Lookups extends LP_Base {
 	 *
 	 * @return array
 	 */
-	private function get_svgs_pdfs( string $search_for ) {
+	private function get_svgs_pdfs( string $search_for ): array {
 
 		$pdf = null;
 		$svg = null;
@@ -142,7 +153,7 @@ class LP_API_Lookups extends LP_Base {
 	 *
 	 * @return array of objects
 	 */
-	public function floorplanTypes() {
+	public function floorplanTypes(): array {
 
 		$floorplans_data = array();
 
@@ -212,7 +223,7 @@ class LP_API_Lookups extends LP_Base {
 	 *
 	 * @return array of objects
 	 */
-	public function unitAvailabilities() {
+	public function unitAvailabilities(): array {
 
 		$availability_data = array();
 

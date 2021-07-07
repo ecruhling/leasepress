@@ -32,7 +32,7 @@ class Pointers extends Base {
 		parent::initialize();
 
 		new PointerPlus( array( 'prefix' => 'leasepress' ) );
-		add_filter( 'leasepress-pointerplus_list', array( $this, 'custom_initial_pointers' ), 10, 2 );
+//		add_filter( 'leasepress-pointerplus_list', array( $this, 'custom_initial_pointers' ), 10, 2 );
 	}
 
 	/**

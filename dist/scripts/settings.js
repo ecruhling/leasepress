@@ -66,7 +66,7 @@ var __webpack_exports__ = {};
     $('.api_clear_cache').on('click', function (e) {
       e.preventDefault(); // AJAX call
 
-      new AjaxCall($('#lp_api_clear_cache_nonce').attr('value'), 'delete_rentcafe_transient', function () {
+      new AjaxCall($('#lp_api_clear_cache_nonce').attr('value'), 'lp_delete_rentcafe_transient', function () {
         $('.api_clear_cache').addClass('disabled');
         $cacheLoader.fadeIn();
       }, function () {
@@ -123,7 +123,7 @@ var __webpack_exports__ = {};
         data: {
           method: $method,
           type: $type,
-          action: 'get_rentcafe_data_ajax',
+          action: 'lp_get_rentcafe_data',
           nonce: $nonce
         },
         beforeSend: function beforeSend() {
