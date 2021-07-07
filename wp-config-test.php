@@ -4,7 +4,7 @@
 const DB_NAME = 'wordpress_unit_tests';
 
 /** MySQL database username */
-const DB_USER = 'root';
+const DB_USER = 'wordpress_unit_tests';
 
 /** MySQL database password */
 const DB_PASSWORD = 'test';

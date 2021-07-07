@@ -22,7 +22,6 @@ parameters:
       test: ~
     git_blacklist:
       keywords:
-        - 'die('
         - 'print_r('
         - 'var_dump('
       triggered_by: [ 'php' ]

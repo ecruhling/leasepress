@@ -1,10 +1,10 @@
 <?php
 
-define( 'PN_PLUGIN_ROOT', __DIR__ );
-define( 'PN_TEXTDOMAIN', 'plugin-name' );
-define( 'PN_NAME', '{{plugin_name}}' );
-define( 'PN_PLUGIN_ABSOLUTE', __DIR__ );
-define( 'PN_VERSION', '{{plugin_version}}' );
+define( 'LP_PLUGIN_ROOT', __DIR__ );
+define( 'LP_TEXTDOMAIN', 'leasepress' );
+define( 'LP_NAME', 'LeasePress' );
+define( 'LP_PLUGIN_ABSOLUTE', __DIR__ );
+define( 'LP_VERSION', '1.0.0' );
 
 // Load CMB2
 define( 'CMB2_DIR', dirname( __DIR__, 2 ) . '/vendor/cmb2/' );

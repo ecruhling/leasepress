@@ -35,6 +35,7 @@ intermediate
 .idea
 cache
 vendor
+dist
 tests/_output
 /leasepress/vendor/
 tests/_output/

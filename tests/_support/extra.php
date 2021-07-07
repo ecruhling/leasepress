@@ -3,7 +3,6 @@
 use tad\FunctionMocker\FunctionMocker;
 FunctionMocker::init();
 
-//WPBPGen{{#if libraries_wpbp__widgets-helper}}
 class WPH_Widget {
 
 	public $id_base;
@@ -25,4 +24,3 @@ class WPH_Widget {
 	}
 
 }
-//{{/if}}
