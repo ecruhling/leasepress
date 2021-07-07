@@ -43,6 +43,6 @@ mix
 	.sourceMaps(false, 'source-map')
 	.version()
 	.prettyNotifications({
-		title: 'Georgia Trauma Foundation',
+		title: 'LeasePress',
 		successSound: false,
 	});
