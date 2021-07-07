@@ -30,8 +30,6 @@ class Notices extends Base {
 			return;
 		}
 
-		wpdesk_wp_notice( __( 'Updated Messages', 'leasepress' ), 'updated' );
-		wpdesk_wp_notice( __( 'This is my dismissible notice (noticeType: error)', 'leasepress' ), 'error', true );
 		wpdesk_wp_notice( 'LeasePress activated. Now go to <a title="LeasePress settings" href="' . admin_url( 'options-general.php?page=leasepress' ) . '">settings</a> to configure.', 'info', true );
 
 	}
