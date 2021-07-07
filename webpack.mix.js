@@ -2,6 +2,11 @@ const mix = require('laravel-mix')
 require('@tinypixelco/laravel-mix-wp-blocks')
 require('laravel-mix-purgecss')
 require('laravel-mix-copy-watched')
+const Notifications = require('pretty-mix-notifications');
+
+// Pretty Mix Notifications
+// https://github.com/ntavelis/pretty-mix-notifications
+mix.extend('prettyNotifications', new Notifications);
 
 // BrowserSync
 mix
@@ -37,3 +42,7 @@ mix
 	.options({ processCssUrls: false })
 	.sourceMaps(false, 'source-map')
 	.version()
+	.prettyNotifications({
+		title: 'Georgia Trauma Foundation',
+		successSound: false,
+	});

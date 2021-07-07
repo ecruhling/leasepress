@@ -83,7 +83,7 @@ class Enqueue extends Base {
 	public function enqueue_admin_scripts() {
 		$admin_page = get_current_screen();
 
-		if ( ! is_null( $admin_page ) && 'toplevel_page_plugin-name' === $admin_page->id ) {
+		if ( ! is_null( $admin_page ) && 'toplevel_page_leasepress' === $admin_page->id ) {
 			wp_enqueue_script(
 				'leasepress-settings-script',
 				plugins_url(

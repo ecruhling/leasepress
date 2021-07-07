@@ -1,14 +1,8 @@
 {
-    "/scripts/admin.js": "/scripts/admin.js?id=4929282124db87ed029e",
-    "/styles/admin.css": "/styles/admin.css?id=dafbf6a2a675ab32339b",
-    "/styles/public.css": "/styles/public.css?id=3496be94fbc8d38599b3",
-    "/styles/settings.css": "/styles/settings.css?id=73bd3551b44fc1c60ae4",
-    "/scripts/admin.js.map": "/scripts/admin.js.map?id=164563c19b393a581911",
-    "/styles/admin.css.map": "/styles/admin.css.map?id=12fa86c59cdf1d67f399",
-    "/styles/public.css.map": "/styles/public.css.map?id=6db20fe0ace2723f4cd0",
-    "/styles/settings.css.map": "/styles/settings.css.map?id=373a1f196aa2b10698b6",
-    "/scripts/public.js": "/scripts/public.js?id=33c29d9d208f2c2faead",
-    "/scripts/public.js.map": "/scripts/public.js.map?id=60a15a612aa037f75446",
-    "/scripts/settings.js": "/scripts/settings.js?id=850645a9a5c50b6a6214",
-    "/scripts/settings.js.map": "/scripts/settings.js.map?id=08c0247e1155815a8e5a"
+    "/scripts/admin.js": "/scripts/admin.js?id=382adecbe30f5e8a8569",
+    "/scripts/public.js": "/scripts/public.js?id=47ba0cd83ba82ca9abdc",
+    "/scripts/settings.js": "/scripts/settings.js?id=4871e727ff1c40720eb1",
+    "/styles/settings.css": "/styles/settings.css?id=7698abd12fe7e3255c5d",
+    "/styles/public.css": "/styles/public.css?id=60214b26cc64c9ad0246",
+    "/styles/admin.css": "/styles/admin.css?id=7a6178cdeb0cf58a5711"
 }
