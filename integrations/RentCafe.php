@@ -12,10 +12,11 @@
 namespace LeasePress\Integrations;
 
 use LeasePress\Engine\Base;
+use LeasePress\Engine\Is_Methods;
 use WP_Error;
 use WP_Query;
 use function file_exists;
-use function file_put_contents;
+use function file_put_contents; // phpcs:ignore
 use function filemtime;
 use function time;
 use function wp_remote_get;
@@ -24,19 +25,6 @@ use function wp_remote_get;
  * This class is for all the RentCAFE API Lookups
  */
 class RentCafe extends Base {
-
-	/**
-	 * Checks if file contains valid JSON
-	 *
-	 * @param string $json string.
-	 *
-	 * @return bool
-	 */
-	private function is_JSON( string $json ): bool {
-		json_decode( $json );
-
-		return ( json_last_error() === JSON_ERROR_NONE );
-	}
 
 	/**
 	 * Gets the contents of a file if it exists, otherwise grabs and caches
@@ -60,8 +48,9 @@ class RentCafe extends Base {
 
 			$content = $this->get_rentcafe_data( $method_name );
 
-			if ( $this->is_JSON( $content[1] ) ) {
-				file_put_contents( $file, $content[1] ); // write contents if file expired.
+			if ( Is_Methods::is_JSON( $content[1] ) ) {
+				// write contents if file expired.
+				file_put_contents( $file, $content[1] ); // phpcs:ignore
 
 				return $content[1];
 
@@ -164,10 +153,11 @@ class RentCafe extends Base {
 
 		// data for unit types.
 		foreach ( $floorplans_array as $unit_type ) :
-
-			$baths = substr( $unit_type->Baths, 0, - 1 ); // truncate last '0' from Baths.
+			// truncate last '0' from Baths.
+			$baths = substr( $unit_type->Baths, 0, - 1 ); // phpcs:ignore
 			$baths = rtrim( $baths, '.0' ); // if there is still a decimal and a zero, remove that. half baths are retained.
-			$name  = strtolower( ltrim( $unit_type->UnitTypeMapping, '61073' ) ); // trim '61073' off unit type name.
+			// trim '61073' off unit type name.
+			$name = strtolower( ltrim( $unit_type->UnitTypeMapping, '61073' ) ); // phpcs:ignore
 
 			// map some of the UnitTypeMapping values to correct names of SVG / PDF files.
 			// since some of the UnitTypeMapping values have 'e' or 'w' for East & West.
@@ -202,14 +192,13 @@ class RentCafe extends Base {
 					break;
 			}
 
-			[
-				$pdf,
-				$svg
-			] = $this->get_svgs_pdfs( $name ); // use $name to search for similar named SVGs and PDFs.
-			$unit_type->Name         = $name; // add correct 'Name' to object.
-			$unit_type->Baths        = $baths; // change Baths to a nicer number.
-			$unit_type->FloorplanPDF = $pdf;
-			$unit_type->FloorplanSVG = $svg;
+			list( $pdf, $svg ) = $this->get_svgs_pdfs( $name ); // use $name to search for similar named SVGs and PDFs.
+			// add correct 'Name' to object.
+			$unit_type->Name = $name; // phpcs:ignore
+			// change Baths to a nicer number.
+			$unit_type->Baths        = $baths; // phpcs:ignore
+			$unit_type->FloorplanPDF = $pdf; // phpcs:ignore
+			$unit_type->FloorplanSVG = $svg; // phpcs:ignore
 			$floorplans_data[]       = $unit_type;
 
 		endforeach;
@@ -237,34 +226,41 @@ class RentCafe extends Base {
 
 		// data for unit availabilities.
 		foreach ( $availability_array as $unit ) :
-			$key                = array_search( $unit->FloorplanName, array_column( $unit_types, 'FloorplanName' ), true ); // search unit_types array for key containing the same FloorplanName.
-			$unit->Name         = $unit_types[ $key ]->Name; // add correct 'Name' to object.
-			$baths              = substr( $unit->Baths, 0, - 1 ); // truncate last '0' from Baths.
-			$baths              = rtrim( $baths, '.0' ); // if there is still a decimal and a zero, remove that. half baths are retained.
-			$unit->FloorplanPDF = $unit_types[ $key ]->FloorplanPDF; // use key to access unit_types array to get PDF.
-			$unit->FloorplanSVG = $unit_types[ $key ]->FloorplanSVG; // use key to access unit_types array to get SVG.
-			$unit->Baths        = $baths; // change Baths to a nicer number.
-			$unit->Floor        = substr( $unit->ApartmentName, 0, 2 );
-			$sort_price         = intval( $unit->MaximumRent ); // get price of this unit.
+			// search unit_types array for key containing the same FloorplanName.
+			$key = array_search( $unit->FloorplanName, array_column( $unit_types, 'FloorplanName' ), true ); // phpcs:ignore
+			// add correct 'Name' to object.
+			$unit->Name = $unit_types[ $key ]->Name; // phpcs:ignore
+			// truncate last '0' from Baths.
+			$baths = substr( $unit->Baths, 0, - 1 ); // phpcs:ignore
+			$baths = rtrim( $baths, '.0' ); // if there is still a decimal and a zero, remove that. half baths are retained.
+			// use key to access unit_types array to get PDF.
+			$unit->FloorplanPDF = $unit_types[ $key ]->FloorplanPDF; // phpcs:ignore
+			// use key to access unit_types array to get SVG.
+			$unit->FloorplanSVG = $unit_types[ $key ]->FloorplanSVG; // phpcs:ignore
+			// change Baths to a nicer number.
+			$unit->Baths = $baths; // phpcs:ignore
+			$unit->Floor = substr( $unit->ApartmentName, 0, 2 ); // phpcs:ignore
+			// get price of this unit.
+			$sort_price = intval( $unit->MaximumRent ); // phpcs:ignore
 
 			switch ( true ) { // use price to create a Price Range.
 				case in_array( $sort_price, range( 1000, 1499 ), true ):
-					$sort_price = (string) '1000-1499';
+					$sort_price = '1000-1499';
 					break;
 				case in_array( $sort_price, range( 1500, 1999 ), true ):
-					$sort_price = (string) '1500-1999';
+					$sort_price = '1500-1999';
 					break;
 				case in_array( $sort_price, range( 2000, 2499 ), true ):
-					$sort_price = (string) '2000-2499';
+					$sort_price = '2000-2499';
 					break;
 				case in_array( $sort_price, range( 2500, 2999 ), true ):
-					$sort_price = (string) '2500-2999';
+					$sort_price = '2500-2999';
 					break;
 				case in_array( $sort_price, range( 3000, 3499 ), true ):
-					$sort_price = (string) '3000-3499';
+					$sort_price = '3000-3499';
 					break;
 				case $sort_price > 3500:
-					$sort_price = (string) '3500+';
+					$sort_price = '3500+';
 					break;
 			}
 

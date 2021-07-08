@@ -2,11 +2,7 @@
 
 // Dashboard
 
-#dashboard_right_now a.demo-count::before {
-  content: "\f115";
-}
-
-.resource-lp {
+.lp {
   &.wrap {
 	margin: 0;
   }
@@ -17,7 +13,7 @@
   }
 
   .header-wrap {
-	background: rgba(#676c73, 0.5);
+	background: rgba(#676c73, 0.3);
 	padding: 30px 0;
   }
 
@@ -71,7 +67,7 @@
   }
 }
 
-#resource-lp-main {
+#lp-main {
   margin-left: -20px;
 
   @media screen and (max-width: 782px) {

@@ -192,7 +192,7 @@ class Is_Methods {
 	 *
 	 * @return bool
 	 */
-	public function is_JSON( string $json ): bool { // phpcs:ignore
+	public static function is_JSON( string $json ): bool { // phpcs:ignore
 		json_decode( $json );
 
 		return ( json_last_error() === JSON_ERROR_NONE );

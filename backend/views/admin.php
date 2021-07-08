@@ -18,7 +18,7 @@
 	<div id="lp-main">
 		<div class="header-wrap">
 			<div class="wrapper grid-container">
-				<div class="header flex-container">
+				<div class="header">
 					<h1>LeasePress</h1>
 				</div>
 			</div>
