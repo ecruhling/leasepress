@@ -58,7 +58,7 @@
 		})
 
 		// API clear cache button click
-		$('.api_clear_cache').on('click', function (e) {
+		$('#lp_api_clear_cache_submit').on('click', function (e) {
 			e.preventDefault()
 
 			// AJAX call
@@ -66,13 +66,13 @@
 				$('#lp_api_clear_cache_nonce').attr('value'),
 				'lp_delete_rentcafe_transient',
 				function () {
-					$('.api_clear_cache').addClass('disabled')
+					$('#lp_api_clear_cache_submit').addClass('disabled')
 					$cacheLoader.fadeIn()
 				},
 				function () {
-					$('.api_clear_cache').removeClass('disabled')
+					$('#lp_api_clear_cache_submit').removeClass('disabled')
 					$cacheLoader.fadeOut()
-					$('p.clear-cached-data').append('<strong class="cache-cleared-message">&nbsp;Cache Cleared and Resaved!</strong>')
+					$('p.clear-cached-data').append('<strong class="cache-cleared-message">&nbsp;Cache Cleared and Data Re-Saved!</strong>')
 					$('.cache-cleared-message').delay(3000).fadeOut('normal', function () {
 						$(this).remove()
 					})

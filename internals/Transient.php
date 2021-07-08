@@ -38,10 +38,10 @@ class Transient extends Base {
 	 *
 	 * @param string $method The method name used for the lookup.
 	 *
-	 * @return object
+	 * @return array
 	 * @since 1.0.0
 	 */
-	public function get_or_cache_transient( string $method ): object {
+	public function get_or_cache_transient( string $method ): array {
 		$key    = 'lp_rentcafe_' . $method . '_api_data';
 		$expire = lp_get_settings()['lp_cache_time'] ? lp_get_settings()['lp_cache_time'] : HOUR_IN_SECONDS;
 

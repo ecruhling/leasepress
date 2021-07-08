@@ -138,11 +138,11 @@ class RentCafe extends Base {
 	}
 
 	/**
-	 * $floorplan_types
+	 * The different floor plan types
 	 *
 	 * @return array of objects
 	 */
-	public function floorplanTypes(): array {
+	public function floorplan_types(): array {
 
 		$floorplans_data = array();
 
@@ -208,11 +208,11 @@ class RentCafe extends Base {
 	}
 
 	/**
-	 * $unit_availabilities
+	 * The unit availabilities
 	 *
 	 * @return array of objects
 	 */
-	public function unitAvailabilities(): array {
+	public function unit_availabilities(): array {
 
 		$availability_data = array();
 
@@ -222,7 +222,7 @@ class RentCafe extends Base {
 			return $availability_data;
 		}
 
-		$unit_types = self::floorplanTypes(); // create a unit_types array in order to get the extra data for the units (name, PDF, SVGs).
+		$unit_types = self::floorplan_types(); // create a unit_types array in order to get the extra data for the units (name, PDF, SVGs).
 
 		// data for unit availabilities.
 		foreach ( $availability_array as $unit ) :
