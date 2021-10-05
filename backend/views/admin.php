@@ -26,6 +26,7 @@
 		<div class="wrapper" id="tabs">
 			<ul>
 				<li><a href="#settings" title="Settings"><?php esc_html_e( 'Settings', 'leasepress' ); ?></a></li>
+				<li><a href="#floor-plans" title="Floor Plans"><?php esc_html_e( 'Floor Plans', 'leasepress' ); ?></a></li>
 				<li><a href="#tables" title="Tables"><?php esc_html_e( 'Tables', 'leasepress' ); ?></a></li>
 				<li><a href="#import-export" title="Import/Export"><?php esc_html_e( 'Import/Export', 'leasepress' ); ?></a></li>
 			</ul>
@@ -52,6 +53,9 @@
 						<div id="rentcafe-request-data" style="overflow: hidden;"></div>
 					</div>
 				</div>
+			</div>
+			<div id="floor-plans" class="metabox-holder">
+				<?php require_once plugin_dir_path( __FILE__ ) . '/tabs/floor-plans.php'; ?>
 			</div>
 			<div id="tables" class="metabox-holder">
 				<?php require_once plugin_dir_path( __FILE__ ) . '/tabs/tables.php'; ?>

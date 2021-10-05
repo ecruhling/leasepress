@@ -67,4 +67,9 @@ p.lp_delete_floor_plans {
   left: 14px;
 }
 
+#save-button {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
 /*# sourceMappingURL=settings.css.map*/
